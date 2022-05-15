@@ -7,7 +7,7 @@ import javax.swing.table.DefaultTableModel;
 public class frmConsultaEmpleado extends javax.swing.JFrame {
     
     Arreglo_Empleado emp = new Arreglo_Empleado();
- 
+    int con;
     
     public frmConsultaEmpleado() {
         initComponents();
