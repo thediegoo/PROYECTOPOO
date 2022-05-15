@@ -7,8 +7,8 @@ public class Proveedor extends Persona{
     private String nombreComercial;
     private String RUT;
 
-    public Proveedor(String nombreComercial, String RUT, String nombre, String apellido, Fecha fechaNacimiento, int dni, int telf, String direccion) {
-        super(nombre, apellido, fechaNacimiento, dni, telf, direccion);
+    public Proveedor(String nombreComercial, String RUT, String nombre, String apellido, int dni, int telf, String direccion) {
+        super(nombre, apellido, dni, telf, direccion);
         this.nombreComercial = nombreComercial;
         this.RUT = RUT;
     }
