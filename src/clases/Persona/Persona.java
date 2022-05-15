@@ -19,6 +19,7 @@ public class Persona {
         this.telf = telf;
         this.direccion = direccion;
     }
+    public Persona(){}
     public void imprimirDatos(){
         System.out.println("DNI: "+dni);
         System.out.println("Nombre: "+nombre);    

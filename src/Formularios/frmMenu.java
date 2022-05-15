@@ -36,6 +36,8 @@ public class frmMenu extends javax.swing.JFrame {
         menuCEmpleado = new javax.swing.JMenuItem();
         menuCProducto = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        menuProceso = new javax.swing.JMenu();
+        menuFactura = new javax.swing.JMenuItem();
 
         jMenu5.setText("jMenu5");
 
@@ -127,6 +129,18 @@ public class frmMenu extends javax.swing.JFrame {
         jMenu4.setText("Mantenimiento");
         jMenuBar1.add(jMenu4);
 
+        menuProceso.setText("Procesos");
+
+        menuFactura.setText("Factura");
+        menuFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuFacturaActionPerformed(evt);
+            }
+        });
+        menuProceso.add(menuFactura);
+
+        jMenuBar1.add(menuProceso);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -179,6 +193,12 @@ public class frmMenu extends javax.swing.JFrame {
         this.setVisible(true);
         fce.setVisible(true);
     }//GEN-LAST:event_menuCEmpleadoActionPerformed
+
+    private void menuFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFacturaActionPerformed
+    frmFactura frm = new frmFactura();
+    this.setVisible(true);
+    frm.setVisible(true);
+    }//GEN-LAST:event_menuFacturaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,6 +257,8 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuCEmpleado;
     private javax.swing.JMenuItem menuCProducto;
     private javax.swing.JMenuItem menuEmpleado;
+    private javax.swing.JMenuItem menuFactura;
+    private javax.swing.JMenu menuProceso;
     private javax.swing.JMenuItem menuRegistroProducto;
     private javax.swing.JMenuItem menuSalir;
     // End of variables declaration//GEN-END:variables

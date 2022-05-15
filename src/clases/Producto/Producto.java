@@ -42,7 +42,7 @@ private String codigo;
         }
         return mensaje;
     }
-    
+    public Producto(){}
     public Producto(String codigo, String descripcion, Marca marca, Categoria categoria, int stock, 
             double precio, double peso, Color color, Proveedor proveedor) {
         this.codigo = codigo;
@@ -184,5 +184,44 @@ private String codigo;
         this.proveedor = proveedor;
     }
     
+    //Listar productos con campos de codigo, descripcion , cantidad y precio unitario
+    public String[][] listar(){
+        String[][] lista = new String[4][4];
+        
+        lista[0][0] = "P0001";
+        lista[0][1] = "Impresora Epson C5558";
+        lista[0][2] = "150";
+        lista[0][3] ="350";
+        
+        lista[1][0] = "P0002";
+        lista[1][1] = "Escaner HP mobile 220";
+        lista[1][2]="120";
+        lista[1][3] = "400";
+        
+        lista[2][0] = "P0003";
+        lista[2][1] = "Mouse Genius";
+        lista[2][2]="100";
+        lista[2][3] = "25";
+        
+        
+        lista[3][0] = "P0004";
+        lista[3][1] = "Teclado Logitech";
+        lista[3][2]="100"; // cantidad
+        lista[3][3] = "18"; // precio unitario
+        
+        return lista;
     
+    }
+    
+    public String[] Buscar(String codigo){
+        
+    String[] registro = new String[4];
+        for(int x = 0; x < listar().length;x++){
+            if(codigo.equals(listar()[x][0])){
+                
+                registro = listar()[x];
+            }
+        }
+        return registro;
+    }
 }

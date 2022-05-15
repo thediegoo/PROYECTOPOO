@@ -29,4 +29,14 @@ public class Empleado extends Persona {
         System.out.println("FEcha de Ingreso: "+fechaIngreso); 
         System.out.println("Rol en la compañia"+rol);
    }
+   public String[][] listar(){
+       String[][] lista = new String[2][2];
+       lista[0][0] = "46617729";
+       lista[0][1] = "Fabio Noceda";
+       
+       lista[1][0] = "10571476";
+       lista[1][1] = "Luis Fernandez";
+       
+       return lista;
+   }
 }
