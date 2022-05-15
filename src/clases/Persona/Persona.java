@@ -6,15 +6,13 @@ import clases.Fecha.Fecha;
 public class Persona {
     private String nombre;
     private String apellido;
-    private Fecha fechaNacimiento;
     private int dni;
     private int telf;
     private String direccion;
     
-    public Persona(String nombre, String apellido, Fecha fechaNacimiento, int dni, int telf, String direccion) {
+    public Persona(String nombre, String apellido, int dni, int telf, String direccion) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.fechaNacimiento = fechaNacimiento;
         this.dni = dni;
         this.telf = telf;
         this.direccion = direccion;
@@ -25,7 +23,6 @@ public class Persona {
         System.out.println("Nombre: "+nombre);    
         System.out.println("Apellido: "+apellido);  
         System.out.print("Fecha de Nacimiento");
-        fechaNacimiento.imprimir();
         System.out.println("Telefono: "+telf); 
         System.out.println("Direccion: "+direccion); 
         System.out.println("");
@@ -39,10 +36,6 @@ public class Persona {
         return apellido;
     }
 
-    public Fecha getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
     public int getDni() {
         return dni;
     }
@@ -54,4 +47,26 @@ public class Persona {
     public String getDireccion() {
         return direccion;
     }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
+    }
+
+    public void setTelf(int telf) {
+        this.telf = telf;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+    
+    
 }

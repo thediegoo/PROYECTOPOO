@@ -5,29 +5,28 @@ import clases.Fecha.Fecha;
 
 public class Empleado extends Persona {
    private double sueldo;
-   private Fecha fechaIngreso;
-   private String rol;
+   private String fechaIngreso;
+
+    public Empleado() {
+    }
    
-   public Empleado (String nombre, String apellido, Fecha fechaNacimiento, int dni, int telf, String direccion, double sueldo, 
-   Fecha fechaIngreso, String rol){
-       super(nombre, apellido, fechaNacimiento, dni, telf, direccion);
+   public Empleado (String nombre, String apellido, int dni, int telf, String direccion, double sueldo, 
+   String fechaIngreso){
+       super(nombre, apellido, dni, telf, direccion);
        this.sueldo = sueldo;
        this.fechaIngreso = fechaIngreso;
-       this.rol = rol;
    }
    public double getSueldo(){
        return sueldo;
    }
-   public Fecha getFechaIngreso(){
+   public String getFechaIngreso(){
        return fechaIngreso;
    }
-   public String Rol(){
-       return rol;
-   }
+  
    public void imprimirDatos(){
         System.out.println("Sueldo: "+sueldo);
         System.out.println("FEcha de Ingreso: "+fechaIngreso); 
-        System.out.println("Rol en la compañia"+rol);
+       
    }
    public String[][] listar(){
        String[][] lista = new String[2][2];
@@ -39,4 +38,17 @@ public class Empleado extends Persona {
        
        return lista;
    }
+
+    public void setSueldo(double sueldo) {
+        this.sueldo = sueldo;
+    }
+
+    public void setFechaIngreso(String fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
+    }
+   
+   
+   
+   
+   
 }

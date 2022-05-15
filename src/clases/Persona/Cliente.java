@@ -8,8 +8,8 @@ public class Cliente extends Persona{
     
     private String tipo;
 
-    public Cliente(String nombre, String apellido, Fecha fechaNacimiento, int dni, int telf, String direccion, String tipo) {
-        super(nombre, apellido, fechaNacimiento, dni, telf, direccion);
+    public Cliente(String nombre, String apellido, int dni, int telf, String direccion, String tipo) {
+        super(nombre, apellido, dni, telf, direccion);
         this.tipo = tipo;
     }
 
