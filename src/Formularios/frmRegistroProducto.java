@@ -1,11 +1,14 @@
 
 package Formularios;
 
+import javax.swing.ImageIcon;
+
 public class frmRegistroProducto extends javax.swing.JFrame {
 
    
     public frmRegistroProducto() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
         this.setTitle("Registro productos");
         this.setLocationRelativeTo(this);
     }

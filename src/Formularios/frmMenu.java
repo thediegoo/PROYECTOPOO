@@ -1,12 +1,16 @@
 
 package Formularios;
 
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class frmMenu extends javax.swing.JFrame {
-
+    
+    
     
     public frmMenu() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
         this.setLocationRelativeTo(this);
         this.setTitle("Menu");
     }
@@ -68,11 +72,16 @@ public class frmMenu extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo-menu.png"))); // NOI18N
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/carpeta.png"))); // NOI18N
-        jMenu1.setText("Archivo");
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/carpeta.png")));
+        jMenu1.setText("Cuenta");
 
         menuSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar-sesion.png"))); // NOI18N
         menuSalir.setText("Cerrar sesion");
+        menuSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuSalirMouseClicked(evt);
+            }
+        });
         menuSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuSalirActionPerformed(evt);
@@ -186,10 +195,16 @@ public class frmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_menuEmpleadoActionPerformed
 
     private void menuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSalirActionPerformed
-        
-        frmLogin log = new frmLogin();
-        this.setVisible(false);
-        log.setVisible(true);
+        int rpta= JOptionPane.showConfirmDialog(this,"Estas seguro/a de cerrar sesion?","Cerrar sesion",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+        if(rpta==JOptionPane.YES_OPTION){
+            frmLogin log = new frmLogin();
+            this.setVisible(false);
+            log.setVisible(true);
+        }else{
+            frmMenu m = new frmMenu();
+            this.setVisible(false);
+            m.setVisible((true));
+        }
     }//GEN-LAST:event_menuSalirActionPerformed
 
     private void menuRegistroProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRegistroProductoActionPerformed
@@ -231,6 +246,10 @@ public class frmMenu extends javax.swing.JFrame {
         this.setVisible(true);
         fee.setVisible(true);
     }//GEN-LAST:event_menuEditarEmpleadoActionPerformed
+
+    private void menuSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuSalirMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuSalirMouseClicked
 
     /**
      * @param args the command line arguments

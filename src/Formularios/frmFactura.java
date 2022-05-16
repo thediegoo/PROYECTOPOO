@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Formularios;
 
 import clases.Factura.Factura;
@@ -11,22 +6,17 @@ import clases.Producto.Producto;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author pc_sistemas2020
- */
 public class frmFactura extends javax.swing.JFrame {
 
-    /**
-     * Creates new form frmFactura
-     */
     public frmFactura() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
         this.setLocationRelativeTo(this);
         this.setTitle("Factura");
     }

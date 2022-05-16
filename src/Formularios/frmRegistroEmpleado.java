@@ -3,6 +3,7 @@ package Formularios;
 import clases.Fecha.Fecha;
 import clases.Persona.Empleado;
 import controlador.Arreglo_Empleado;
+import javax.swing.ImageIcon;
 
 
 public class frmRegistroEmpleado extends javax.swing.JFrame {
@@ -15,7 +16,7 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
     
     public frmRegistroEmpleado() {
         initComponents();
-        
+        setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
         this.setLocationRelativeTo(this);
     }
 

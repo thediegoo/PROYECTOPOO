@@ -11,16 +11,7 @@ import clases.Producto.Categoria;
 import clases.Producto.Color;
 import clases.Producto.Marca;
 import clases.Producto.Producto;
-
-/**
- *
- * @author pc_sistemas2020
- */
 public class SistemasVentasUTP {
-
-    /**
-     * @param args the command line arguments
-     */
     
     public static void main(String[] args) {
         // TODO code application logic here
@@ -30,7 +21,7 @@ public class SistemasVentasUTP {
         Fecha fechaProveedor = new Fecha(25,04,2021);
         
         Proveedor proveedor = new Proveedor("Mejesa", "20555841095", "Ivan", "Atanacio", 
-                new Fecha(25, 4, 2021), 46631233, 5853374, "");
+                46631233, 5853374, "");
         Producto p = new Producto("PC001", "manzana", m, c, 10, 10, 10, color,proveedor);
         System.out.println(p.generarCodigo());
         

@@ -1,8 +1,6 @@
 package clases.Persona;
 
 
-import clases.Fecha.Fecha;
-
 public class Proveedor extends Persona{
     private String nombreComercial;
     private String RUT;

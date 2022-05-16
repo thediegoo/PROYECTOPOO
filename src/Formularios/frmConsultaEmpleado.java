@@ -2,6 +2,7 @@
 package Formularios;
 import clases.Persona.Empleado;
 import controlador.Arreglo_Empleado;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 public class frmConsultaEmpleado extends javax.swing.JFrame {
@@ -11,6 +12,7 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
     
     public frmConsultaEmpleado() {
         initComponents();
+         setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
         listado();
         this.setTitle("Consultar empleados");
         this.setLocationRelativeTo(this);

@@ -1,20 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Formularios;
 
-/**
- *
- * @author hugo_
- */
+import javax.swing.ImageIcon;
+
 public class frmEditarProducto extends javax.swing.JFrame {
 
-    /**
-     * Creates new form frmEditarProducto
-     */
     public frmEditarProducto() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
         this.setLocationRelativeTo(this);
         this.setTitle("Editar Producto");
         cboProducto.addItem("Elegir");
