@@ -8,6 +8,7 @@ public class frmMenu extends javax.swing.JFrame {
     public frmMenu() {
         initComponents();
         this.setLocationRelativeTo(this);
+        this.setTitle("Menu");
     }
     
     @SuppressWarnings("unchecked")
@@ -36,6 +37,8 @@ public class frmMenu extends javax.swing.JFrame {
         menuCEmpleado = new javax.swing.JMenuItem();
         menuCProducto = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        menuEditarEmpleado = new javax.swing.JMenuItem();
+        menuEditarProducto = new javax.swing.JMenuItem();
         menuProceso = new javax.swing.JMenu();
         menuFactura = new javax.swing.JMenuItem();
 
@@ -106,7 +109,7 @@ public class frmMenu extends javax.swing.JFrame {
         jMenu3.setText("Informe");
 
         menuCEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Cempleado.png"))); // NOI18N
-        menuCEmpleado.setText("CONSULTA DE EMPLEADOS");
+        menuCEmpleado.setText("Consulta de Empleados");
         menuCEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuCEmpleadoActionPerformed(evt);
@@ -115,7 +118,7 @@ public class frmMenu extends javax.swing.JFrame {
         jMenu3.add(menuCEmpleado);
 
         menuCProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Cproducto.png"))); // NOI18N
-        menuCProducto.setText("CONSULTA DE PRODUCTOS");
+        menuCProducto.setText("Consulta de Productos");
         menuCProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuCProductoActionPerformed(evt);
@@ -127,6 +130,23 @@ public class frmMenu extends javax.swing.JFrame {
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mantenimiento.png"))); // NOI18N
         jMenu4.setText("Mantenimiento");
+
+        menuEditarEmpleado.setText("Editar Empleado");
+        menuEditarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEditarEmpleadoActionPerformed(evt);
+            }
+        });
+        jMenu4.add(menuEditarEmpleado);
+
+        menuEditarProducto.setText("Editar Producto");
+        menuEditarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEditarProductoActionPerformed(evt);
+            }
+        });
+        jMenu4.add(menuEditarProducto);
+
         jMenuBar1.add(jMenu4);
 
         menuProceso.setText("Procesos");
@@ -200,6 +220,18 @@ public class frmMenu extends javax.swing.JFrame {
     frm.setVisible(true);
     }//GEN-LAST:event_menuFacturaActionPerformed
 
+    private void menuEditarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarProductoActionPerformed
+        frmEditarProducto fep = new frmEditarProducto();
+        this.setVisible(true);
+        fep.setVisible(true);
+    }//GEN-LAST:event_menuEditarProductoActionPerformed
+
+    private void menuEditarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarEmpleadoActionPerformed
+        frmEditarEmpleado fee = new frmEditarEmpleado();
+        this.setVisible(true);
+        fee.setVisible(true);
+    }//GEN-LAST:event_menuEditarEmpleadoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -256,6 +288,8 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar4;
     private javax.swing.JMenuItem menuCEmpleado;
     private javax.swing.JMenuItem menuCProducto;
+    private javax.swing.JMenuItem menuEditarEmpleado;
+    private javax.swing.JMenuItem menuEditarProducto;
     private javax.swing.JMenuItem menuEmpleado;
     private javax.swing.JMenuItem menuFactura;
     private javax.swing.JMenu menuProceso;

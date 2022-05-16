@@ -27,6 +27,8 @@ public class frmFactura extends javax.swing.JFrame {
      */
     public frmFactura() {
         initComponents();
+        this.setLocationRelativeTo(this);
+        this.setTitle("Factura");
     }
 
     /**
