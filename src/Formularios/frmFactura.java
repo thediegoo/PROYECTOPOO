@@ -8,6 +8,7 @@ package Formularios;
 import clases.Factura.Factura;
 import clases.Persona.Cliente;
 import clases.Producto.Producto;
+import clases.Util;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -265,12 +266,12 @@ public class frmFactura extends javax.swing.JFrame {
                         .addComponent(jLabel11)
                         .addComponent(txtproductocantidadventa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel15)
                         .addComponent(txtpreciounitario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtstock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(txtstock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel13)))
         );
 
         jLabel14.setText("Correlativo");
@@ -473,14 +474,41 @@ public class frmFactura extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
+        Guardar();
         HabilitarControl(false);
         LimpiarControles();
         btnnuevo.setEnabled(true);
         btnguardar.setEnabled(false);
         btncancelar.setEnabled(false);
+        
         JOptionPane.showMessageDialog(this, "Se guardo el documento");
         
     }//GEN-LAST:event_btnguardarActionPerformed
+    
+    private void Guardar(){
+        String contenidoCabecera ="C"+"|"+ txtserie.getText().trim() + "|"+ txtcorrelativo.getText().trim() + "|" + 
+                txtclientecod.getText() + "|" + txtclientedesc.getText() +"|" + 
+                txtvendedorcod.getText() + "|" + txtvendedordesc.getText() + "|" +
+                txtFecha.getText() + "|" + txtigv.getText() + "|" +
+                txtsubtotal.getText() + "|" + txttotal.getText() +"\n";
+        String rutaArchivo = "C:\\Users\\pc_sistemas2020\\OneDrive\\Documentos\\NetBeansProjects\\Basedatos.txt";
+        Util.Escribir(rutaArchivo, contenidoCabecera);
+        
+        //Detalle
+        String contenidoDetalle = "";
+        for(int x = 0; x < tabladetalle.getRowCount();x++){
+            
+             contenidoDetalle = "D" +"|" + txtserie.getText().trim() + "|"+ txtcorrelativo.getText().trim() + "|" +
+                                tabladetalle.getValueAt(x, 0) + "|" + tabladetalle.getValueAt(x, 1)+"|"+ 
+                                tabladetalle.getValueAt(x, 2) + "|" + tabladetalle.getValueAt(x, 3) +"|"+ 
+                                tabladetalle.getValueAt(x, 4)+"\n";
+             Util.Escribir(rutaArchivo, contenidoDetalle);
+                     
+        }
+        
+        
+        
+    }
     private void LimpiarControles(){
         txtserie.setText("");
         txtcorrelativo.setText("");
@@ -553,11 +581,14 @@ public class frmFactura extends javax.swing.JFrame {
     }
     Factura f = new Factura();
     private void btnnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevoActionPerformed
+        LimpiarControles();
+        HabilitarControl(true);
+        HabilitarBotonesMantenimiento(true);
         txtserie.setText(f.generarSerie()); 
         txtcorrelativo.setText(f.generarCorrelativo());
-        HabilitarControl(true);
-        LimpiarControles();
-        HabilitarBotonesMantenimiento(true);
+        
+        
+        
         
         CargarValoresPorDefecto();        
         
