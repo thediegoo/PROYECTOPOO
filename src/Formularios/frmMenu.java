@@ -72,8 +72,8 @@ public class frmMenu extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo-menu.png"))); // NOI18N
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/carpeta.png")));
-        jMenu1.setText("Cuenta");
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/carpeta.png"))); // NOI18N
+        jMenu1.setText("Carpeta");
 
         menuSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar-sesion.png"))); // NOI18N
         menuSalir.setText("Cerrar sesion");
@@ -217,7 +217,7 @@ public class frmMenu extends javax.swing.JFrame {
 
     private void menuCProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCProductoActionPerformed
         
-        frmConsultaProducto fcp = new frmConsultaProducto();
+        frmConsultaProductos fcp = new frmConsultaProductos();
         this.setVisible(true);
         fcp.setVisible(true);
     }//GEN-LAST:event_menuCProductoActionPerformed

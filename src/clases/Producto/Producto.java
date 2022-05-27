@@ -1,33 +1,50 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package clases.Producto;
 
 import clases.Persona.Proveedor;
-
-/**
- *
- * @author pc_sistemas2020
- */
 public class Producto {
-private String codigo;
-    private String descripcion;
-    private Marca marca;
-    private Categoria categoria;
-    private int stock;
-    private double precio;
-    private double peso;
-    private Proveedor proveedor;
 
-    private Color color;
-    static int contador = 0;
+    
+    private String codigo;
+    private String categoria;
+    private String nombreP;
+    private String marca;
+    private String estado;
+    private Proveedor idProveedor;
+    private int stock;
+    private int cantInicial;
+    private double precio;
+    private static int contador = 0;
+
+    public Producto(String codigo, String categoria, String nombreP, String marca, String estado, int stock, int cantInicial, double precio) {
+        this.codigo = codigo;
+        this.categoria = categoria;
+        this.nombreP = nombreP;
+        this.marca = marca;
+        this.estado = estado;
+      //  this.idProveedor = idProveedor;
+        this.stock = stock;
+        this.cantInicial = cantInicial;
+        this.precio = precio;
+    }
+    
+
+    public Producto(){
+       
+    }
+
+    public Producto(String pC001, String manzana, int i, int i0, int i1, Proveedor proveedor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Producto(String p0001, String periferico_de_Entrada, String teclado_MX, String disponible, int i, int i0, int i1) {
+         //To change body of generated methods, choose Tools | Templates.
+    }
+    
     public String imprimir() {
         String mensaje = "El producto es  Codigo:" +codigo +
-                ", descripcion=" + descripcion + ", marca=" + 
-                marca.getDescripcion() + ", categoria=" + categoria.getDescripcion() + ", stock=" + stock 
-                + ", precio=" + precio + ", peso=" + peso + " Color:" + color.getDescripcion();
+                ", descripcion=" + estado + ", marca=" + 
+                categoria + ", categoria=" + marca + ", stock=" + stock 
+                + ", precio=" + precio;
         return mensaje;
     }
     public String generarCodigo(){
@@ -42,148 +59,42 @@ private String codigo;
         }
         return mensaje;
     }
-    public Producto(){}
-    public Producto(String codigo, String descripcion, Marca marca, Categoria categoria, int stock, 
-            double precio, double peso, Color color, Proveedor proveedor) {
-        this.codigo = codigo;
-        this.descripcion = descripcion;
-        this.marca = marca;
-        this.categoria = categoria;
-        this.stock = stock;
-        this.precio = precio;
-        this.peso = peso;
-        this.color = color;
-        this.proveedor = proveedor;
-        contador++;
+    public static int getContador() {
+        return contador;
     }
-
-    /**
-     * @return the codigo
-     */
+    public static void setContador(int aContador) {
+        contador = aContador;
+    }
+    
     public String getCodigo() {
         
         return codigo;
     }
-
-    /**
-     * @param codigo the codigo to set
-     */
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
-
-    /**
-     * @return the descripcion
-     */
-    public String getDescripcion() {
+    public String getEstado() {
         
-        if(this.descripcion.isEmpty()){
-            this.descripcion = "Descripcion on disponible";
+        if(this.estado.isEmpty()){
+            this.estado = "Descripcion on disponible";
         }
-        return descripcion;
+        return estado;
     }
-
-    /**
-     * @param descripcion the descripcion to set
-     */
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setEstado(String descripcion) {
+        this.estado = descripcion;
     }
-
-    /**
-     * @return the marca
-     */
-    public Marca getMarca() {
-        return marca;
-    }
-
-    /**
-     * @param marca the marca to set
-     */
-    public void setMarca(Marca marca) {
-        this.marca = marca;
-        
-    }
-
-    /**
-     * @return the categoria
-     */
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    /**
-     * @param categoria the categoria to set
-     */
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
-
-    /**
-     * @return the stock
-     */
     public int getStock() {
         return stock;
     }
-
-    /**
-     * @param stock the stock to set
-     */
     public void setStock(int stock) {
         this.stock = stock;
     }
-
-    /**
-     * @return the precio
-     */
     public double getPrecio() {
         return precio;
     }
-
-    /**
-     * @param precio the precio to set
-     */
     public void setPrecio(double precio) {
         this.precio = precio;
     }
-
-    /**
-     * @return the peso
-     */
-    public double getPeso() {
-        return peso;
-    }
-
-    /**
-     * @param peso the peso to set
-     */
-    public void setPeso(double peso) {
-        this.peso = peso;
-    }
-
-   
-    /**
-     * @return the color
-     */
-    public Color getColor() {
-        return color;
-    }
-
-    /**
-     * @param color the color to set
-     */
-    public void setColor(Color color) {
-        this.color = color;
-    }
-    
-    public Proveedor getProveedor(){
-        return proveedor;
-    }
-    
-    public void setProveedor(Proveedor proveedor){
-        this.proveedor = proveedor;
-    }
-    
     //Listar productos con campos de codigo, descripcion , cantidad y precio unitario
     public String[][] listar(){
         String[][] lista = new String[4][4];
@@ -223,5 +134,46 @@ private String codigo;
             }
         }
         return registro;
+    }
+
+
+    public Proveedor getIdProveedor() {
+        return idProveedor;
+    }
+
+    public void setIdProveedor(Proveedor idProveedor) {
+        this.idProveedor = idProveedor;
+    }
+
+    public int getCantInicial() {
+        return cantInicial;
+    }
+
+    public void setCantInicial(int cantInicial) {
+        this.cantInicial = cantInicial;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getNombreP() {
+        return nombreP;
+    }
+
+    public void setNombreP(String nombreP) {
+        this.nombreP = nombreP;
     }
 }

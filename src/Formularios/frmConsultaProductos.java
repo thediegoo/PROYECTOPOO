@@ -1,31 +1,33 @@
 
 package Formularios;
 import clases.Persona.Empleado;
+import clases.Producto.Producto;
 import controlador.Arreglo_Empleado;
+import controlador.Arreglo_Producto;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
-public class frmConsultaEmpleado extends javax.swing.JFrame {
+public class frmConsultaProductos extends javax.swing.JFrame {
     
-    Arreglo_Empleado emp = new Arreglo_Empleado();
+    Arreglo_Producto emp = new Arreglo_Producto();
     int con;
     
-    public frmConsultaEmpleado() {
+    public frmConsultaProductos() {
         initComponents();
          setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
         listado();
-        this.setTitle("Consultar empleados");
+        this.setTitle("Consultar Productos");
         this.setLocationRelativeTo(this);
     }
     
     
     public void listado(){
-        DefaultTableModel dt=(DefaultTableModel)tablaEmpleado.getModel();
+        DefaultTableModel dt=(DefaultTableModel)tablaProductos.getModel();
         dt.setRowCount(0);
         
-        for(int i=0; i<frmRegistroEmpleado.emp.tamaño(); i++){
-            Empleado x=frmRegistroEmpleado.emp.obtener(i);
-            Object v[] = {x.getNombre(), x.getApellido(), x.getDni(), x.getTelf(), x.getDireccion(), x.getSueldo(), x.getFechaIngreso()};
+        for(int i=0; i<frmRegistroProducto.emp.tamaño(); i++){
+            Producto x=frmRegistroProducto.emp.obtener(i);
+            Object v[] = {x.getCodigo(), x.getCategoria(), x.getNombreP(), x.getMarca(), x.getEstado(), x.getStock(),x.getCantInicial(), x.getPrecio()};
             dt.addRow(v);
         }
     }
@@ -36,10 +38,10 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
 
         jButton5 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        btnSalir1 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tablaEmpleado = new javax.swing.JTable();
         jLabel13 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaProductos = new javax.swing.JTable();
+        btnSalir1 = new javax.swing.JButton();
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
         jButton5.setText("Guardar");
@@ -48,8 +50,23 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(181, 222, 179));
-        jPanel1.setForeground(new java.awt.Color(181, 222, 179));
+        jPanel1.setBackground(new java.awt.Color(155, 187, 209));
+
+        jLabel13.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
+        jLabel13.setText("CONSULTAR PRODUCTOS");
+
+        tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Codigo", "Categoria", "Nombre", "Marca", "Estado", "Stock", "Cantidad Inicial", "Precio"
+            }
+        ));
+        jScrollPane2.setViewportView(tablaProductos);
 
         btnSalir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/home-exit.png"))); // NOI18N
         btnSalir1.setText("Salir");
@@ -61,39 +78,22 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
             }
         });
 
-        tablaEmpleado.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Nombres", "Apellidos", "DNI", "Telefono", "Direccion", "Sueldo", "Fecha Ingreso"
-            }
-        ));
-        jScrollPane2.setViewportView(tablaEmpleado);
-
-        jLabel13.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
-        jLabel13.setText("CONSULTAR EMPLEADOS");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(359, 359, 359)
-                .addComponent(jLabel13)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 921, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnSalir1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(419, 419, 419))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(385, 385, 385)
+                        .addComponent(jLabel13))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 921, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(396, 396, 396)
+                        .addComponent(btnSalir1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,17 +101,17 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel13)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
                 .addComponent(btnSalir1)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,20 +143,21 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmConsultaEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmConsultaProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmConsultaEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmConsultaProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmConsultaEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmConsultaProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmConsultaEmpleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmConsultaProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmConsultaEmpleado().setVisible(true);
+                new frmConsultaProductos().setVisible(true);
             }
         });
     }
@@ -167,6 +168,6 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tablaEmpleado;
+    private javax.swing.JTable tablaProductos;
     // End of variables declaration//GEN-END:variables
 }

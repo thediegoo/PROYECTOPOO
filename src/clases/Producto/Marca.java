@@ -1,47 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package clases.Producto;
+/*package clases.Producto;
 
-/**
- *
- * @author pc_sistemas2020
- */
 public class Marca {
-    private String codigo;
+    private String codigoMarca;
     private String descripcion;
-    public Marca(String codigo, String descripcion){
-        this.codigo = codigo;
+
+    public Marca(String codigoMarca, String descripcion) {
+        this.codigoMarca = codigoMarca;
         this.descripcion = descripcion;
     }
-
-    /**
-     * @return the codigo
-     */
-    public String getCodigo() {
-        return codigo;
-    }
-
-    /**
-     * @param codigo the codigo to set
-     */
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
-    /**
-     * @return the descripcion
-     */
     public String getDescripcion() {
         return descripcion;
     }
-
-    /**
-     * @param descripcion the descripcion to set
-     */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    public String getCodigoMarca() {
+        return codigoMarca;
+    }
+
+    public void setCodigoMarca(String codigoMarca) {
+        this.codigoMarca = codigoMarca;
+    }
 }
+*/
