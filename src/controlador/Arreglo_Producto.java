@@ -58,4 +58,14 @@ public class Arreglo_Producto {
     public void setCon(int con) {
         this.con = con;
     }
+    public int busca(int stock){
+        int bus=-1;
+        for(int i=0; i<con; i++){
+            if(vec[i].getStock()==stock){
+                bus=i;
+                break;
+            }
+        }
+        return bus;
+    }
 }

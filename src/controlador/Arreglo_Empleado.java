@@ -5,6 +5,10 @@ import javax.swing.JOptionPane;
 
 
 public class Arreglo_Empleado {
+
+    public static Empleado frmRegistroEmpleado(String cuiBusq) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     private Empleado vec[] = new Empleado[100];
     private int con;
@@ -56,4 +60,15 @@ public class Arreglo_Empleado {
     public void setCon(int con) {
         this.con = con;
     }
+    public int busca(int cod){
+        int bus=-1;
+        for(int i=0; i<con; i++){
+            if(vec[i].getDni()==cod){
+                bus=i;
+                break;
+            }
+        }
+        return bus;
+    }
+
 }
