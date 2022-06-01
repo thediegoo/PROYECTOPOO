@@ -1,11 +1,11 @@
 
 package controlador;
 import clases.Persona.Empleado;
-import clases.interfaces.EmpleadoBuscar;
 import javax.swing.JOptionPane;
+import clases.interfaces.InterfaceBuscar;
 
 
-public class Arreglo_Empleado implements EmpleadoBuscar {
+public class Arreglo_Empleado implements InterfaceBuscar {
 
     public static Empleado frmRegistroEmpleado(String cuiBusq) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

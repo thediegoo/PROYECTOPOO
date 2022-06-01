@@ -4,9 +4,9 @@ package controlador;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import clases.Producto.Producto;
-import clases.interfaces.ProductoBuscar;
+import clases.interfaces.InterfaceBuscar;
 
-public class Arreglo_Producto implements ProductoBuscar{
+public class Arreglo_Producto implements InterfaceBuscar{
    private Producto vec[] = new Producto[100];
     private int con;
     
