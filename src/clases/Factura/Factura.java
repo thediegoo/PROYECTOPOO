@@ -1,20 +1,18 @@
 
 package clases.Factura;
-
-import clases.Fecha.Fecha;
 import clases.Persona.Cliente;
 import clases.Persona.Empleado;
 
 public class Factura {
     
     private String codigo;
-    private Fecha fecha;
+    private String fecha;
     private Empleado vendedor;
     private Cliente cliente;
     private double total;
     private String regalo;
     private static int cantidadregistros = 0; 
-    public Factura(String codigo, Fecha fecha, Empleado vendedor, Cliente cliente, double total, String regalo) {
+    public Factura(String codigo, String fecha, Empleado vendedor, Cliente cliente, double total, String regalo) {
         this.codigo = codigo;
         this.fecha = fecha;
         this.vendedor = vendedor;
@@ -39,7 +37,7 @@ public class Factura {
         return codigo;
     }
 
-    public Fecha getFecha() {
+    public String getFecha() {
         return fecha;
     }
 

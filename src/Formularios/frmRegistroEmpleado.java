@@ -1,6 +1,5 @@
 
 package Formularios;
-import clases.Fecha.Fecha;
 import clases.Persona.Empleado;
 import controlador.Arreglo_Empleado;
 import javax.swing.ImageIcon;

@@ -1,8 +1,6 @@
 
 package clases.Persona;
 
-import clases.Fecha.Fecha;
-import clases.Fecha.Fecha;
 
 public class Cliente extends Persona{
     

@@ -1,7 +1,5 @@
 package clases.Persona;
 
-import clases.Fecha.Fecha;
-import clases.Fecha.Fecha;
 
 public class Empleado extends Persona {
    private double sueldo;
