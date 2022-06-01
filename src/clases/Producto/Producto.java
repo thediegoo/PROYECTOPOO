@@ -4,7 +4,7 @@ import clases.Persona.Proveedor;
 public class Producto {
 
     
-    private String codigo;
+    private int codigo;
     private String categoria;
     private String nombreP;
     private String marca;
@@ -15,7 +15,7 @@ public class Producto {
     private double precio;
     private static int contador = 0;
 
-    public Producto(String codigo, String categoria, String nombreP, String marca, String estado, int stock, int cantInicial, double precio) {
+    public Producto(int codigo, String categoria, String nombreP, String marca, String estado, int stock, int cantInicial, double precio) {
         this.codigo = codigo;
         this.categoria = categoria;
         this.nombreP = nombreP;
@@ -66,11 +66,11 @@ public class Producto {
         contador = aContador;
     }
     
-    public String getCodigo() {
+    public int getCodigo() {
         
         return codigo;
     }
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
     public String getEstado() {
