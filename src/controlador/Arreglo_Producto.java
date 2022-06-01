@@ -4,8 +4,9 @@ package controlador;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import clases.Producto.Producto;
+import clases.interfaces.ProductoBuscar;
 
-public class Arreglo_Producto {
+public class Arreglo_Producto implements ProductoBuscar{
    private Producto vec[] = new Producto[100];
     private int con;
     
@@ -58,6 +59,8 @@ public class Arreglo_Producto {
     public void setCon(int con) {
         this.con = con;
     }
+    
+   @Override
     public int busca(int stock){
         int bus=-1;
         for(int i=0; i<con; i++){

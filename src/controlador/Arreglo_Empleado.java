@@ -1,10 +1,11 @@
 
 package controlador;
 import clases.Persona.Empleado;
+import clases.interfaces.EmpleadoBuscar;
 import javax.swing.JOptionPane;
 
 
-public class Arreglo_Empleado {
+public class Arreglo_Empleado implements EmpleadoBuscar {
 
     public static Empleado frmRegistroEmpleado(String cuiBusq) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -60,6 +61,7 @@ public class Arreglo_Empleado {
     public void setCon(int con) {
         this.con = con;
     }
+    @Override
     public int busca(int cod){
         int bus=-1;
         for(int i=0; i<con; i++){
