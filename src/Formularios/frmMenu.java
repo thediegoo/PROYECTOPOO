@@ -1,4 +1,3 @@
-
 package Formularios;
 
 import desplazable.Desface;
@@ -6,9 +5,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class frmMenu extends javax.swing.JFrame {
-    
-    
+
     Desface desplace;
+
     public frmMenu() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
@@ -16,7 +15,7 @@ public class frmMenu extends javax.swing.JFrame {
         this.setTitle("Menu");
         desplace = new Desface();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -600,55 +599,54 @@ public class frmMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRegistrarMouseClicked
-       
-        
-        if(panelRegistro.getX()==0){
-            desplace.desplazarIzquierda(panelRegistro, panelRegistro.getX(),-600,10,10);
-        }else if(panelRegistro.getX()== -600){
-            desplace.desplazarDerecha(panelRegistro, panelRegistro.getX(),0,10,10);
+
+        if (panelRegistro.getX() == 0) {
+            desplace.desplazarIzquierda(panelRegistro, panelRegistro.getX(), -600, 10, 10);
+        } else if (panelRegistro.getX() == -600) {
+            desplace.desplazarDerecha(panelRegistro, panelRegistro.getX(), 0, 10, 10);
         }
-      
+
     }//GEN-LAST:event_BtnRegistrarMouseClicked
 
     private void BtnProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProductoActionPerformed
-        frmRegistroProducto fre= new frmRegistroProducto();
+        frmRegistroProducto fre = new frmRegistroProducto();
         this.setVisible(true);
         fre.setVisible(true);
     }//GEN-LAST:event_BtnProductoActionPerformed
 
     private void BtnEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEmpleadoActionPerformed
-        frmRegistroEmpleado fre= new frmRegistroEmpleado();
+        frmRegistroEmpleado fre = new frmRegistroEmpleado();
         this.setVisible(true);
         fre.setVisible(true);
     }//GEN-LAST:event_BtnEmpleadoActionPerformed
 
     private void BtnConsultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnConsultasMouseClicked
-        if(panelConsultas.getX()==0){
-            desplace.desplazarIzquierda(panelConsultas, panelConsultas.getX(),-600,10,10);
-        }else if(panelConsultas.getX()== -600){
-            desplace.desplazarDerecha(panelConsultas, panelConsultas.getX(),0,10,10);
+        if (panelConsultas.getX() == 0) {
+            desplace.desplazarIzquierda(panelConsultas, panelConsultas.getX(), -600, 10, 10);
+        } else if (panelConsultas.getX() == -600) {
+            desplace.desplazarDerecha(panelConsultas, panelConsultas.getX(), 0, 10, 10);
         }
     }//GEN-LAST:event_BtnConsultasMouseClicked
 
     private void BtnEmCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEmCActionPerformed
-       frmConsultaEmpleado fre= new frmConsultaEmpleado();
+        frmConsultaEmpleado fre = new frmConsultaEmpleado();
         this.setVisible(true);
         fre.setVisible(true);
     }//GEN-LAST:event_BtnEmCActionPerformed
 
     private void BtnProCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProCActionPerformed
-       frmConsultaProductos fre= new frmConsultaProductos();
+        frmConsultaProductos fre = new frmConsultaProductos();
         this.setVisible(true);
         fre.setVisible(true);
     }//GEN-LAST:event_BtnProCActionPerformed
 
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
-       int rpta= JOptionPane.showConfirmDialog(this,"Estas seguro/a de cerrar sesion?","Cerrar sesion",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
-        if(rpta==JOptionPane.YES_OPTION){
+        int rpta = JOptionPane.showConfirmDialog(this, "Estas seguro/a de cerrar sesion?", "Cerrar sesion", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (rpta == JOptionPane.YES_OPTION) {
             frmLogin log = new frmLogin();
             this.setVisible(false);
             log.setVisible(true);
-        }else{
+        } else {
             frmMenu m = new frmMenu();
             this.setVisible(false);
             m.setVisible((true));
@@ -656,43 +654,43 @@ public class frmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirMouseClicked
 
     private void btnMantenimientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMantenimientoMouseClicked
-        if(panelMante.getX()==0){
-            desplace.desplazarIzquierda(panelMante, panelMante.getX(),-600,10,10);
-        }else if(panelMante.getX()== -600){
-            desplace.desplazarDerecha(panelMante, panelMante.getX(),0,10,10);
+        if (panelMante.getX() == 0) {
+            desplace.desplazarIzquierda(panelMante, panelMante.getX(), -600, 10, 10);
+        } else if (panelMante.getX() == -600) {
+            desplace.desplazarDerecha(panelMante, panelMante.getX(), 0, 10, 10);
         }
     }//GEN-LAST:event_btnMantenimientoMouseClicked
 
     private void BtnEmManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEmManActionPerformed
-        frmEditarEmpleado fre= new frmEditarEmpleado();
+        frmEditarEmpleado re = new frmEditarEmpleado();
         this.setVisible(true);
-        fre.setVisible(true);
+        re.setVisible(true);
     }//GEN-LAST:event_BtnEmManActionPerformed
 
     private void BtnProdManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProdManActionPerformed
-        frmEditarProducto fre= new frmEditarProducto();
+        frmEditarProducto fre = new frmEditarProducto();
         this.setVisible(true);
         fre.setVisible(true);
     }//GEN-LAST:event_BtnProdManActionPerformed
 
     private void btnProcesosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProcesosMouseClicked
-        if(panelProcesos.getX()==0){
-            desplace.desplazarIzquierda(panelProcesos, panelProcesos.getX(),-600,10,10);
-        }else if(panelProcesos.getX()== -600){
-            desplace.desplazarDerecha(panelProcesos, panelProcesos.getX(),0,10,10);
+        if (panelProcesos.getX() == 0) {
+            desplace.desplazarIzquierda(panelProcesos, panelProcesos.getX(), -600, 10, 10);
+        } else if (panelProcesos.getX() == -600) {
+            desplace.desplazarDerecha(panelProcesos, panelProcesos.getX(), 0, 10, 10);
         }
     }//GEN-LAST:event_btnProcesosMouseClicked
 
     private void BtnFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnFacActionPerformed
-        frmFactura fre= new frmFactura();
+        frmFactura fre = new frmFactura();
         this.setVisible(true);
         fre.setVisible(true);
     }//GEN-LAST:event_BtnFacActionPerformed
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
-        int dialog =JOptionPane.YES_NO_OPTION;
-        int result = JOptionPane.showConfirmDialog(null, "Desea cerrar el sistema?","Exit",dialog);
-        if(result == 0){
+        int dialog = JOptionPane.YES_NO_OPTION;
+        int result = JOptionPane.showConfirmDialog(null, "Desea cerrar el sistema?", "Exit", dialog);
+        if (result == 0) {
             System.exit(0);
         }
     }//GEN-LAST:event_closeMouseClicked

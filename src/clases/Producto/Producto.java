@@ -1,9 +1,9 @@
 package clases.Producto;
 
 import clases.Persona.Proveedor;
+
 public class Producto {
 
-    
     private int codigo;
     private String categoria;
     private String nombreP;
@@ -14,6 +14,9 @@ public class Producto {
     private int cantInicial;
     private double precio;
     private static int contador = 0;
+    
+    public Producto() {
+    }
 
     public Producto(int codigo, String categoria, String nombreP, String marca, String estado, int stock, int cantInicial, double precio) {
         this.codigo = codigo;
@@ -21,121 +24,114 @@ public class Producto {
         this.nombreP = nombreP;
         this.marca = marca;
         this.estado = estado;
-      //  this.idProveedor = idProveedor;
         this.stock = stock;
         this.cantInicial = cantInicial;
         this.precio = precio;
     }
-    
 
-    public Producto(){
-       
-    }
-
-    public Producto(String pC001, String manzana, int i, int i0, int i1, Proveedor proveedor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Producto(String p0001, String periferico_de_Entrada, String teclado_MX, String disponible, int i, int i0, int i1) {
-         //To change body of generated methods, choose Tools | Templates.
-    }
-    
     public String imprimir() {
-        String mensaje = "El producto es  Codigo:" +codigo +
-                ", descripcion=" + estado + ", marca=" + 
-                categoria + ", categoria=" + marca + ", stock=" + stock 
+        String mensaje = "El producto es  Codigo:" + codigo
+                + ", descripcion=" + estado + ", marca="
+                + categoria + ", categoria=" + marca + ", stock=" + stock
                 + ", precio=" + precio;
         return mensaje;
     }
-    public String generarCodigo(){
-        
-        return String.format("%s%03d", "P",contador);
-        //return "Codigo generado";
+
+    public String generarCodigo() {
+        return String.format("%s%03d", "P", contador);
     }
-    public String alertaStock(){
-        String mensaje ="";
-        if(this.stock <= 5){
+
+    public String alertaStock() {
+        String mensaje = "";
+        if (this.stock <= 5) {
             mensaje = "Necesita reponer Stock de producto";
         }
         return mensaje;
     }
+
     public static int getContador() {
         return contador;
     }
+
     public static void setContador(int aContador) {
         contador = aContador;
     }
-    
+
     public int getCodigo() {
-        
+
         return codigo;
     }
+
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
+
     public String getEstado() {
-        
-        if(this.estado.isEmpty()){
+
+        if (this.estado.isEmpty()) {
             this.estado = "Descripcion on disponible";
         }
         return estado;
     }
+
     public void setEstado(String descripcion) {
         this.estado = descripcion;
     }
+
     public int getStock() {
         return stock;
     }
+
     public void setStock(int stock) {
         this.stock = stock;
     }
+
     public double getPrecio() {
         return precio;
     }
+
     public void setPrecio(double precio) {
         this.precio = precio;
     }
+
     //Listar productos con campos de codigo, descripcion , cantidad y precio unitario
-    public String[][] listar(){
+    public String[][] listar() {
         String[][] lista = new String[4][4];
-        
+
         lista[0][0] = "P0001";
         lista[0][1] = "Impresora Epson C5558";
         lista[0][2] = "150";
-        lista[0][3] ="350";
-        
+        lista[0][3] = "350";
+
         lista[1][0] = "P0002";
         lista[1][1] = "Escaner HP mobile 220";
-        lista[1][2]="120";
+        lista[1][2] = "120";
         lista[1][3] = "400";
-        
+
         lista[2][0] = "P0003";
         lista[2][1] = "Mouse Genius";
-        lista[2][2]="100";
+        lista[2][2] = "100";
         lista[2][3] = "25";
-        
-        
+
         lista[3][0] = "P0004";
         lista[3][1] = "Teclado Logitech";
-        lista[3][2]="100"; // cantidad
+        lista[3][2] = "100"; // cantidad
         lista[3][3] = "18"; // precio unitario
-        
+
         return lista;
-    
     }
-    
-    public String[] Buscar(String codigo){
-        
-    String[] registro = new String[4];
-        for(int x = 0; x < listar().length;x++){
-            if(codigo.equals(listar()[x][0])){
-                
+
+    public String[] Buscar(String codigo) {
+
+        String[] registro = new String[4];
+        for (int x = 0; x < listar().length; x++) {
+            if (codigo.equals(listar()[x][0])) {
+
                 registro = listar()[x];
             }
         }
         return registro;
     }
-
 
     public Proveedor getIdProveedor() {
         return idProveedor;

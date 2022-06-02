@@ -32,6 +32,10 @@ public class Arreglo_Producto implements InterfaceBuscar{
         con++;
     }
     
+    public void modifica(Producto p, int pos){
+        vec[pos]=p;
+    }
+    
     public int tamaño(){
         return con;
     }
@@ -63,7 +67,7 @@ public class Arreglo_Producto implements InterfaceBuscar{
    @Override
     public int busca(int cod){
         int bus=-1;
-        for(int i=0; i<con; i++){
+        for(int i=0; i<tamaño(); i++){
             if(vec[i].getCodigo()==cod){
                 bus=i;
                 break;
