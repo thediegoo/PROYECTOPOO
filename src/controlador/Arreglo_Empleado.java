@@ -32,6 +32,25 @@ public class Arreglo_Empleado implements InterfaceBuscar {
         vec[pos]=e;
     }
     
+    @Override
+    public int busca(int cod){
+        int bus=-1;
+        for(int i=0; i<tamaño(); i++){
+            if(vec[i].getDni()==cod){
+                bus=i;
+                break;
+            }
+        }
+        return bus;
+    }
+
+    @Override
+    public void anula(int pos) {
+        for(int i=pos; i<con-1; i++)
+            vec[i]=vec[i+1];
+        con=con-1;
+    }
+    
     public int tamaño(){
         return con;
     }
@@ -58,17 +77,5 @@ public class Arreglo_Empleado implements InterfaceBuscar {
 
     public void setCon(int con) {
         this.con = con;
-    }
-    
-    @Override
-    public int busca(int cod){
-        int bus=-1;
-        for(int i=0; i<tamaño(); i++){
-            if(vec[i].getDni()==cod){
-                bus=i;
-                break;
-            }
-        }
-        return bus;
     }
 }
