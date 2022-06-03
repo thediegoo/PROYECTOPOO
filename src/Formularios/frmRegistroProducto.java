@@ -1,4 +1,3 @@
-
 package Formularios;
 
 import clases.Producto.Producto;
@@ -6,17 +5,15 @@ import controlador.Arreglo_Producto;
 import javax.swing.ImageIcon;
 
 public class frmRegistroProducto extends javax.swing.JFrame {
-    
- public static Arreglo_Producto emp= new Arreglo_Producto();
- 
-    
-    
+
+    public static Arreglo_Producto emp = new Arreglo_Producto();
+
     public frmRegistroProducto() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
         this.setTitle("Registro productos");
         this.setLocationRelativeTo(this);
-         cboCategoria.addItem(Arreglo_Producto.categoria1);
+        cboCategoria.addItem(Arreglo_Producto.categoria1);
         cboCategoria.addItem(Arreglo_Producto.categoria2);
     }
 
@@ -163,7 +160,7 @@ public class frmRegistroProducto extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("MARCA");
+        jLabel3.setText("MARCA :");
 
         jLabel13.setBackground(new java.awt.Color(0, 0, 0));
         jLabel13.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 24)); // NOI18N
@@ -190,7 +187,7 @@ public class frmRegistroProducto extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("STOCK");
+        jLabel6.setText("STOCK :");
 
         txtStock.setBackground(new java.awt.Color(213, 170, 165));
         txtStock.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
@@ -225,7 +222,7 @@ public class frmRegistroProducto extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("ESTADO");
+        jLabel4.setText("ESTADO :");
 
         txtPrecio.setBackground(new java.awt.Color(213, 170, 165));
         txtPrecio.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
@@ -262,15 +259,15 @@ public class frmRegistroProducto extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setText("CODIGO");
+        jLabel10.setText("CODIGO :");
 
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("NOMBRE");
+        jLabel2.setText("NOMBRE :");
 
         jLabel5.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("ID PROVEEDOR");
+        jLabel5.setText("ID PROVEEDOR :");
 
         txtEstado.setBackground(new java.awt.Color(213, 170, 165));
         txtEstado.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
@@ -303,7 +300,7 @@ public class frmRegistroProducto extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("CANTIDAD INICIAL");
+        jLabel8.setText("CANTIDAD INICIAL :");
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fd.png"))); // NOI18N
 
@@ -326,25 +323,31 @@ public class frmRegistroProducto extends javax.swing.JFrame {
                                     .addComponent(jLabel6))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(66, 66, 66)
+                                        .addGap(94, 94, 94)
                                         .addComponent(txtIdProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel14)
-                                    .addComponent(jLabel1))
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCodMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblCategoria)
-                                    .addComponent(cboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(cboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblCategoria)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(txtEstado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtNombreProducto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtCodMarca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -354,10 +357,10 @@ public class frmRegistroProducto extends javax.swing.JFrame {
                             .addComponent(jLabel10)
                             .addComponent(jLabel9))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCodProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(73, 73, 73)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtCodProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                            .addComponent(txtPrecio))
+                        .addGap(60, 60, 60)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -398,19 +401,19 @@ public class frmRegistroProducto extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(66, 66, 66)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtIdProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtIdProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -434,7 +437,7 @@ public class frmRegistroProducto extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -461,7 +464,7 @@ public class frmRegistroProducto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNombreProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreProductoActionPerformed
-        
+
     }//GEN-LAST:event_txtNombreProductoActionPerformed
 
     private void txtEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstadoActionPerformed
@@ -495,11 +498,11 @@ public class frmRegistroProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCodProductoActionPerformed
 
     private void cboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCategoriaActionPerformed
-        if(cboCategoria.getSelectedItem()==Arreglo_Producto.categoria1){
-        lblCategoria.setText(Arreglo_Producto.categoria1);
-    } else if (cboCategoria.getSelectedItem()==Arreglo_Producto.categoria2){
-        lblCategoria.setText(Arreglo_Producto.categoria2);
-    }
+        if (cboCategoria.getSelectedItem() == Arreglo_Producto.categoria1) {
+            lblCategoria.setText(Arreglo_Producto.categoria1);
+        } else if (cboCategoria.getSelectedItem() == Arreglo_Producto.categoria2) {
+            lblCategoria.setText(Arreglo_Producto.categoria2);
+        }
     }//GEN-LAST:event_cboCategoriaActionPerformed
 
     private void txtStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStockActionPerformed
@@ -515,59 +518,34 @@ public class frmRegistroProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPrecioActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        String cat,nombre, marca, estado,idProv;
-        int cantInicial,stock;
+        String cat, nombre, marca, estado;
+        int cantInicial, stock;
         int codP;
         double precio;
-        codP=Integer.parseInt(txtCodProducto.getText()); 
-        //cat=cboCategoria.getItemAt(1);
-        cat=lblCategoria.getText();
-       // cat=txtCategoria.getText();
-        nombre=txtNombreProducto.getText();
-        estado=txtEstado.getText();
-        marca=txtCodMarca.getText();        
-       // idProv=txtIdProveedor.getText();
-        cantInicial=Integer.parseInt(txtCantInicial.getText());        
-        stock=Integer.parseInt(txtStock.getText());
-        precio=Double.parseDouble(txtPrecio.getText());
-       
-      
-       Producto nuevo = new Producto(codP, cat, nombre, marca, estado, stock, cantInicial, precio);
-       emp.adicion(nuevo);
-       
-       emp.msg("REGISTRO EXITOSO!");
-       
-       txtCodProducto.setText("");
-       txtNombreProducto.setText("");
-       txtCodMarca.setText("");
-       txtStock.setText("");
-       txtCantInicial.setText("");
-       txtPrecio.setText("");
-        /*String codP,codC,nombre, codMarca, estado,idProv;
+        codP = Integer.parseInt(txtCodProducto.getText());
+        cat = lblCategoria.getText();
+        nombre = txtNombreProducto.getText();
+        marca = txtCodMarca.getText();
+        estado = txtEstado.getText();
+        stock = Integer.parseInt(txtStock.getText());
+        cantInicial = Integer.parseInt(txtCantInicial.getText());
+        precio = Double.parseDouble(txtPrecio.getText());
 
-        int cantI,stock;
-        double precio;
-        
-        Producto refPr;
-        codP=txtCodProducto.getText();        
-        codC=cbCategoria.getItemAt(1);
-        nombre=txtCodProducto.getText();
-        codMarca=txtCodProducto.getText();
-        estado=txtCodProducto.getText();        
-        idProv=txtCodProducto.getText();
-        cantI=Integer.parseInt(txtCantInicial.getText());        
-        stock=Integer.parseInt(txtStock.getText());
-        precio=Double.parseDouble(txtPrecio.getText());
-        
-        refPr=new Producto(codP, nombre, estado,cantI,stock,precio);
-        refP.ingresarProducto(refPr);
-        listarProductos();
-        
-        txtCodProducto.setText("");        
+        Producto nuevo = new Producto(codP, cat, nombre, marca, estado, stock, cantInicial, precio);
+        emp.adicion(nuevo);
+
+        emp.msg("REGISTRO EXITOSO!");
+
+        lblCategoria.setText("");
+        txtNombreProducto.setText("");
+        txtEstado.setText("");
+        txtCodMarca.setText("");
+        txtIdProveedor.setText("");
+        txtStock.setText("");
+        txtCantInicial.setText("");
         txtCodProducto.setText("");
-        jTextFieldNombres.setText("");*/
-        
-       
+        txtPrecio.setText("");
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     public static void main(String args[]) {

@@ -1,5 +1,5 @@
-
 package Formularios;
+
 import clases.Persona.Empleado;
 import controlador.Arreglo_Empleado;
 import javax.swing.ImageIcon;
@@ -7,25 +7,24 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class frmConsultaEmpleado extends javax.swing.JFrame {
-    
-    Arreglo_Empleado emp = new Arreglo_Empleado();
+
     int con;
     int indice;
+
     public frmConsultaEmpleado() {
         initComponents();
-         setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
         listado();
         this.setTitle("Consultar empleados");
         this.setLocationRelativeTo(this);
     }
-    
-    
-    public void listado(){
-        DefaultTableModel dt=(DefaultTableModel)tablaEmpleado.getModel();
+
+    public void listado() {
+        DefaultTableModel dt = (DefaultTableModel) tablaEmpleado.getModel();
         dt.setRowCount(0);
-        
-        for(int i=0; i<frmRegistroEmpleado.emp.tamaño(); i++){
-            Empleado x=frmRegistroEmpleado.emp.obtener(i);
+
+        for (int i = 0; i < frmRegistroEmpleado.emp.tamaño(); i++) {
+            Empleado x = frmRegistroEmpleado.emp.obtener(i);
             Object v[] = {x.getNombre(), x.getApellido(), x.getDni(), x.getTelf(), x.getDireccion(), x.getSueldo(), x.getFechaIngreso()};
             dt.addRow(v);
         }
@@ -42,7 +41,7 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaEmpleado = new javax.swing.JTable();
         jLabel13 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TXTAREA = new javax.swing.JTextArea();
         textFI = new javax.swing.JTextField();
@@ -98,15 +97,15 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("CONSULTAR EMPLEADOS");
 
-        jButton1.setBackground(new java.awt.Color(185, 231, 231));
-        jButton1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buscar_15px.png"))); // NOI18N
-        jButton1.setText("BUSCAR");
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscar.setBackground(new java.awt.Color(185, 231, 231));
+        btnBuscar.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(0, 0, 0));
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buscar_15px.png"))); // NOI18N
+        btnBuscar.setText("BUSCAR");
+        btnBuscar.setBorder(null);
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnBuscarActionPerformed(evt);
             }
         });
 
@@ -129,7 +128,7 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Ingresa Dni:");
+        jLabel1.setText("Ingresar DNI:");
 
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -164,9 +163,9 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                            .addComponent(textFI))
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                            .addComponent(textFI)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(126, 126, 126)
@@ -203,7 +202,7 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(textFI, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(RegistrarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
@@ -252,30 +251,27 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnSalir1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
-        indice = emp.busca(Integer.parseInt(textFI.getText()));
-        Empleado e = emp.obtener(indice);
-        TXTAREA.setText("Nombre : "+e.getNombre());
-        TXTAREA.append( " \n Apellido : "+e.getApellido());
-        TXTAREA.append("\n DNI : "+e.getDni());
-        TXTAREA.append("\n TELEFONO : "+e.getTelf());
-        TXTAREA.append("\n DIRECC : "+e.getDireccion());
-        TXTAREA.append("\n DIRECC : "+e.getDireccion());
-        TXTAREA.append("\n SUELDO : "+e.getSueldo());
-        TXTAREA.append("\n FECHA DE INGRESO : "+e.getFechaIngreso());
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+        indice = frmRegistroEmpleado.emp.busca(Integer.parseInt(textFI.getText()));
+
+        if (indice == -1) {
+            JOptionPane.showMessageDialog(null, "NO EXISTE EMPLEADO");
+            return;
+        }
+
+        Empleado e = frmRegistroEmpleado.emp.obtener(indice);
+        TXTAREA.setText(e.toString());
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void textFIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFIActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_textFIActionPerformed
 
     private void RegistrarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarEmpleadoActionPerformed
-         this.setVisible(false);
-         frmRegistroEmpleado fre= new frmRegistroEmpleado();
+        this.setVisible(false);
+        frmRegistroEmpleado fre = new frmRegistroEmpleado();
         fre.setVisible(true);
     }//GEN-LAST:event_RegistrarEmpleadoActionPerformed
 
@@ -317,8 +313,8 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton RegistrarEmpleado;
     private javax.swing.JTextArea TXTAREA;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnSalir1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
@@ -332,5 +328,4 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
     private javax.swing.JTextField textFI;
     // End of variables declaration//GEN-END:variables
 
-   
 }

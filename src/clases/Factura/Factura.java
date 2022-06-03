@@ -1,17 +1,18 @@
-
 package clases.Factura;
+
 import clases.Persona.Cliente;
 import clases.Persona.Empleado;
 
 public class Factura {
-    
+
     private String codigo;
     private String fecha;
     private Empleado vendedor;
     private Cliente cliente;
     private double total;
     private String regalo;
-    private static int cantidadregistros = 0; 
+    private static int cantidadregistros = 0;
+
     public Factura(String codigo, String fecha, Empleado vendedor, Cliente cliente, double total, String regalo) {
         this.codigo = codigo;
         this.fecha = fecha;
@@ -21,14 +22,16 @@ public class Factura {
         this.regalo = regalo;
         cantidadregistros++;
     }
-    
-    public String imprimir(){
-        String mensaje = "Codigo :"+codigo+"/nFecha :"+fecha+"/nEmpleado: "+vendedor+"/nCliente :"+cliente+"/nRegalo: "+regalo+"/nTotal :"+total;
+
+    public String imprimir() {
+        String mensaje = "Codigo :" + codigo + "/nFecha :" + fecha + "/nEmpleado: " + vendedor + "/nCliente :" + cliente + "/nRegalo: " + regalo + "/nTotal :" + total;
         return mensaje;
     }
-    public Factura(){
+
+    public Factura() {
         cantidadregistros++;
     }
+
     public String getRegalo() {
         return regalo;
     }
@@ -52,15 +55,14 @@ public class Factura {
     public double getTotal() {
         return total;
     }
-    
-    
-    public String generarSerie(){
+
+    public String generarSerie() {
         return "FA001";
     }
-    
-    public String generarCorrelativo(){
+
+    public String generarCorrelativo() {
         return String.format("%08d", cantidadregistros);
-        
+
     }
-    
+
 }

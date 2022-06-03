@@ -1,11 +1,11 @@
 package clases.Persona;
 
+public class Proveedor extends Persona {
 
-public class Proveedor extends Persona{
     private String nombreComercial;
     private String RUT;
 
-    public Proveedor(String nombreComercial, String RUT, String nombre, String apellido, int dni, int telf, String direccion) {
+    public Proveedor(String nombre, String apellido, int dni, int telf, String direccion, String nombreComercial, String RUT) {
         super(nombre, apellido, dni, telf, direccion);
         this.nombreComercial = nombreComercial;
         this.RUT = RUT;
@@ -18,10 +18,9 @@ public class Proveedor extends Persona{
     public String getRUT() {
         return RUT;
     }
-    public void imprimirDatos(){
-        System.out.println("Nombre Comercial: "+nombreComercial);
-        System.out.println("RUT: "+RUT); 
-        System.out.println("");
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nNombre Comercial : " + nombreComercial + "\nRUT : " + RUT;
     }
-    
 }

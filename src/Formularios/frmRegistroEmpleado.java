@@ -1,18 +1,13 @@
-
 package Formularios;
+
 import clases.Persona.Empleado;
 import controlador.Arreglo_Empleado;
 import javax.swing.ImageIcon;
 
-
 public class frmRegistroEmpleado extends javax.swing.JFrame {
-    
-   
-   public static Arreglo_Empleado emp= new Arreglo_Empleado();
-   
-   //public static LinkedList contenedor=new LinkedList();
-   //public static ArrayList<Empleado> contenedor = new ArrayList<Empleado>();
-    
+
+    public static Arreglo_Empleado emp = new Arreglo_Empleado();
+
     public frmRegistroEmpleado() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
@@ -324,29 +319,28 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFechaIngresoActionPerformed
 
     private void btnGuardarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEmpleadoActionPerformed
-        
-       String nombre = txtNombre.getText();
-       String apellido = txtApellidos.getText();
-       int dni = Integer.parseInt(txtDNI.getText());
-       int tel = Integer.parseInt(txtTelefono.getText());
-       String direccion = txtDireccion.getText();
-       Double sueldo = Double.parseDouble(txtSueldo.getText());
-       String fecha = txtFechaIngreso.getText();
-       
-      
-       Empleado nuevo = new Empleado(nombre,apellido,dni,tel,direccion,sueldo,fecha);
-       emp.adicion(nuevo);
-       
-       emp.msg("REGISTRO EXITOSO!");
-       
-       txtNombre.setText("");
-       txtApellidos.setText("");
-       txtDNI.setText("");
-       txtTelefono.setText("");
-       txtDireccion.setText("");
-       txtSueldo.setText("");
-       txtFechaIngreso.setText("");
-       
+
+        String nombre = txtNombre.getText();
+        String apellido = txtApellidos.getText();
+        int dni = Integer.parseInt(txtDNI.getText());
+        int tel = Integer.parseInt(txtTelefono.getText());
+        String direccion = txtDireccion.getText();
+        Double sueldo = Double.parseDouble(txtSueldo.getText());
+        String fecha = txtFechaIngreso.getText();
+
+        Empleado nuevo = new Empleado(nombre, apellido, dni, tel, direccion, sueldo, fecha);
+        emp.adicion(nuevo);
+
+        emp.msg("REGISTRO EXITOSO!");
+
+        txtNombre.setText("");
+        txtApellidos.setText("");
+        txtDNI.setText("");
+        txtTelefono.setText("");
+        txtDireccion.setText("");
+        txtSueldo.setText("");
+        txtFechaIngreso.setText("");
+
     }//GEN-LAST:event_btnGuardarEmpleadoActionPerformed
 
     /**

@@ -1,34 +1,30 @@
-
 package Formularios;
-import clases.Persona.Empleado;
+
 import clases.Producto.Producto;
-import controlador.Arreglo_Empleado;
-import controlador.Arreglo_Producto;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class frmConsultaProductos extends javax.swing.JFrame {
-    
-    Arreglo_Producto emp = new Arreglo_Producto();
+
     int con;
     int indice;
-    
+
     public frmConsultaProductos() {
         initComponents();
-         setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
         listado();
         this.setTitle("Consultar Productos");
         this.setLocationRelativeTo(this);
     }
-    
-    
-    public void listado(){
-        DefaultTableModel dt=(DefaultTableModel)tablaProductos.getModel();
+
+    public void listado() {
+        DefaultTableModel dt = (DefaultTableModel) tablaProductos.getModel();
         dt.setRowCount(0);
-        
-        for(int i=0; i<frmRegistroProducto.emp.tamaño(); i++){
-            Producto x=frmRegistroProducto.emp.obtener(i);
-            Object v[] = {x.getCodigo(), x.getCategoria(), x.getNombreP(), x.getMarca(), x.getEstado(), x.getStock(),x.getCantInicial(), x.getPrecio()};
+
+        for (int i = 0; i < frmRegistroProducto.emp.tamaño(); i++) {
+            Producto x = frmRegistroProducto.emp.obtener(i);
+            Object v[] = {x.getCodigo(), x.getCategoria(), x.getNombreP(), x.getMarca(), x.getEstado(), x.getStock(), x.getCantInicial(), x.getPrecio()};
             dt.addRow(v);
         }
     }
@@ -254,21 +250,28 @@ public class frmConsultaProductos extends javax.swing.JFrame {
 
     private void TEXTCODActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TEXTCODActionPerformed
         // TODO add your handling code here:
-  
+
     }//GEN-LAST:event_TEXTCODActionPerformed
 
     private void BUTCODActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUTCODActionPerformed
-        indice = emp.busca(Integer.parseInt(TEXTCOD.getText()));
-        Producto p = emp.obtener(indice);
-        TXTAREA.setText("codigo : "+p.getCodigo());
-        TXTAREA.append( "\n estado : "+p.getEstado());
-        TXTAREA.append("\n cantidad stock : "+p.getStock());
-        TXTAREA.append("\n precio : "+p.getPrecio());
+
+        indice = frmRegistroProducto.emp.busca(Integer.parseInt(TEXTCOD.getText()));
+
+        if (indice == -1) {
+            JOptionPane.showMessageDialog(null, "NO EXISTE PRODUCTO");
+            return;
+        }
+
+        Producto p = frmRegistroProducto.emp.obtener(indice);
+        TXTAREA.setText("codigo : " + p.getCodigo());
+        TXTAREA.append("\nEstado : " + p.getEstado());
+        TXTAREA.append("\nCantidad stock : " + p.getStock());
+        TXTAREA.append("\nPrecio : " + p.getPrecio());
     }//GEN-LAST:event_BUTCODActionPerformed
 
     private void RegistrarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarProdActionPerformed
         this.setVisible(false);
-         frmRegistroProducto fre= new frmRegistroProducto();
+        frmRegistroProducto fre = new frmRegistroProducto();
         fre.setVisible(true);
     }//GEN-LAST:event_RegistrarProdActionPerformed
 

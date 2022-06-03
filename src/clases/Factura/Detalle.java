@@ -1,10 +1,9 @@
-
 package clases.Factura;
 
 import clases.Producto.Producto;
 
 public class Detalle {
-    
+
     private Factura factura;
     private Producto producto;
     private int cantidad;
@@ -32,6 +31,4 @@ public class Detalle {
     public int getCantidad() {
         return cantidad;
     }
-
-    
 }

@@ -1,4 +1,3 @@
-
 package Formularios;
 
 import desplazable.Desface;
@@ -6,9 +5,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class frmMenu extends javax.swing.JFrame {
-    
-    
+
     Desface desplace;
+
     public frmMenu() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
@@ -16,7 +15,7 @@ public class frmMenu extends javax.swing.JFrame {
         this.setTitle("Menu");
         desplace = new Desface();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -61,8 +60,8 @@ public class frmMenu extends javax.swing.JFrame {
         btnProcesos = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        BtnFac = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
+        BtnFac = new javax.swing.JButton();
         close = new javax.swing.JLabel();
 
         jMenu5.setText("jMenu5");
@@ -451,24 +450,35 @@ public class frmMenu extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("PROCESOS");
 
+        jLabel14.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel14.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("<");
+
         javax.swing.GroupLayout btnProcesosLayout = new javax.swing.GroupLayout(btnProcesos);
         btnProcesos.setLayout(btnProcesosLayout);
         btnProcesosLayout.setHorizontalGroup(
             btnProcesosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnProcesosLayout.createSequentialGroup()
-                .addGap(275, 275, 275)
-                .addComponent(jLabel12)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(btnProcesosLayout.createSequentialGroup()
-                .addGap(265, 265, 265)
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(281, Short.MAX_VALUE))
+                .addGroup(btnProcesosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(btnProcesosLayout.createSequentialGroup()
+                        .addGap(275, 275, 275)
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
+                        .addComponent(jLabel14))
+                    .addGroup(btnProcesosLayout.createSequentialGroup()
+                        .addGap(265, 265, 265)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         btnProcesosLayout.setVerticalGroup(
             btnProcesosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnProcesosLayout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(btnProcesosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel13)
                 .addGap(12, 12, 12))
@@ -488,11 +498,6 @@ public class frmMenu extends javax.swing.JFrame {
             }
         });
 
-        jLabel14.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel14.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("<");
-
         javax.swing.GroupLayout panelProcesosLayout = new javax.swing.GroupLayout(panelProcesos);
         panelProcesos.setLayout(panelProcesosLayout);
         panelProcesosLayout.setHorizontalGroup(
@@ -500,9 +505,7 @@ public class frmMenu extends javax.swing.JFrame {
             .addGroup(panelProcesosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnProcesos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel14)
-                .addGap(225, 225, 225)
+                .addGap(212, 212, 212)
                 .addComponent(BtnFac, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -515,14 +518,9 @@ public class frmMenu extends javax.swing.JFrame {
                         .addComponent(btnProcesos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelProcesosLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(panelProcesosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelProcesosLayout.createSequentialGroup()
-                                .addComponent(BtnFac, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelProcesosLayout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addGap(49, 49, 49))))))
+                        .addGap(0, 15, Short.MAX_VALUE)
+                        .addComponent(BtnFac, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14))))
         );
 
         close.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 24)); // NOI18N
@@ -589,7 +587,7 @@ public class frmMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -600,55 +598,54 @@ public class frmMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRegistrarMouseClicked
-       
-        
-        if(panelRegistro.getX()==0){
-            desplace.desplazarIzquierda(panelRegistro, panelRegistro.getX(),-600,10,10);
-        }else if(panelRegistro.getX()== -600){
-            desplace.desplazarDerecha(panelRegistro, panelRegistro.getX(),0,10,10);
+
+        if (panelRegistro.getX() == 0) {
+            desplace.desplazarIzquierda(panelRegistro, panelRegistro.getX(), -600, 10, 10);
+        } else if (panelRegistro.getX() == -600) {
+            desplace.desplazarDerecha(panelRegistro, panelRegistro.getX(), 0, 10, 10);
         }
-      
+
     }//GEN-LAST:event_BtnRegistrarMouseClicked
 
     private void BtnProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProductoActionPerformed
-        frmRegistroProducto fre= new frmRegistroProducto();
+        frmRegistroProducto fre = new frmRegistroProducto();
         this.setVisible(true);
         fre.setVisible(true);
     }//GEN-LAST:event_BtnProductoActionPerformed
 
     private void BtnEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEmpleadoActionPerformed
-        frmRegistroEmpleado fre= new frmRegistroEmpleado();
+        frmRegistroEmpleado fre = new frmRegistroEmpleado();
         this.setVisible(true);
         fre.setVisible(true);
     }//GEN-LAST:event_BtnEmpleadoActionPerformed
 
     private void BtnConsultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnConsultasMouseClicked
-        if(panelConsultas.getX()==0){
-            desplace.desplazarIzquierda(panelConsultas, panelConsultas.getX(),-600,10,10);
-        }else if(panelConsultas.getX()== -600){
-            desplace.desplazarDerecha(panelConsultas, panelConsultas.getX(),0,10,10);
+        if (panelConsultas.getX() == 0) {
+            desplace.desplazarIzquierda(panelConsultas, panelConsultas.getX(), -600, 10, 10);
+        } else if (panelConsultas.getX() == -600) {
+            desplace.desplazarDerecha(panelConsultas, panelConsultas.getX(), 0, 10, 10);
         }
     }//GEN-LAST:event_BtnConsultasMouseClicked
 
     private void BtnEmCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEmCActionPerformed
-       frmConsultaEmpleado fre= new frmConsultaEmpleado();
+        frmConsultaEmpleado fre = new frmConsultaEmpleado();
         this.setVisible(true);
         fre.setVisible(true);
     }//GEN-LAST:event_BtnEmCActionPerformed
 
     private void BtnProCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProCActionPerformed
-       frmConsultaProductos fre= new frmConsultaProductos();
+        frmConsultaProductos fre = new frmConsultaProductos();
         this.setVisible(true);
         fre.setVisible(true);
     }//GEN-LAST:event_BtnProCActionPerformed
 
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
-       int rpta= JOptionPane.showConfirmDialog(this,"Estas seguro/a de cerrar sesion?","Cerrar sesion",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
-        if(rpta==JOptionPane.YES_OPTION){
+        int rpta = JOptionPane.showConfirmDialog(this, "Estas seguro/a de cerrar sesion?", "Cerrar sesion", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (rpta == JOptionPane.YES_OPTION) {
             frmLogin log = new frmLogin();
             this.setVisible(false);
             log.setVisible(true);
-        }else{
+        } else {
             frmMenu m = new frmMenu();
             this.setVisible(false);
             m.setVisible((true));
@@ -656,43 +653,43 @@ public class frmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirMouseClicked
 
     private void btnMantenimientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMantenimientoMouseClicked
-        if(panelMante.getX()==0){
-            desplace.desplazarIzquierda(panelMante, panelMante.getX(),-600,10,10);
-        }else if(panelMante.getX()== -600){
-            desplace.desplazarDerecha(panelMante, panelMante.getX(),0,10,10);
+        if (panelMante.getX() == 0) {
+            desplace.desplazarIzquierda(panelMante, panelMante.getX(), -600, 10, 10);
+        } else if (panelMante.getX() == -600) {
+            desplace.desplazarDerecha(panelMante, panelMante.getX(), 0, 10, 10);
         }
     }//GEN-LAST:event_btnMantenimientoMouseClicked
 
     private void BtnEmManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEmManActionPerformed
-        frmEditarEmpleado fre= new frmEditarEmpleado();
+        frmEditarEmpleado re = new frmEditarEmpleado();
         this.setVisible(true);
-        fre.setVisible(true);
+        re.setVisible(true);
     }//GEN-LAST:event_BtnEmManActionPerformed
 
     private void BtnProdManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProdManActionPerformed
-        frmEditarProducto fre= new frmEditarProducto();
+        frmEditarProducto fre = new frmEditarProducto();
         this.setVisible(true);
         fre.setVisible(true);
     }//GEN-LAST:event_BtnProdManActionPerformed
 
     private void btnProcesosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProcesosMouseClicked
-        if(panelProcesos.getX()==0){
-            desplace.desplazarIzquierda(panelProcesos, panelProcesos.getX(),-600,10,10);
-        }else if(panelProcesos.getX()== -600){
-            desplace.desplazarDerecha(panelProcesos, panelProcesos.getX(),0,10,10);
+        if (panelProcesos.getX() == 0) {
+            desplace.desplazarIzquierda(panelProcesos, panelProcesos.getX(), -600, 10, 10);
+        } else if (panelProcesos.getX() == -600) {
+            desplace.desplazarDerecha(panelProcesos, panelProcesos.getX(), 0, 10, 10);
         }
     }//GEN-LAST:event_btnProcesosMouseClicked
 
     private void BtnFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnFacActionPerformed
-        frmFactura fre= new frmFactura();
+        frmFactura fre = new frmFactura();
         this.setVisible(true);
         fre.setVisible(true);
     }//GEN-LAST:event_BtnFacActionPerformed
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
-        int dialog =JOptionPane.YES_NO_OPTION;
-        int result = JOptionPane.showConfirmDialog(null, "Desea cerrar el sistema?","Exit",dialog);
-        if(result == 0){
+        int dialog = JOptionPane.YES_NO_OPTION;
+        int result = JOptionPane.showConfirmDialog(null, "Desea cerrar el sistema?", "Exit", dialog);
+        if (result == 0) {
             System.exit(0);
         }
     }//GEN-LAST:event_closeMouseClicked

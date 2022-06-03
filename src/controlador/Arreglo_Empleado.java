@@ -6,15 +6,11 @@ import clases.interfaces.InterfaceBuscar;
 
 
 public class Arreglo_Empleado implements InterfaceBuscar {
-
-    public static Empleado frmRegistroEmpleado(String cuiBusq) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     
     private Empleado vec[] = new Empleado[100];
     private int con;
     
-    public Arreglo_Empleado(){
+    public  Arreglo_Empleado(){
         vec[0] = new Empleado("Luis","Ramirez",70395462,944668542,"A.v Carmen",2500, "12/12/2015");
         vec[1] = new Empleado("Diego","Cruz",70541254,95412782,"A.v 28 Julio",3500, "20/10/2021");
         vec[2] = new Empleado("Mario","Garcia",15489523,954165873,"A.v Pedro Ruiz",2800, "30/04/2021");
@@ -26,12 +22,14 @@ public class Arreglo_Empleado implements InterfaceBuscar {
         vec[8] = new Empleado("Anibal","Martinez",70541298,957214862,"A.v Leoncio Prado",1200, "10/01/2022");
         con=9;
     }
-
-    
     
     public void adicion(Empleado e){
         vec[con]=e;
         con++;
+    }
+    
+    public void modifica(Empleado e, int pos){
+        vec[pos]=e;
     }
     
     public int tamaño(){
@@ -61,10 +59,11 @@ public class Arreglo_Empleado implements InterfaceBuscar {
     public void setCon(int con) {
         this.con = con;
     }
+    
     @Override
     public int busca(int cod){
         int bus=-1;
-        for(int i=0; i<con; i++){
+        for(int i=0; i<tamaño(); i++){
             if(vec[i].getDni()==cod){
                 bus=i;
                 break;
@@ -72,5 +71,4 @@ public class Arreglo_Empleado implements InterfaceBuscar {
         }
         return bus;
     }
-
 }
