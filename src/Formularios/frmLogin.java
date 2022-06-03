@@ -232,7 +232,7 @@ public class frmLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-         String usu= "admi";
+        String usu= "admi";
         String pwd = "123456";
         
         String Pass = new String(Password.getPassword());

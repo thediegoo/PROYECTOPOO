@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class frmConsultaEmpleado extends javax.swing.JFrame {
 
+    Arreglo_Empleado ae = new Arreglo_Empleado();
     int con;
     int indice;
 
@@ -37,7 +38,7 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        btnSalir1 = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaEmpleado = new javax.swing.JTable();
         jLabel13 = new javax.swing.JLabel();
@@ -49,6 +50,7 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         RegistrarEmpleado = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
+        btnEliminar = new javax.swing.JButton();
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
         jButton5.setText("Guardar");
@@ -64,17 +66,17 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(176, 173, 198));
         jPanel1.setForeground(new java.awt.Color(181, 222, 179));
 
-        btnSalir1.setBackground(new java.awt.Color(240, 129, 129));
-        btnSalir1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
-        btnSalir1.setForeground(new java.awt.Color(0, 0, 0));
-        btnSalir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/home-exit.png"))); // NOI18N
-        btnSalir1.setText("Salir");
-        btnSalir1.setBorder(null);
-        btnSalir1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnSalir1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnSalir1.addActionListener(new java.awt.event.ActionListener() {
+        btnSalir.setBackground(new java.awt.Color(240, 129, 129));
+        btnSalir.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(0, 0, 0));
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/home-exit.png"))); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.setBorder(null);
+        btnSalir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSalir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalir1ActionPerformed(evt);
+                btnSalirActionPerformed(evt);
             }
         });
 
@@ -150,6 +152,19 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fd.png"))); // NOI18N
 
+        btnEliminar.setBackground(new java.awt.Color(240, 129, 129));
+        btnEliminar.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(0, 0, 0));
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/home-exit.png"))); // NOI18N
+        btnEliminar.setText("ELIMINAR");
+        btnEliminar.setBorder(null);
+        btnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -165,12 +180,13 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
                             .addComponent(textFI)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(126, 126, 126)
+                        .addGap(123, 123, 123)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSalir1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(RegistrarEmpleado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(86, 86, 86))))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -202,11 +218,14 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(textFI, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnEliminar)
+                            .addGap(29, 29, 29))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(RegistrarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(btnSalir1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(52, 52, 52))
         );
@@ -238,18 +257,20 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir1ActionPerformed
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
 
-        this.setVisible(false);
-    }//GEN-LAST:event_btnSalir1ActionPerformed
+       this.setVisible(false);
+        //frmRegistroEmpleado.emp.anula(indice);
+        //listado();
+        
+        //ae.msg("REGISTRO ELIMINADO");
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
 
@@ -265,7 +286,6 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void textFIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFIActionPerformed
-        // TODO add your handling code here:
 
     }//GEN-LAST:event_textFIActionPerformed
 
@@ -274,6 +294,22 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
         frmRegistroEmpleado fre = new frmRegistroEmpleado();
         fre.setVisible(true);
     }//GEN-LAST:event_RegistrarEmpleadoActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        
+        indice = frmRegistroEmpleado.emp.busca(Integer.parseInt(textFI.getText()));
+        
+        if (indice == -1) {
+            JOptionPane.showMessageDialog(null, "NO EXISTE EMPLEADO");
+            return;
+        }else{
+            frmRegistroEmpleado.emp.anula(indice);
+        }
+        
+        listado();
+        ae.msg("REGISTRO ELIMINADO");
+        
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -314,7 +350,8 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
     private javax.swing.JButton RegistrarEmpleado;
     private javax.swing.JTextArea TXTAREA;
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnSalir1;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
