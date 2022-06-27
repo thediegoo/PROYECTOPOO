@@ -1,4 +1,3 @@
-
 package controlador;
 import clases.Persona.Empleado;
 import javax.swing.JOptionPane;
