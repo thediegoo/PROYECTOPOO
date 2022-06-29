@@ -232,36 +232,35 @@ public class frmLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        String usu= "admi";
+        String usu = "admi";
         String pwd = "123456";
-        
+
         String Pass = new String(Password.getPassword());
-        if(txtUsuario.getText().equals("")&& Pass.equals("")){
+        if (txtUsuario.getText().equals("") && Pass.equals("")) {
             JOptionPane.showMessageDialog(this, "Ingrese sus datos para poder tener acceso");
-        }else{
-            if(txtUsuario.getText().equals(usu)&& Pass.equals(pwd)){
+        } else {
+            if (txtUsuario.getText().equals(usu) && Pass.equals(pwd)) {
                 frmMenu m = new frmMenu();
                 this.setVisible(false);
                 m.setVisible((true));
-            }else{
-                JOptionPane.showMessageDialog(this, "Usuario o Password Incorrecto","Dialog",JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuario o Password Incorrecto", "Dialog", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void btnIniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciarMouseClicked
-       
+
     }//GEN-LAST:event_btnIniciarMouseClicked
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
-        int dialog =JOptionPane.YES_NO_OPTION;
-        int result = JOptionPane.showConfirmDialog(null, "Desea salir del login?","Exit",dialog);
-        if(result == 0){
+        int dialog = JOptionPane.YES_NO_OPTION;
+        int result = JOptionPane.showConfirmDialog(null, "Desea salir del login?", "Exit", dialog);
+        if (result == 0) {
             System.exit(0);
         }
     }//GEN-LAST:event_closeMouseClicked
 
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

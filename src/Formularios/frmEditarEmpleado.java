@@ -3,10 +3,12 @@ package Formularios;
 import clases.Persona.Empleado;
 import controlador.Arreglo_Empleado;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class frmEditarEmpleado extends javax.swing.JFrame {
 
     Arreglo_Empleado ae = new Arreglo_Empleado();
+    Empleado EM = new Empleado();
 
     public frmEditarEmpleado() {
         initComponents();
@@ -17,8 +19,8 @@ public class frmEditarEmpleado extends javax.swing.JFrame {
     }
 
     public void llenarCBxEmpleado() {
-        for (int i = 0; i < frmRegistroEmpleado.emp.tamaño(); i++) {
-            Empleado x = frmRegistroEmpleado.emp.obtener(i);
+        for (int i = 0; i < frmRegistroEmpleado.LISTAE.size(); i++) {
+            Empleado x = frmRegistroEmpleado.LISTAE.get(i);
             cboEmpleado.addItem(x.getNombre() + " " + x.getApellido());
         }
     }
@@ -299,7 +301,7 @@ public class frmEditarEmpleado extends javax.swing.JFrame {
 
     private void btnGuardarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEmpleadoActionPerformed
 
-        for (int i = 0; i < frmRegistroEmpleado.emp.tamaño(); i++) {
+        for (int i = 0; i < ae.LISTAE.size(); i++) {
             if (cboEmpleado.getSelectedIndex() == i) {
                 String nombre = txtNombre.getText();
                 String apellido = txtApellido.getText();
@@ -309,12 +311,12 @@ public class frmEditarEmpleado extends javax.swing.JFrame {
                 Double sueldo = Double.parseDouble(txtSueldo.getText());
                 String fecha = txtFechaIngreso.getText();
 
-                Empleado nuevo = new Empleado(nombre, apellido, dni, telefono, direccion, sueldo, fecha);
-                frmRegistroEmpleado.emp.modifica(nuevo, i);
+                Empleado EM = new Empleado(nombre, apellido, dni, telefono, direccion, sueldo, fecha);
+                ae.modifica(EM, i);
             }
         }
 
-        ae.msg("REGISTRO MODIFICADO");
+        JOptionPane.showMessageDialog(null,"Empleado modificado con exito");
 
         txtNombre.setText("");
         txtApellido.setText("");
@@ -334,8 +336,8 @@ public class frmEditarEmpleado extends javax.swing.JFrame {
 
     private void cboEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboEmpleadoActionPerformed
 
-        for (int i = 0; i < frmRegistroEmpleado.emp.tamaño(); i++) {
-            Empleado x = frmRegistroEmpleado.emp.obtener(i);
+        for (int i = 0; i < frmRegistroEmpleado.LISTAE.size(); i++) {
+            Empleado x = frmRegistroEmpleado.LISTAE.get(i);
             if (cboEmpleado.getSelectedIndex() == i) {
                 txtNombre.setText(x.getNombre());
                 txtApellido.setText(x.getApellido());

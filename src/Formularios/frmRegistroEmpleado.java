@@ -2,10 +2,14 @@ package Formularios;
 
 import clases.Persona.Empleado;
 import controlador.Arreglo_Empleado;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 
 public class frmRegistroEmpleado extends javax.swing.JFrame {
-
+    public static ArrayList<Empleado> LISTAE = new ArrayList <Empleado>();
+    private Empleado EM;
     public static Arreglo_Empleado emp = new Arreglo_Empleado();
 
     public frmRegistroEmpleado() {
@@ -328,10 +332,9 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
         Double sueldo = Double.parseDouble(txtSueldo.getText());
         String fecha = txtFechaIngreso.getText();
 
-        Empleado nuevo = new Empleado(nombre, apellido, dni, tel, direccion, sueldo, fecha);
-        emp.adicion(nuevo);
-
-        emp.msg("REGISTRO EXITOSO!");
+        EM = new Empleado(nombre, apellido, dni, tel, direccion, sueldo, fecha);
+        LISTAE.add(EM);
+        JOptionPane.showMessageDialog(null,"Empleado registrado con exito");
 
         txtNombre.setText("");
         txtApellidos.setText("");

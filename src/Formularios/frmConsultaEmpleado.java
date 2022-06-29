@@ -7,8 +7,10 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class frmConsultaEmpleado extends javax.swing.JFrame {
-
-    Arreglo_Empleado ae = new Arreglo_Empleado();
+    
+    Arreglo_Empleado ar = new Arreglo_Empleado();
+    private Empleado EM;
+    private DefaultTableModel model;
     int con;
     int indice;
 
@@ -22,12 +24,15 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
 
     public void listado() {
         DefaultTableModel dt = (DefaultTableModel) tablaEmpleado.getModel();
-        dt.setRowCount(0);
+        int filas = dt.getRowCount();
+        for(int i=0;i<filas; i++){
+            dt.removeRow(0);
+        }
 
-        for (int i = 0; i < frmRegistroEmpleado.emp.tamaño(); i++) {
-            Empleado x = frmRegistroEmpleado.emp.obtener(i);
-            Object v[] = {x.getNombre(), x.getApellido(), x.getDni(), x.getTelf(), x.getDireccion(), x.getSueldo(), x.getFechaIngreso()};
-            dt.addRow(v);
+        for (int i = 0; i < frmRegistroEmpleado.LISTAE.size(); i++) {
+            EM = frmRegistroEmpleado.LISTAE.get(i);
+            dt.addRow(new Object[]{EM.getNombre(),EM.getApellido(),EM.getDni(),EM.getTelf(),EM.getDireccion(),EM.getSueldo(),
+                EM.getFechaIngreso()});
         }
     }
 
@@ -45,7 +50,7 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TXTAREA = new javax.swing.JTextArea();
-        textFI = new javax.swing.JTextField();
+        TXTEM = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         RegistrarEmpleado = new javax.swing.JButton();
@@ -119,12 +124,12 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
         TXTAREA.setSelectionColor(new java.awt.Color(178, 158, 195));
         jScrollPane1.setViewportView(TXTAREA);
 
-        textFI.setBackground(new java.awt.Color(153, 149, 183));
-        textFI.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
-        textFI.setBorder(null);
-        textFI.addActionListener(new java.awt.event.ActionListener() {
+        TXTEM.setBackground(new java.awt.Color(153, 149, 183));
+        TXTEM.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
+        TXTEM.setBorder(null);
+        TXTEM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFIActionPerformed(evt);
+                TXTEMActionPerformed(evt);
             }
         });
 
@@ -179,7 +184,7 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2)
                             .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                            .addComponent(textFI)
+                            .addComponent(TXTEM)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -216,7 +221,7 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jLabel1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(textFI, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TXTEM, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
@@ -264,30 +269,29 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-
-       this.setVisible(false);
-        //frmRegistroEmpleado.emp.anula(indice);
-        //listado();
-        
-        //ae.msg("REGISTRO ELIMINADO");
+        this.setVisible(false);
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-
-        indice = frmRegistroEmpleado.emp.busca(Integer.parseInt(textFI.getText()));
-
-        if (indice == -1) {
+        
+        indice = Integer.parseInt(TXTEM.getText());
+        if (EM.getDni() == indice){
+            EM = ar.buscar(indice);
+            TXTAREA.setText("Nombre : " + EM.getNombre());
+            TXTAREA.setText("\nApellido : " + EM.getApellido());
+            TXTAREA.append("\nTelefono : " + EM.getTelf());
+            TXTAREA.append("\nDireccion : " + EM.getDireccion());
+            TXTAREA.append("\nSueldo : " + EM.getSueldo());
+            TXTAREA.append("\nFecha de Ingreso : " + EM.getFechaIngreso());
+            }else{
             JOptionPane.showMessageDialog(null, "NO EXISTE EMPLEADO");
             return;
         }
-
-        Empleado e = frmRegistroEmpleado.emp.obtener(indice);
-        TXTAREA.setText(e.toString());
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void textFIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFIActionPerformed
+    private void TXTEMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTEMActionPerformed
 
-    }//GEN-LAST:event_textFIActionPerformed
+    }//GEN-LAST:event_TXTEMActionPerformed
 
     private void RegistrarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarEmpleadoActionPerformed
         this.setVisible(false);
@@ -296,21 +300,47 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_RegistrarEmpleadoActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        
-        indice = frmRegistroEmpleado.emp.busca(Integer.parseInt(textFI.getText()));
-        
-        if (indice == -1) {
-            JOptionPane.showMessageDialog(null, "NO EXISTE EMPLEADO");
-            return;
+        if(TXTEM.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null,"EL CAMPO ESTA VACIO");
+            TXTEM.setText("");
+            TXTEM.requestFocus();
         }else{
-            frmRegistroEmpleado.emp.anula(indice);
+            int dni = Integer.parseInt(TXTEM.getText());
+            indice = validacion(dni);
+
+            if(indice == -1){
+                JOptionPane.showMessageDialog(null,"NO EXISTE EL EMPLEADO");
+                TXTEM.setText("");
+            }else{
+                ar.LISTAE.remove(indice);
+                JOptionPane.showMessageDialog(null,"EMPLEADO ELIMINADO");
+                TXTEM.setText("");
+                TXTEM.requestFocus();
+                listar();
         }
-        
-        listado();
-        ae.msg("REGISTRO ELIMINADO");
+      }
         
     }//GEN-LAST:event_btnEliminarActionPerformed
-
+    public int validacion(int dni){
+        for(int i = 0; i < ar.LISTAE.size(); i++){
+            EM = ar.LISTAE.get(i);
+            if(dni == EM.getDni()){
+                return i;
+            }
+        }
+        return -1;
+    }
+    private void listar(){
+        model =(DefaultTableModel)tablaEmpleado.getModel();
+           int filas = model.getRowCount();
+        for(int i=0;i<filas; i++){
+            model.removeRow(0);
+        }
+        for (int i = 0; i < frmRegistroEmpleado.LISTAE.size(); i++) {
+            model.addRow(new Object[]{EM.getNombre(),EM.getApellido(),EM.getDni(),EM.getTelf(),EM.getDireccion(),EM.getSueldo(),
+                EM.getFechaIngreso()});
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -349,6 +379,7 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton RegistrarEmpleado;
     private javax.swing.JTextArea TXTAREA;
+    private javax.swing.JTextField TXTEM;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnSalir;
@@ -362,7 +393,6 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tablaEmpleado;
-    private javax.swing.JTextField textFI;
     // End of variables declaration//GEN-END:variables
 
 }
