@@ -2,11 +2,16 @@ package Formularios;
 
 import clases.Producto.Producto;
 import controlador.Arreglo_Producto;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class frmRegistroProducto extends javax.swing.JFrame {
-
-    public static Arreglo_Producto emp = new Arreglo_Producto();
+      
+    public static ArrayList<Producto> LISTA = new ArrayList <Producto>();
+    private Producto PR;
+    public static Arreglo_Producto prod = new Arreglo_Producto();
 
     public frmRegistroProducto() {
         initComponents();
@@ -520,9 +525,9 @@ public class frmRegistroProducto extends javax.swing.JFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         String cat, nombre, marca, estado;
         int cantInicial, stock;
-        int codP;
+        String codP;
         double precio;
-        codP = Integer.parseInt(txtCodProducto.getText());
+        codP = txtCodProducto.getText();
         cat = lblCategoria.getText();
         nombre = txtNombreProducto.getText();
         marca = txtCodMarca.getText();
@@ -531,10 +536,9 @@ public class frmRegistroProducto extends javax.swing.JFrame {
         cantInicial = Integer.parseInt(txtCantInicial.getText());
         precio = Double.parseDouble(txtPrecio.getText());
 
-        Producto nuevo = new Producto(codP, cat, nombre, marca, estado, stock, cantInicial, precio);
-        emp.adicion(nuevo);
-
-        emp.msg("REGISTRO EXITOSO!");
+        Producto PR = new Producto(codP, cat, nombre, marca, estado, stock, cantInicial, precio);
+        LISTA.add(PR);
+        JOptionPane.showMessageDialog(null,"El registro fue exitoso");
 
         lblCategoria.setText("");
         txtNombreProducto.setText("");
@@ -545,9 +549,10 @@ public class frmRegistroProducto extends javax.swing.JFrame {
         txtCantInicial.setText("");
         txtCodProducto.setText("");
         txtPrecio.setText("");
-
+         
     }//GEN-LAST:event_btnGuardarActionPerformed
-
+     
+   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -621,4 +626,5 @@ public class frmRegistroProducto extends javax.swing.JFrame {
     private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextField txtStock;
     // End of variables declaration//GEN-END:variables
+
 }

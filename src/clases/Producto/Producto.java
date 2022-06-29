@@ -4,7 +4,11 @@ import clases.Persona.Proveedor;
 
 public class Producto {
 
-    private int codigo;
+    public static void remove(int existe) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private String codigo;
     private String categoria;
     private String nombreP;
     private String marca;
@@ -18,7 +22,7 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(int codigo, String categoria, String nombreP, String marca, String estado, int stock, int cantInicial, double precio) {
+    public Producto(String codigo, String categoria, String nombreP, String marca, String estado, int stock, int cantInicial, double precio) {
         this.codigo = codigo;
         this.categoria = categoria;
         this.nombreP = nombreP;
@@ -57,12 +61,12 @@ public class Producto {
         contador = aContador;
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
 
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 

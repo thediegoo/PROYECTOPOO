@@ -1,16 +1,20 @@
 package Formularios;
 
+import static Formularios.frmRegistroProducto.prod;
 import clases.Producto.Producto;
-import controlador.Arreglo_Empleado;
+import controlador.Arreglo_Producto;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class frmConsultaProductos extends javax.swing.JFrame {
 
-    Arreglo_Empleado ae = new Arreglo_Empleado();
+    
+    private Producto PR;
+    private DefaultTableModel model;
     int con;
-    int indice;
+    int existe;
 
     public frmConsultaProductos() {
         initComponents();
@@ -19,15 +23,16 @@ public class frmConsultaProductos extends javax.swing.JFrame {
         this.setTitle("Consultar Productos");
         this.setLocationRelativeTo(this);
     }
-
+     
     public void listado() {
         DefaultTableModel dt = (DefaultTableModel) tablaProductos.getModel();
-        dt.setRowCount(0);
-
-        for (int i = 0; i < frmRegistroProducto.emp.tamaño(); i++) {
-            Producto x = frmRegistroProducto.emp.obtener(i);
-            Object v[] = {x.getCodigo(), x.getCategoria(), x.getNombreP(), x.getMarca(), x.getEstado(), x.getStock(), x.getCantInicial(), x.getPrecio()};
-            dt.addRow(v);
+        int filas = dt.getRowCount();
+        for(int i=0;i<filas; i++){
+            dt.removeRow(0);
+        }
+        for (int i = 0; i < frmRegistroProducto.LISTA.size(); i++) {
+            PR= frmRegistroProducto.LISTA.get(i);
+            dt.addRow(new Object[]{PR.getCodigo(),PR.getCategoria(),PR.getNombreP(),PR.getMarca(),PR.getEstado(),PR.getStock(),PR.getCantInicial(),PR.getPrecio()});
         }
     }
 
@@ -232,16 +237,16 @@ public class frmConsultaProductos extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -274,18 +279,19 @@ public class frmConsultaProductos extends javax.swing.JFrame {
 
     private void BUTCODActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUTCODActionPerformed
 
-        indice = frmRegistroProducto.emp.busca(Integer.parseInt(TEXTCOD.getText()));
+      existe = frmRegistroProducto.LISTA.busca(TEXTCOD.getText());
 
-        if (indice == -1) {
+        if (existe == -1) {
             JOptionPane.showMessageDialog(null, "NO EXISTE PRODUCTO");
             return;
         }
 
-        Producto p = frmRegistroProducto.emp.obtener(indice);
-        TXTAREA.setText("codigo : " + p.getCodigo());
-        TXTAREA.append("\nEstado : " + p.getEstado());
-        TXTAREA.append("\nCantidad stock : " + p.getStock());
-        TXTAREA.append("\nPrecio : " + p.getPrecio());
+        Producto PR = frmRegistroProducto.LISTA.get(existe);
+        TXTAREA.setText("codigo : " + PR.getCodigo());
+        TXTAREA.append("\nEstado : " + PR.getEstado());
+        TXTAREA.append("\nCantidad stock : " + PR.getStock());
+        TXTAREA.append("\nPrecio : " + PR.getPrecio());
+
     }//GEN-LAST:event_BUTCODActionPerformed
 
     private void RegistrarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarProdActionPerformed
@@ -295,24 +301,48 @@ public class frmConsultaProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_RegistrarProdActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-
-        indice = frmRegistroProducto.emp.busca(Integer.parseInt(TEXTCOD.getText()));
-
-        if (indice == -1) {
-            JOptionPane.showMessageDialog(null, "NO EXISTE EMPLEADO");
-            return;
+      if(TEXTCOD.getText().trim().isEmpty()){
+          JOptionPane.showMessageDialog(null,"EL CAMPO ESTA VACIO");
+          TEXTCOD.setText("");
+          TEXTCOD.requestFocus();
         }else{
-            frmRegistroProducto.emp.anula(indice);
+            String codP = TEXTCOD.getText();
+           existe = comprobarCod(codP);
+
+          if(existe== -1){
+              JOptionPane.showMessageDialog(null,"no existe el codigo");
+              TEXTCOD.setText("");
+              TEXTCOD.setText("");
+          }else{
+              frmRegistroProducto.LISTA.remove(existe);
+              JOptionPane.showMessageDialog(null,"REGISTRO ELIMINADO");
+               TEXTCOD.setText("");
+               TEXTCOD.requestFocus();
+               listardatos();
         }
-
-        listado();
-        ae.msg("REGISTRO ELIMINADO");
-
+      }
+          
     }//GEN-LAST:event_btnEliminarActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
+      public int comprobarCod(String codP){
+        for(int i = 0; i < frmRegistroProducto.LISTA.size(); i++){
+          PR= frmRegistroProducto.LISTA.get(i);
+          if(codP.equalsIgnoreCase(PR.getCodigo())){
+              return i;
+          }
+        }
+        return -1;
+    }
+    private void listardatos(){
+          model =(DefaultTableModel)tablaProductos.getModel();
+           int filas = model.getRowCount();
+        for(int i=0;i<filas; i++){
+            model.removeRow(0);
+        }
+        for (int i = 0; i < frmRegistroProducto.LISTA.size(); i++) {
+            PR= frmRegistroProducto.LISTA.get(i);
+            model.addRow(new Object[]{PR.getCodigo(),PR.getNombreP(),PR.getMarca(),PR.getEstado(),PR.getStock(),PR.getCantInicial(),PR.getPrecio()});
+        }
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -364,4 +394,8 @@ public class frmConsultaProductos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tablaProductos;
     // End of variables declaration//GEN-END:variables
+
+    private int comprobarCodigo(String codP) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

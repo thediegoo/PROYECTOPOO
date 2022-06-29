@@ -3,84 +3,49 @@ package controlador;
 import javax.swing.JOptionPane;
 import clases.Producto.Producto;
 import clases.interfaces.InterfaceBuscar;
+import java.io.Serializable;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
-public class Arreglo_Producto implements InterfaceBuscar {
-
-    private Producto vec[] = new Producto[100];
-    private int con;
-
-    public static String categoria1 = "Periferico de Entrada";
-    public static String proveedor1 = "PR1";
-    public static String categoria2 = "Periferico de Salida";
-    public static String proveedor2 = "PR2";
-
-    public Arreglo_Producto() {
-
-        vec[0] = new Producto(1, "Periferico de Entrada", "Teclado MX", "LENOVO", "DISPONIBLE", 100, 50, 200);
-        vec[1] = new Producto(2, "Periferico de Salida", "Parlante XY", "HP", "DISPONIBLE", 110, 90, 600);
-        vec[2] = new Producto(3, "Periferico de Entrada", "Teclado MX", "LENOVO", "DISPONIBLE", 100, 50, 100);
-        vec[3] = new Producto(4, "Periferico de Salida", "Teclado MX", "LENOVO", "DISPONIBLE", 100, 50, 200);
-        vec[4] = new Producto(5, "Periferico de Entrada", "Impresora XP", "HP", "DISPONIBLE", 150, 80, 1000);
-        vec[5] = new Producto(6, "Periferico de Salida", "Teclado MX", "LENOVO", "DISPONIBLE", 50, 20, 200);
-        vec[6] = new Producto(7, "Periferico de Entrada", "Parlante Y", "LENOVO", "DISPONIBLE", 100, 80, 300);
-        vec[7] = new Producto(8, "Periferico de Entrada", "Teclado MX", "LENOVO", "DISPONIBLE", 200, 120, 200);
-        con = 8;
-    }
-
-    public void adicion(Producto e) {
-        vec[con] = e;
-        con++;
-    }
-
-    public void modifica(Producto p, int pos) {
+public class Arreglo_Producto implements Serializable{
+    
+     public static String categoria1 = "Periferico de Entrada";
+     public static String proveedor1 = "PR1";
+     public static String categoria2 = "Periferico de Salida";
+     public static String proveedor2 = "PR2";
+     
+    public ArrayList<Producto> LISTA = new ArrayList <Producto>();
+    public Producto PR;
+    public DefaultTableModel model;
+    String cat, nombre, marca, estado,codP;
+        int cantInicial, stock, existe;
+        double precio;
+    
+     public Arreglo_Producto(){
+        LISTA = new ArrayList();
+     }
+     /*public void modifica(Producto p, int pos) {
         vec[pos] = p;
+    }*/
+     public void modifica(Producto p, int pos){
+      LISTA.set(pos,p);
+      }
+     public void agrega(Producto nuevo){
+        LISTA.add(nuevo);
     }
-
-    @Override
-    public int busca(int cod) {
-        int bus = -1;
-        for (int i = 0; i < tamaño(); i++) {
-            if (vec[i].getCodigo() == cod) {
-                bus = i;
-                break;
-            }
+     public Producto getProducto(int i){
+        return LISTA.get(i);
+    }
+     public int numeroProducto(){
+        return LISTA.size();
+    }
+      public int busca(String codigo){
+         for(int i=0; i<numeroProducto(); i++){
+            if(codigo.equalsIgnoreCase(getProducto(i).getCodigo()))
+                return i;
         }
-        return bus;
+         return -1;
     }
-
-    @Override
-    public void anula(int pos) {
-        for (int i = pos; i < con - 1; i++) {
-            vec[i] = vec[i + 1];
-        }
-        con = con - 1;
-    }
-
-    public int tamaño() {
-        return con;
-    }
-
-    public Producto obtener(int pos) {
-        return vec[pos];
-    }
-
-    public void msg(String texto) {
-        JOptionPane.showMessageDialog(null, texto);
-    }
-
-    public Producto[] getVec() {
-        return vec;
-    }
-
-    public void setVec(Producto[] vec) {
-        this.vec = vec;
-    }
-
-    public int getCon() {
-        return con;
-    }
-
-    public void setCon(int con) {
-        this.con = con;
-    }
+     
+  
 }

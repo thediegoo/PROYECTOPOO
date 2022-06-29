@@ -17,8 +17,8 @@ public class frmEditarProducto extends javax.swing.JFrame {
     }
 
     public void llenarCBxProducto() {
-        for (int i = 0; i < frmRegistroProducto.emp.tamaño(); i++) {
-            Producto x = frmRegistroProducto.emp.obtener(i);
+        for (int i = 0; i < frmRegistroProducto.LISTA.size(); i++) {
+            Producto x = frmRegistroProducto.LISTA.get(i);
             cboProducto.addItem(x.getCodigo() + " / " + x.getNombreP());
         }
     }
@@ -308,7 +308,7 @@ public class frmEditarProducto extends javax.swing.JFrame {
 
         for (int i = 0; i < frmRegistroEmpleado.emp.tamaño(); i++) {
             if (cboProducto.getSelectedIndex() == i) {
-                int codigo = Integer.parseInt(txtCodigo.getText());
+                String codigo = txtCodigo.getText();
                 String categoria = txtCategoria.getText();
                 String nombre = txtNombre.getText();
                 String marca = txtMarca.getText();
@@ -318,7 +318,7 @@ public class frmEditarProducto extends javax.swing.JFrame {
                 double precio = Double.parseDouble(txtPrecio.getText());
 
                 Producto nuevo = new Producto(codigo, categoria, nombre, marca, estado, stock, cantidad, precio);
-                frmRegistroProducto.emp.modifica(nuevo, i);
+                frmRegistroProducto.LISTA.modifica(i,nuevo);
             }
         }
 
@@ -340,10 +340,10 @@ public class frmEditarProducto extends javax.swing.JFrame {
 
     private void cboProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboProductoActionPerformed
 
-        for (int i = 0; i < frmRegistroProducto.emp.tamaño(); i++) {
-            Producto x = frmRegistroProducto.emp.obtener(i);
+        for (int i = 0; i < frmRegistroProducto.LISTA.size(); i++) {
+            Producto x = frmRegistroProducto.LISTA.get(i);
             if (cboProducto.getSelectedIndex() == i) {
-                txtCodigo.setText(Integer.toString(x.getCodigo()));
+                txtCodigo.setText (x.getCodigo());
                 txtCategoria.setText(x.getCategoria());
                 txtNombre.setText(x.getNombreP());
                 txtMarca.setText(x.getMarca());
