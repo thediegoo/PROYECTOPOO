@@ -2,7 +2,12 @@ package Formularios;
 
 import clases.Persona.Empleado;
 import controlador.Arreglo_Empleado;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -15,9 +20,19 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
     public frmRegistroEmpleado() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
-        this.setLocationRelativeTo(this);
-    }
+        this.setLocationRelativeTo(this);        
+        limpiar();
 
+    }
+    public void limpiar(){
+         txtNombre.setText("");
+        txtApellidos.setText("");
+        txtDNI.setText("");
+        txtTelefono.setText("");
+        txtDireccion.setText("");
+        txtSueldo.setText("");
+        txtFechaIngreso.setCalendar(null);
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -42,9 +57,10 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
         txtTelefono = new javax.swing.JTextField();
         txtApellidos = new javax.swing.JTextField();
         btnSalir2 = new javax.swing.JButton();
-        txtFechaIngreso = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        txtFechaIngreso = new com.toedter.calendar.JDateChooser();
+        txtIdAdmi = new javax.swing.JTextField();
 
         txtSueldo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,20 +182,20 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
             }
         });
 
-        txtFechaIngreso.setBackground(new java.awt.Color(140, 195, 195));
-        txtFechaIngreso.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
-        txtFechaIngreso.setBorder(null);
-        txtFechaIngreso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFechaIngresoActionPerformed(evt);
-            }
-        });
-
         jLabel11.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("DATOS DEL EMPLEADO ");
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fd.png"))); // NOI18N
+
+        txtIdAdmi.setBackground(new java.awt.Color(140, 195, 195));
+        txtIdAdmi.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
+        txtIdAdmi.setBorder(null);
+        txtIdAdmi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdAdmiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -211,11 +227,12 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(jLabel6)
                     .addComponent(jLabel1)
-                    .addComponent(txtFechaIngreso)
                     .addComponent(txtDireccion)
                     .addComponent(txtDNI)
                     .addComponent(txtTelefono)
-                    .addComponent(txtSueldo))
+                    .addComponent(txtSueldo)
+                    .addComponent(txtFechaIngreso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtIdAdmi))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -224,21 +241,25 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(jLabel11)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addComponent(txtIdAdmi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36))
+                    .addComponent(txtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -318,33 +339,58 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSueldo1ActionPerformed
 
-    private void txtFechaIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaIngresoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFechaIngresoActionPerformed
-
     private void btnGuardarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEmpleadoActionPerformed
+        int anio= txtFechaIngreso.getCalendar().get(Calendar.YEAR);
+        int mes= txtFechaIngreso.getCalendar().get(Calendar.MONTH);
+        int dia= txtFechaIngreso.getCalendar().get(Calendar.DAY_OF_MONTH);
+        String fecha= String.valueOf(anio+"-"+mes+"-"+dia);
+           
+        try{
+           Connection conex= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            
+            String xsql= "INSERT INTO empleado(id_admi, nombre, apellido, telf, direccion,fechaEntrada, sueldo)"
+                    + "VALUES(?, ?, ?, ?, ?,?,?)";
+            PreparedStatement prep= conex.prepareStatement(xsql);
+            prep.setString(1, txtIdAdmi.getText());
+            prep.setString(2, txtNombre.getText());
+            prep.setString(3, txtApellidos.getText());
+            prep.setInt(4, Integer.parseInt(txtTelefono.getText()));
+            prep.setString(5, txtDireccion.getText());           
+            prep.setString(6, fecha);
+            prep.setDouble(7, Double.parseDouble(txtSueldo.getText()));
+            
+            prep.executeUpdate();
+            limpiar();
+//            bloquear();
+//            cargarTabla("");
+            
+        }catch(SQLException e){
+            System.out.println("Error ......No hay conección");
+            e.printStackTrace();
+        }
+        
+        
+        
+//        
+//        int dni = Integer.parseInt(txtDNI.getText());
+//        String nombre = txtNombre.getText();
+//        String apellido = txtApellidos.getText();
+//        int tel = Integer.parseInt(txtTelefono.getText());
+//        String direccion = txtDireccion.getText();
+//        String fecha = txtFechaIngreso.getText();
+//        Double sueldo = Double.parseDouble(txtSueldo.getText());
 
-        String nombre = txtNombre.getText();
-        String apellido = txtApellidos.getText();
-        int dni = Integer.parseInt(txtDNI.getText());
-        int tel = Integer.parseInt(txtTelefono.getText());
-        String direccion = txtDireccion.getText();
-        Double sueldo = Double.parseDouble(txtSueldo.getText());
-        String fecha = txtFechaIngreso.getText();
+//        EM = new Empleado(nombre, apellido, dni, tel, direccion, sueldo, fecha);
+//        LISTAE.add(EM);
+       JOptionPane.showMessageDialog(null,"Empleado registrado con exito");
 
-        EM = new Empleado(nombre, apellido, dni, tel, direccion, sueldo, fecha);
-        LISTAE.add(EM);
-        JOptionPane.showMessageDialog(null,"Empleado registrado con exito");
-
-        txtNombre.setText("");
-        txtApellidos.setText("");
-        txtDNI.setText("");
-        txtTelefono.setText("");
-        txtDireccion.setText("");
-        txtSueldo.setText("");
-        txtFechaIngreso.setText("");
+       
 
     }//GEN-LAST:event_btnGuardarEmpleadoActionPerformed
+
+    private void txtIdAdmiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdAdmiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdAdmiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -401,7 +447,8 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
     private javax.swing.JTextField txtDNI;
     private javax.swing.JTextField txtDNI1;
     private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtFechaIngreso;
+    private com.toedter.calendar.JDateChooser txtFechaIngreso;
+    private javax.swing.JTextField txtIdAdmi;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtSueldo;
     private javax.swing.JTextField txtSueldo1;

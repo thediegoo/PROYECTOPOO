@@ -279,18 +279,18 @@ public class frmConsultaProductos extends javax.swing.JFrame {
 
     private void BUTCODActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUTCODActionPerformed
 
-      existe = frmRegistroProducto.LISTA.busca(TEXTCOD.getText());
-
-        if (existe == -1) {
-            JOptionPane.showMessageDialog(null, "NO EXISTE PRODUCTO");
-            return;
-        }
-
-        Producto PR = frmRegistroProducto.LISTA.get(existe);
-        TXTAREA.setText("codigo : " + PR.getCodigo());
-        TXTAREA.append("\nEstado : " + PR.getEstado());
-        TXTAREA.append("\nCantidad stock : " + PR.getStock());
-        TXTAREA.append("\nPrecio : " + PR.getPrecio());
+//      existe = frmRegistroProducto.LISTA.busca(TEXTCOD.getText());
+//
+//        if (existe == -1) {
+//            JOptionPane.showMessageDialog(null, "NO EXISTE PRODUCTO");
+//            return;
+//        }
+//
+//        Producto PR = frmRegistroProducto.LISTA.get(existe);
+//        TXTAREA.setText("codigo : " + PR.getCodigo());
+//        TXTAREA.append("\nEstado : " + PR.getEstado());
+//        TXTAREA.append("\nCantidad stock : " + PR.getStock());
+//        TXTAREA.append("\nPrecio : " + PR.getPrecio());
 
     }//GEN-LAST:event_BUTCODActionPerformed
 

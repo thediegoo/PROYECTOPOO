@@ -306,32 +306,32 @@ public class frmEditarProducto extends javax.swing.JFrame {
 
     private void btnGuardarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEmpleadoActionPerformed
 
-        for (int i = 0; i < frmRegistroEmpleado.emp.tamaño(); i++) {
-            if (cboProducto.getSelectedIndex() == i) {
-                String codigo = txtCodigo.getText();
-                String categoria = txtCategoria.getText();
-                String nombre = txtNombre.getText();
-                String marca = txtMarca.getText();
-                String estado = txtEstado.getText();
-                int stock = Integer.parseInt(txtStock.getText());
-                int cantidad = Integer.parseInt(txtCantidadInicial.getText());
-                double precio = Double.parseDouble(txtPrecio.getText());
-
-                Producto nuevo = new Producto(codigo, categoria, nombre, marca, estado, stock, cantidad, precio);
-                frmRegistroProducto.LISTA.modifica(i,nuevo);
-            }
-        }
-
-        ae.msg("REGISTRO MODIFICADO");
-
-        txtCodigo.setText("");
-        txtCategoria.setText("");
-        txtNombre.setText("");
-        txtMarca.setText("");
-        txtEstado.setText("");
-        txtStock.setText("");
-        txtCantidadInicial.setText("");
-        txtPrecio.setText("");
+//        for (int i = 0; i < frmRegistroEmpleado.emp.tamaño(); i++) {
+//            if (cboProducto.getSelectedIndex() == i) {
+//                String codigo = txtCodigo.getText();
+//                String categoria = txtCategoria.getText();
+//                String nombre = txtNombre.getText();
+//                String marca = txtMarca.getText();
+//                String estado = txtEstado.getText();
+//                int stock = Integer.parseInt(txtStock.getText());
+//                int cantidad = Integer.parseInt(txtCantidadInicial.getText());
+//                double precio = Double.parseDouble(txtPrecio.getText());
+//
+//                Producto nuevo = new Producto(codigo, categoria, nombre, marca, estado, stock, cantidad, precio);
+//                frmRegistroProducto.LISTA.modifica(i,nuevo);
+//            }
+//        }
+//
+//        ae.msg("REGISTRO MODIFICADO");
+//
+//        txtCodigo.setText("");
+//        txtCategoria.setText("");
+//        txtNombre.setText("");
+//        txtMarca.setText("");
+//        txtEstado.setText("");
+//        txtStock.setText("");
+//        txtCantidadInicial.setText("");
+//        txtPrecio.setText("");
     }//GEN-LAST:event_btnGuardarEmpleadoActionPerformed
 
     private void btnSalir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir2ActionPerformed

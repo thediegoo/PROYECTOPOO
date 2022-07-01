@@ -2,6 +2,10 @@ package Formularios;
 
 import clases.Persona.Empleado;
 import controlador.Arreglo_Empleado;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -17,24 +21,61 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
     public frmConsultaEmpleado() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
-        listado();
+        //listado();
+        cargarTabla("");        
         this.setTitle("Consultar empleados");
         this.setLocationRelativeTo(this);
     }
+    public void cargarTabla(String valor){
+        String[]  titulo={"Id  admi", "Nombres", "Apellidos","Telefono", "Direccion", "Fecha Entrada", "Sueldo"};
+        String[]  filas= new String[7];
+        
+        model= new DefaultTableModel(null, titulo);
+        
+        try{
+            //creando la conección a la BD
+            Connection conectar= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            //crear la consulta
+            Statement declarar= conectar.createStatement();
+            
+            String xsql= "SELECT * FROM empleado";
+            
+            //Crear la tabla
+            ResultSet ejecutar= declarar.executeQuery(xsql);
+            while(ejecutar.next()){
+                filas[0]= ejecutar.getString("id_admi");
+                filas[1]= ejecutar.getString("nombre");
+                filas[2]= ejecutar.getString("apellido");
+                filas[3]= ejecutar.getString("telf");
+                filas[4]= ejecutar.getString("direccion");                
+                filas[5]= ejecutar.getString("fechaEntrada");                
+                filas[6]= ejecutar.getString("sueldo");
 
-    public void listado() {
-        DefaultTableModel dt = (DefaultTableModel) tablaEmpleado.getModel();
-        int filas = dt.getRowCount();
-        for(int i=0;i<filas; i++){
-            dt.removeRow(0);
-        }
 
-        for (int i = 0; i < frmRegistroEmpleado.LISTAE.size(); i++) {
-            EM = frmRegistroEmpleado.LISTAE.get(i);
-            dt.addRow(new Object[]{EM.getNombre(),EM.getApellido(),EM.getDni(),EM.getTelf(),EM.getDireccion(),EM.getSueldo(),
-                EM.getFechaIngreso()});
+                
+                model.addRow(filas);
+            }
+            tablaEmpleado.setModel(model);
+        
+        }catch(Exception e){
+                System.out.println("Error.... No hay conección");
+                e.printStackTrace();
         }
+        
     }
+//    public void listado() {
+//        DefaultTableModel dt = (DefaultTableModel) tablaEmpleado.getModel();
+//        int filas = dt.getRowCount();
+//        for(int i=0;i<filas; i++){
+//            dt.removeRow(0);
+//        }
+//
+//        for (int i = 0; i < frmRegistroEmpleado.LISTAE.size(); i++) {
+//            EM = frmRegistroEmpleado.LISTAE.get(i);
+//            dt.addRow(new Object[]{EM.getNombre(),EM.getApellido(),EM.getDni(),EM.getTelf(),EM.getDireccion(),EM.getSueldo(),
+//                EM.getFechaIngreso()});
+//        }
+//    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
