@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2022 at 11:16 PM
+-- Generation Time: Jul 02, 2022 at 02:30 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -131,9 +131,7 @@ CREATE TABLE `empleado` (
 
 INSERT INTO `empleado` (`id_admi`, `nombre`, `apellido`, `telf`, `direccion`, `fechaEntrada`, `sueldo`) VALUES
 (71829302, 'Alonso', 'Nicho', 929697141, 'Jr. Vina Lariena', '2018-06-04', 2700),
-(73129302, 'Diego', 'Solis', 981697141, 'Av. Las Gaviotas', '2017-06-13', 2700),
-(73829302, 'Danna', 'Vila', 999697141, 'Jr. Vina Ocucaje', '2019-06-12', 2700),
-(73829312, 'Hugo', 'Saravia ', 977697141, 'Av. San Lorenzo', '2020-06-14', 2700);
+(73963424, 'Danna', 'Vila', 999283212, 'Jr. Vina Ocucaje', '2016-06-16', 4000);
 
 -- --------------------------------------------------------
 
@@ -228,9 +226,7 @@ CREATE TABLE `usuarioadmi` (
 
 INSERT INTO `usuarioadmi` (`usuario`, `password`, `id_admi`) VALUES
 ('alonsonh', '123456', 71829302),
-('dannavc', '123456', 73829302),
-('diegosr', '123456', 73129302),
-('hugosb', '123456', 73829312);
+('dannavc', '123456', 73963424);
 
 --
 -- Indexes for dumped tables
@@ -268,7 +264,7 @@ ALTER TABLE `cliente`
 ALTER TABLE `comprobante`
   ADD PRIMARY KEY (`id_comprobante`),
   ADD KEY `id_cliente` (`id_cliente`),
-  ADD KEY `id_admi` (`id_admi`);
+  ADD KEY `fk_comprobante` (`id_admi`);
 
 --
 -- Indexes for table `comprobantxdetalles`
@@ -315,7 +311,7 @@ ALTER TABLE `tipocliente`
 --
 ALTER TABLE `usuarioadmi`
   ADD PRIMARY KEY (`usuario`),
-  ADD KEY `id_admi` (`id_admi`);
+  ADD KEY `fk_usuario` (`id_admi`);
 
 --
 -- Constraints for dumped tables
@@ -339,7 +335,9 @@ ALTER TABLE `cliente`
 --
 ALTER TABLE `comprobante`
   ADD CONSTRAINT `comprobante_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`),
-  ADD CONSTRAINT `comprobante_ibfk_2` FOREIGN KEY (`id_admi`) REFERENCES `empleado` (`id_admi`);
+  ADD CONSTRAINT `comprobante_ibfk_2` FOREIGN KEY (`id_admi`) REFERENCES `empleado` (`id_admi`),
+  ADD CONSTRAINT `fk_admicom` FOREIGN KEY (`id_admi`) REFERENCES `empleado` (`id_admi`),
+  ADD CONSTRAINT `fk_comprobante` FOREIGN KEY (`id_admi`) REFERENCES `empleado` (`id_admi`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `comprobantxdetalles`
@@ -360,6 +358,8 @@ ALTER TABLE `producto`
 -- Constraints for table `usuarioadmi`
 --
 ALTER TABLE `usuarioadmi`
+  ADD CONSTRAINT `fk_usuario` FOREIGN KEY (`id_admi`) REFERENCES `empleado` (`id_admi`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_usuarioadmi` FOREIGN KEY (`id_admi`) REFERENCES `empleado` (`id_admi`),
   ADD CONSTRAINT `usuarioadmi_ibfk_1` FOREIGN KEY (`id_admi`) REFERENCES `empleado` (`id_admi`);
 COMMIT;
 
