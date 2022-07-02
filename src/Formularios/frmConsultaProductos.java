@@ -66,9 +66,9 @@ public class frmConsultaProductos extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
-        jPanel1.setBackground(new java.awt.Color(240, 234, 203));
+        jPanel1.setBackground(new java.awt.Color(172, 219, 222));
 
         jLabel13.setBackground(new java.awt.Color(0, 0, 0));
         jLabel13.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 24)); // NOI18N
@@ -76,7 +76,7 @@ public class frmConsultaProductos extends javax.swing.JFrame {
         jLabel13.setText("CONSULTAR PRODUCTOS");
 
         tablaProductos.setAutoCreateRowSorter(true);
-        tablaProductos.setBackground(new java.awt.Color(247, 193, 119));
+        tablaProductos.setBackground(new java.awt.Color(172, 219, 222));
         tablaProductos.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
         tablaProductos.setForeground(new java.awt.Color(0, 0, 0));
         tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
@@ -92,7 +92,7 @@ public class frmConsultaProductos extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tablaProductos);
 
-        btnSalir1.setBackground(new java.awt.Color(240, 129, 129));
+        btnSalir1.setBackground(new java.awt.Color(172, 219, 222));
         btnSalir1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 15)); // NOI18N
         btnSalir1.setForeground(new java.awt.Color(0, 0, 0));
         btnSalir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/home-exit.png"))); // NOI18N
@@ -106,7 +106,7 @@ public class frmConsultaProductos extends javax.swing.JFrame {
             }
         });
 
-        TXTAREA.setBackground(new java.awt.Color(247, 193, 119));
+        TXTAREA.setBackground(new java.awt.Color(110, 167, 171));
         TXTAREA.setColumns(20);
         TXTAREA.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 15)); // NOI18N
         TXTAREA.setRows(5);
@@ -133,7 +133,7 @@ public class frmConsultaProductos extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Ingrese Codigo:");
 
-        TEXTCOD.setBackground(new java.awt.Color(247, 193, 119));
+        TEXTCOD.setBackground(new java.awt.Color(135, 185, 188));
         TEXTCOD.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 15)); // NOI18N
         TEXTCOD.setBorder(null);
         TEXTCOD.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +142,7 @@ public class frmConsultaProductos extends javax.swing.JFrame {
             }
         });
 
-        RegistrarProd.setBackground(new java.awt.Color(240, 129, 129));
+        RegistrarProd.setBackground(new java.awt.Color(172, 219, 222));
         RegistrarProd.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         RegistrarProd.setForeground(new java.awt.Color(0, 0, 0));
         RegistrarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/registro.png"))); // NOI18N
@@ -237,16 +237,16 @@ public class frmConsultaProductos extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(21, 21, 21)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(16, 16, 16)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

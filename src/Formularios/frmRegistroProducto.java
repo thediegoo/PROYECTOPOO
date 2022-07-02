@@ -143,12 +143,12 @@ public class frmRegistroProducto extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(232, 198, 194));
+        jPanel1.setBackground(new java.awt.Color(172, 219, 222));
 
-        btnSalir1.setBackground(new java.awt.Color(240, 129, 129));
+        btnSalir1.setBackground(new java.awt.Color(172, 219, 222));
         btnSalir1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 14)); // NOI18N
         btnSalir1.setForeground(new java.awt.Color(255, 255, 255));
         btnSalir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/home-exit.png"))); // NOI18N
@@ -172,7 +172,7 @@ public class frmRegistroProducto extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("REGISTRAR PRODUCTO");
 
-        txtCodMarca.setBackground(new java.awt.Color(213, 170, 165));
+        txtCodMarca.setBackground(new java.awt.Color(128, 180, 183));
         txtCodMarca.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         txtCodMarca.setBorder(null);
         txtCodMarca.addActionListener(new java.awt.event.ActionListener() {
@@ -181,7 +181,7 @@ public class frmRegistroProducto extends javax.swing.JFrame {
             }
         });
 
-        txtNombreProducto.setBackground(new java.awt.Color(213, 170, 165));
+        txtNombreProducto.setBackground(new java.awt.Color(128, 180, 183));
         txtNombreProducto.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         txtNombreProducto.setBorder(null);
         txtNombreProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -194,7 +194,7 @@ public class frmRegistroProducto extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("STOCK :");
 
-        txtStock.setBackground(new java.awt.Color(213, 170, 165));
+        txtStock.setBackground(new java.awt.Color(128, 180, 183));
         txtStock.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         txtStock.setBorder(null);
         txtStock.addActionListener(new java.awt.event.ActionListener() {
@@ -203,7 +203,7 @@ public class frmRegistroProducto extends javax.swing.JFrame {
             }
         });
 
-        txtCantInicial.setBackground(new java.awt.Color(213, 170, 165));
+        txtCantInicial.setBackground(new java.awt.Color(128, 180, 183));
         txtCantInicial.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         txtCantInicial.setBorder(null);
         txtCantInicial.addActionListener(new java.awt.event.ActionListener() {
@@ -216,7 +216,7 @@ public class frmRegistroProducto extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("PRECIO");
 
-        cboCategoria.setBackground(new java.awt.Color(213, 170, 165));
+        cboCategoria.setBackground(new java.awt.Color(128, 180, 183));
         cboCategoria.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         cboCategoria.setBorder(null);
         cboCategoria.addActionListener(new java.awt.event.ActionListener() {
@@ -229,7 +229,7 @@ public class frmRegistroProducto extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("ESTADO :");
 
-        txtPrecio.setBackground(new java.awt.Color(213, 170, 165));
+        txtPrecio.setBackground(new java.awt.Color(128, 180, 183));
         txtPrecio.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         txtPrecio.setBorder(null);
         txtPrecio.addActionListener(new java.awt.event.ActionListener() {
@@ -238,7 +238,7 @@ public class frmRegistroProducto extends javax.swing.JFrame {
             }
         });
 
-        txtIdProveedor.setBackground(new java.awt.Color(213, 170, 165));
+        txtIdProveedor.setBackground(new java.awt.Color(128, 180, 183));
         txtIdProveedor.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         txtIdProveedor.setBorder(null);
         txtIdProveedor.addActionListener(new java.awt.event.ActionListener() {
@@ -247,7 +247,7 @@ public class frmRegistroProducto extends javax.swing.JFrame {
             }
         });
 
-        btnGuardar.setBackground(new java.awt.Color(240, 129, 129));
+        btnGuardar.setBackground(new java.awt.Color(172, 219, 222));
         btnGuardar.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 14)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
@@ -274,7 +274,7 @@ public class frmRegistroProducto extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("ID PROVEEDOR :");
 
-        txtEstado.setBackground(new java.awt.Color(213, 170, 165));
+        txtEstado.setBackground(new java.awt.Color(128, 180, 183));
         txtEstado.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         txtEstado.setBorder(null);
         txtEstado.addActionListener(new java.awt.event.ActionListener() {
@@ -287,7 +287,7 @@ public class frmRegistroProducto extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("CATEGORIA");
 
-        txtCodProducto.setBackground(new java.awt.Color(213, 170, 165));
+        txtCodProducto.setBackground(new java.awt.Color(128, 180, 183));
         txtCodProducto.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         txtCodProducto.setBorder(null);
         txtCodProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -300,6 +300,7 @@ public class frmRegistroProducto extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("SELECCIONE CATEGORIA");
 
+        lblCategoria.setBackground(new java.awt.Color(128, 180, 183));
         lblCategoria.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         lblCategoria.setText("nombre-cat");
 
@@ -320,7 +321,7 @@ public class frmRegistroProducto extends javax.swing.JFrame {
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(89, Short.MAX_VALUE)
+                        .addContainerGap(75, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -442,7 +443,7 @@ public class frmRegistroProducto extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

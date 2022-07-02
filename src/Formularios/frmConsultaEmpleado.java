@@ -4,7 +4,9 @@ import clases.Persona.Empleado;
 import controlador.Arreglo_Empleado;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -21,8 +23,7 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
     public frmConsultaEmpleado() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
-        //listado();
-        cargarTabla("");        
+        cargarTabla("");  
         this.setTitle("Consultar empleados");
         this.setLocationRelativeTo(this);
     }
@@ -49,10 +50,7 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
                 filas[3]= ejecutar.getString("telf");
                 filas[4]= ejecutar.getString("direccion");                
                 filas[5]= ejecutar.getString("fechaEntrada");                
-                filas[6]= ejecutar.getString("sueldo");
-
-
-                
+                filas[6]= ejecutar.getString("sueldo");          
                 model.addRow(filas);
             }
             tablaEmpleado.setModel(model);
@@ -63,20 +61,7 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
         }
         
     }
-//    public void listado() {
-//        DefaultTableModel dt = (DefaultTableModel) tablaEmpleado.getModel();
-//        int filas = dt.getRowCount();
-//        for(int i=0;i<filas; i++){
-//            dt.removeRow(0);
-//        }
-//
-//        for (int i = 0; i < frmRegistroEmpleado.LISTAE.size(); i++) {
-//            EM = frmRegistroEmpleado.LISTAE.get(i);
-//            dt.addRow(new Object[]{EM.getNombre(),EM.getApellido(),EM.getDni(),EM.getTelf(),EM.getDireccion(),EM.getSueldo(),
-//                EM.getFechaIngreso()});
-//        }
-//    }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -89,8 +74,6 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
         tablaEmpleado = new javax.swing.JTable();
         jLabel13 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TXTAREA = new javax.swing.JTextArea();
         TXTEM = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -107,12 +90,12 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
-        jPanel1.setBackground(new java.awt.Color(176, 173, 198));
+        jPanel1.setBackground(new java.awt.Color(172, 219, 222));
         jPanel1.setForeground(new java.awt.Color(181, 222, 179));
 
-        btnSalir.setBackground(new java.awt.Color(240, 129, 129));
+        btnSalir.setBackground(new java.awt.Color(172, 219, 222));
         btnSalir.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(0, 0, 0));
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/home-exit.png"))); // NOI18N
@@ -126,6 +109,7 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
             }
         });
 
+        tablaEmpleado.setBackground(new java.awt.Color(172, 219, 222));
         tablaEmpleado.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 16)); // NOI18N
         tablaEmpleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -157,15 +141,7 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
             }
         });
 
-        TXTAREA.setBackground(new java.awt.Color(153, 149, 183));
-        TXTAREA.setColumns(20);
-        TXTAREA.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
-        TXTAREA.setRows(5);
-        TXTAREA.setBorder(null);
-        TXTAREA.setSelectionColor(new java.awt.Color(178, 158, 195));
-        jScrollPane1.setViewportView(TXTAREA);
-
-        TXTEM.setBackground(new java.awt.Color(153, 149, 183));
+        TXTEM.setBackground(new java.awt.Color(123, 177, 181));
         TXTEM.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         TXTEM.setBorder(null);
         TXTEM.addActionListener(new java.awt.event.ActionListener() {
@@ -182,7 +158,7 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("BUSCAR");
 
-        RegistrarEmpleado.setBackground(new java.awt.Color(240, 129, 129));
+        RegistrarEmpleado.setBackground(new java.awt.Color(172, 219, 222));
         RegistrarEmpleado.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         RegistrarEmpleado.setForeground(new java.awt.Color(0, 0, 0));
         RegistrarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/registro.png"))); // NOI18N
@@ -216,34 +192,31 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 921, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(61, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                            .addComponent(TXTEM)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(123, 123, 123)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(RegistrarEmpleado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(86, 86, 86))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 921, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(TXTEM, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(RegistrarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(306, 306, 306)
                         .addComponent(jLabel15))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(402, 402, 402)
                         .addComponent(jLabel13)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,26 +226,19 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(TXTEM, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnEliminar)
-                            .addGap(29, 29, 29))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(RegistrarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TXTEM, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(RegistrarEmpleado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
                 .addGap(52, 52, 52))
         );
 
@@ -314,19 +280,37 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        //buscarEmpleado(indice);
         
-        indice = Integer.parseInt(TXTEM.getText());
-        if (EM.getDni() == indice){
-            EM = ar.buscar(indice);
-            TXTAREA.setText("Nombre : " + EM.getNombre());
-            TXTAREA.setText("\nApellido : " + EM.getApellido());
-            TXTAREA.append("\nTelefono : " + EM.getTelf());
-            TXTAREA.append("\nDireccion : " + EM.getDireccion());
-            TXTAREA.append("\nSueldo : " + EM.getSueldo());
-            TXTAREA.append("\nFecha de Ingreso : " + EM.getFechaIngreso());
-            }else{
-            JOptionPane.showMessageDialog(null, "NO EXISTE EMPLEADO");
-            return;
+        String[]  titulo={"Id  admi", "Nombres", "Apellidos","Telefono", "Direccion", "Fecha Entrada", "Sueldo"};
+        String[]  filas= new String[7];
+        
+        model= new DefaultTableModel(null, titulo);
+        
+        try{
+            indice = Integer.parseInt(TXTEM.getText());
+            Connection conectar= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            //crear la consulta
+            String xsql= "SELECT * FROM empleado where id_admi=?";
+            PreparedStatement declarar= conectar.prepareStatement(xsql);
+            declarar.setInt(1,  indice);
+            //Crear la tabla
+            ResultSet ejecutar= declarar.executeQuery();
+            while(ejecutar.next()){
+                filas[0]= ejecutar.getString("id_admi");
+                filas[1]= ejecutar.getString("nombre");
+                filas[2]= ejecutar.getString("apellido");
+                filas[3]= ejecutar.getString("telf");
+                filas[4]= ejecutar.getString("direccion");                
+                filas[5]= ejecutar.getString("fechaEntrada");                
+                filas[6]= ejecutar.getString("sueldo");          
+                model.addRow(filas);
+            }
+            tablaEmpleado.setModel(model);
+        
+        }catch(Exception e){
+                System.out.println("Error.... No hay conección");
+                e.printStackTrace();
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -341,50 +325,23 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_RegistrarEmpleadoActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        if(TXTEM.getText().trim().isEmpty()){
-            JOptionPane.showMessageDialog(null,"EL CAMPO ESTA VACIO");
-            TXTEM.setText("");
-            TXTEM.requestFocus();
-        }else{
-            int dni = Integer.parseInt(TXTEM.getText());
-            indice = validacion(dni);
-
-            if(indice == -1){
-                JOptionPane.showMessageDialog(null,"NO EXISTE EL EMPLEADO");
-                TXTEM.setText("");
-            }else{
-                ar.LISTAE.remove(indice);
-                JOptionPane.showMessageDialog(null,"EMPLEADO ELIMINADO");
-                TXTEM.setText("");
-                TXTEM.requestFocus();
-                listar();
+        try{
+            indice = Integer.parseInt(TXTEM.getText());
+            Connection conectar= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            //crear la consulta
+            String xsql= "DELETE empleado, usuarioadmi from empleado INNER JOIN usuarioadmi ON empleado.id_admi=usuarioadmi.id_admi WHERE empleado.id_admi=?";
+            PreparedStatement declarar = conectar.prepareStatement(xsql);
+            //Crear la tabla
+//            ResultSet ejecutar= declarar.executeQuery();
+            declarar.setInt(1,  indice);
+            declarar.executeUpdate();
+           // new frmConsultaEmpleado().setVisible(true);
+        }catch(SQLException e){
+                System.out.println("Error.... No hay conección");
+                e.printStackTrace();
         }
-      }
-        
     }//GEN-LAST:event_btnEliminarActionPerformed
-    public int validacion(int dni){
-        for(int i = 0; i < ar.LISTAE.size(); i++){
-            EM = ar.LISTAE.get(i);
-            if(dni == EM.getDni()){
-                return i;
-            }
-        }
-        return -1;
-    }
-    private void listar(){
-        model =(DefaultTableModel)tablaEmpleado.getModel();
-           int filas = model.getRowCount();
-        for(int i=0;i<filas; i++){
-            model.removeRow(0);
-        }
-        for (int i = 0; i < frmRegistroEmpleado.LISTAE.size(); i++) {
-            model.addRow(new Object[]{EM.getNombre(),EM.getApellido(),EM.getDni(),EM.getTelf(),EM.getDireccion(),EM.getSueldo(),
-                EM.getFechaIngreso()});
-        }
-    }
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -419,7 +376,6 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton RegistrarEmpleado;
-    private javax.swing.JTextArea TXTAREA;
     private javax.swing.JTextField TXTEM;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
@@ -431,7 +387,6 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tablaEmpleado;
     // End of variables declaration//GEN-END:variables
