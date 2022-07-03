@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2022 at 02:30 AM
+-- Generation Time: Jul 03, 2022 at 03:26 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -20,6 +20,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `peritec`
 --
+
+DELIMITER $$
+--
+-- Procedures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `adicionarProducto` (IN `codCategoria` VARCHAR(5), IN `nombre` VARCHAR(20), IN `codMarca` VARCHAR(5), IN `estado` VARCHAR(20), IN `rut_proveedor` INT, IN `stock` INT, IN `cantInicial` INT, IN `precioUnit` DOUBLE)  begin
+declare codP char(5);
+declare cuenta int;
+select right(max(codProducto),4)+1 into cuenta from producto;
+set codP=concat('P',Lpad(cuenta,4,'0'));
+insert into producto values(codP, codCategoria,nombre,codMarca,estado,rut_proveedor,stock,cantInicial,precioUnit);
+end$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -130,8 +144,10 @@ CREATE TABLE `empleado` (
 --
 
 INSERT INTO `empleado` (`id_admi`, `nombre`, `apellido`, `telf`, `direccion`, `fechaEntrada`, `sueldo`) VALUES
+(28123456, 'Hugo', 'Saravia', 999231243, 'Av. San Lorenzo', '2019-06-18', 4000),
 (71829302, 'Alonso', 'Nicho', 929697141, 'Jr. Vina Lariena', '2018-06-04', 2700),
-(73963424, 'Danna', 'Vila', 999283212, 'Jr. Vina Ocucaje', '2016-06-16', 4000);
+(73963424, 'Danna', 'Vila', 999283212, 'Jr. Vina Ocucaje', '2016-06-16', 4000),
+(76234512, 'Diego', 'Solis', 999875645, 'Jr. Vina Lariena', '2020-06-26', 3000);
 
 -- --------------------------------------------------------
 
@@ -173,6 +189,18 @@ CREATE TABLE `producto` (
   `precioUnit` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `producto`
+--
+
+INSERT INTO `producto` (`codProducto`, `codCategoria`, `nombre`, `codMarca`, `estado`, `rut_proveedor`, `stock`, `cantInicial`, `precioUnit`) VALUES
+('P0001', 'CA002', 'Teclado HP', 'M0002', 'DISPONIBLE', 2147483647, 220, 220, 300),
+('P0002', 'CA003', 'CD', 'M0002', 'Disponible', 2147483647, 120, 120, 300),
+('P0003', 'CA001', 'Audifonos S12', 'M0004', 'DISPONIBLE', 1147283947, 300, 300, 200),
+('P0004', 'CA002', 'Impresora CN', 'M0003', 'DISPONIBLE', 1647483643, 100, 100, 1300),
+('P0005', 'CA002', 'Impresora S23', 'M0004', 'DISPONIBLE', 1147283947, 100, 100, 300),
+('P0006', 'CA001', 'Mouse D42', 'M0005', 'DISPONIBLE', 1140482649, 200, 200, 150);
+
 -- --------------------------------------------------------
 
 --
@@ -180,7 +208,7 @@ CREATE TABLE `producto` (
 --
 
 CREATE TABLE `proveedor` (
-  `rut_proveedor` int(11) NOT NULL,
+  `rut_proveedor` int(12) NOT NULL,
   `nombreComercial` varchar(30) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `apellido` varchar(30) NOT NULL,
@@ -188,6 +216,17 @@ CREATE TABLE `proveedor` (
   `telf` varchar(9) DEFAULT NULL,
   `direccion` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `proveedor`
+--
+
+INSERT INTO `proveedor` (`rut_proveedor`, `nombreComercial`, `nombre`, `apellido`, `dni`, `telf`, `direccion`) VALUES
+(1140482649, 'DELL Company', 'Federico', 'Gutierrez', 23612241, '929812134', 'Jr. Vina Lariena'),
+(1147283947, 'SAMSUNG Company', 'Daniela', 'Sanchez', 43612243, '962812134', 'Jr. Diana'),
+(1647483643, 'CANON Company', 'Maria', 'Galindo', 27012243, '999812131', 'Av. Alameda'),
+(2117482617, 'LENOVO Company', 'David', 'Hernandez', 71612243, '902812134', 'Jr. San Lorenzo'),
+(2147483647, 'HP Company', 'Ana', 'Castro', 73612243, '999812134', 'Jr. Vina Ocucaje');
 
 -- --------------------------------------------------------
 
@@ -226,7 +265,9 @@ CREATE TABLE `usuarioadmi` (
 
 INSERT INTO `usuarioadmi` (`usuario`, `password`, `id_admi`) VALUES
 ('alonsonh', '123456', 71829302),
-('dannavc', '123456', 73963424);
+('dannavc', '123456', 73963424),
+('diegosr', '123456', 76234512),
+('hugosb', '123456', 28123456);
 
 --
 -- Indexes for dumped tables
