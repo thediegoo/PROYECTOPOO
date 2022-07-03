@@ -1,16 +1,58 @@
 package Formularios;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class frmLogin extends javax.swing.JFrame {
-
+    
+            
+         
     public frmLogin() {
         initComponents();
+        validarAcceso();
         setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
         this.setTitle("Login");
         this.setLocationRelativeTo(this);
     }
+   public void validarAcceso(){
+       int resultado = 0;
+       try{
+           Connection conex= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+           String usuario=txtUsuario.getText();
+           String pass =String.valueOf(Password.getPassword());
+           String sql ="select * from usuarioadmi where usuario='"+usuario+"' and password='"+pass+"'";
+           Statement prep= conex.createStatement();
+           ResultSet rs=prep.executeQuery(sql);
+           
+           if(rs.next()){
+               resultado=1;
+               
+               if(resultado==1){
+                   frmMenu m = new frmMenu();
+                    this.setVisible(false);
+                    m.setVisible((true));
+                    JOptionPane.showMessageDialog(null, "Bienvenido/a "+usuario+"", "Acceso Sistema", JOptionPane.INFORMATION_MESSAGE);
+
+               }else{
+                //     JOptionPane.showMessageDialog(null, "Usuario o Password Incorrecto", "Dialog", JOptionPane.ERROR_MESSAGE);
+
+               }
+           }else{
+             JOptionPane.showMessageDialog(null, "Usuario o Password Incorrecto", "Dialog", JOptionPane.ERROR_MESSAGE);
+
+           }
+           
+       }catch(SQLException e){
+           JOptionPane.showMessageDialog(null, "Error");
+
+       }
+   }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -232,21 +274,24 @@ public class frmLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        String usu = "admi";
-        String pwd = "123456";
-
-        String Pass = new String(Password.getPassword());
-        if (txtUsuario.getText().equals("") && Pass.equals("")) {
-            JOptionPane.showMessageDialog(this, "Ingrese sus datos para poder tener acceso");
-        } else {
-            if (txtUsuario.getText().equals(usu) && Pass.equals(pwd)) {
-                frmMenu m = new frmMenu();
-                this.setVisible(false);
-                m.setVisible((true));
-            } else {
-                JOptionPane.showMessageDialog(this, "Usuario o Password Incorrecto", "Dialog", JOptionPane.ERROR_MESSAGE);
-            }
-        }
+        
+        validarAcceso();
+//        
+//        String usu = "admi";
+//        String pwd = "123456";
+//
+//        String Pass = new String(Password.getPassword());
+//        if (txtUsuario.getText().equals("") && Pass.equals("")) {
+//            JOptionPane.showMessageDialog(this, "Ingrese sus datos para poder tener acceso");
+//        } else {
+//            if (txtUsuario.getText().equals(usu) && Pass.equals(pwd)) {
+//                frmMenu m = new frmMenu();
+//                this.setVisible(false);
+//                m.setVisible((true));
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Usuario o Password Incorrecto", "Dialog", JOptionPane.ERROR_MESSAGE);
+//            }
+//        }
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void btnIniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciarMouseClicked
