@@ -3,6 +3,11 @@ package Formularios;
 import static Formularios.frmRegistroProducto.prod;
 import clases.Producto.Producto;
 import controlador.Arreglo_Producto;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -14,28 +19,16 @@ public class frmConsultaProductos extends javax.swing.JFrame {
     private Producto PR;
     private DefaultTableModel model;
     int con;
-    int existe;
+    String indice;
 
     public frmConsultaProductos() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
-        listado();
+        cargarTabla("");
         this.setTitle("Consultar Productos");
         this.setLocationRelativeTo(this);
     }
      
-    public void listado() {
-        DefaultTableModel dt = (DefaultTableModel) tablaProductos.getModel();
-        int filas = dt.getRowCount();
-        for(int i=0;i<filas; i++){
-            dt.removeRow(0);
-        }
-        for (int i = 0; i < frmRegistroProducto.LISTA.size(); i++) {
-            PR= frmRegistroProducto.LISTA.get(i);
-            dt.addRow(new Object[]{PR.getCodigo(),PR.getCategoria(),PR.getNombreP(),PR.getMarca(),PR.getEstado(),PR.getStock(),PR.getCantInicial(),PR.getPrecio()});
-        }
-    }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -46,16 +39,15 @@ public class frmConsultaProductos extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaProductos = new javax.swing.JTable();
-        btnSalir1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TXTAREA = new javax.swing.JTextArea();
         BUTCOD = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        TEXTCOD = new javax.swing.JTextField();
+        txtCodProd = new javax.swing.JTextField();
         RegistrarProd = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JButton();
+        btnSalir1 = new javax.swing.JButton();
+        btnMostrar = new javax.swing.JButton();
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
         jButton5.setText("Guardar");
@@ -68,7 +60,7 @@ public class frmConsultaProductos extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
-        jPanel1.setBackground(new java.awt.Color(172, 219, 222));
+        jPanel1.setBackground(new java.awt.Color(75, 85, 163));
 
         jLabel13.setBackground(new java.awt.Color(0, 0, 0));
         jLabel13.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 24)); // NOI18N
@@ -76,7 +68,7 @@ public class frmConsultaProductos extends javax.swing.JFrame {
         jLabel13.setText("CONSULTAR PRODUCTOS");
 
         tablaProductos.setAutoCreateRowSorter(true);
-        tablaProductos.setBackground(new java.awt.Color(172, 219, 222));
+        tablaProductos.setBackground(new java.awt.Color(75, 85, 163));
         tablaProductos.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
         tablaProductos.setForeground(new java.awt.Color(0, 0, 0));
         tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
@@ -92,28 +84,7 @@ public class frmConsultaProductos extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tablaProductos);
 
-        btnSalir1.setBackground(new java.awt.Color(172, 219, 222));
-        btnSalir1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 15)); // NOI18N
-        btnSalir1.setForeground(new java.awt.Color(0, 0, 0));
-        btnSalir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/home-exit.png"))); // NOI18N
-        btnSalir1.setText("Salir");
-        btnSalir1.setBorder(null);
-        btnSalir1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnSalir1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnSalir1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalir1ActionPerformed(evt);
-            }
-        });
-
-        TXTAREA.setBackground(new java.awt.Color(110, 167, 171));
-        TXTAREA.setColumns(20);
-        TXTAREA.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 15)); // NOI18N
-        TXTAREA.setRows(5);
-        TXTAREA.setBorder(null);
-        jScrollPane1.setViewportView(TXTAREA);
-
-        BUTCOD.setBackground(new java.awt.Color(185, 231, 231));
+        BUTCOD.setBackground(new java.awt.Color(75, 85, 163));
         BUTCOD.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 15)); // NOI18N
         BUTCOD.setForeground(new java.awt.Color(0, 0, 0));
         BUTCOD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buscar_15px.png"))); // NOI18N
@@ -133,16 +104,16 @@ public class frmConsultaProductos extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Ingrese Codigo:");
 
-        TEXTCOD.setBackground(new java.awt.Color(135, 185, 188));
-        TEXTCOD.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 15)); // NOI18N
-        TEXTCOD.setBorder(null);
-        TEXTCOD.addActionListener(new java.awt.event.ActionListener() {
+        txtCodProd.setBackground(new java.awt.Color(60, 66, 119));
+        txtCodProd.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 15)); // NOI18N
+        txtCodProd.setBorder(null);
+        txtCodProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TEXTCODActionPerformed(evt);
+                txtCodProdActionPerformed(evt);
             }
         });
 
-        RegistrarProd.setBackground(new java.awt.Color(172, 219, 222));
+        RegistrarProd.setBackground(new java.awt.Color(75, 85, 163));
         RegistrarProd.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         RegistrarProd.setForeground(new java.awt.Color(0, 0, 0));
         RegistrarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/registro.png"))); // NOI18N
@@ -171,28 +142,36 @@ public class frmConsultaProductos extends javax.swing.JFrame {
             }
         });
 
+        btnSalir1.setBackground(new java.awt.Color(75, 85, 163));
+        btnSalir1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 15)); // NOI18N
+        btnSalir1.setForeground(new java.awt.Color(0, 0, 0));
+        btnSalir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/home-exit.png"))); // NOI18N
+        btnSalir1.setText("Salir");
+        btnSalir1.setBorder(null);
+        btnSalir1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSalir1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnSalir1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalir1ActionPerformed(evt);
+            }
+        });
+
+        btnMostrar.setBackground(new java.awt.Color(75, 85, 163));
+        btnMostrar.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 15)); // NOI18N
+        btnMostrar.setForeground(new java.awt.Color(0, 0, 0));
+        btnMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buscar_15px.png"))); // NOI18N
+        btnMostrar.setText("MOSTRAR TODOS");
+        btnMostrar.setBorder(null);
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(BUTCOD, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-                            .addComponent(TEXTCOD)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(56, 56, 56)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnSalir1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(RegistrarProd, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 866, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(105, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,6 +181,27 @@ public class frmConsultaProductos extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel15)
                         .addGap(309, 309, 309))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtCodProd, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BUTCOD, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(btnMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(201, 201, 201)
+                .addComponent(RegistrarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSalir1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(93, 93, 93))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 991, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,26 +210,30 @@ public class frmConsultaProductos extends javax.swing.JFrame {
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(36, 36, 36)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(RegistrarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSalir1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(56, 56, 56)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnSalir1)
+                                    .addComponent(RegistrarProd, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCodProd, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TEXTCOD, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(BUTCOD, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(btnEliminar)))
-                .addContainerGap(64, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BUTCOD, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(77, 77, 77))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -246,7 +250,7 @@ public class frmConsultaProductos extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -266,32 +270,85 @@ public class frmConsultaProductos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    public void cargarTabla(String valor){
+            String[]  titulo={"codProducto", "Categoria", "Nombre","Marca", "Estado", "RUT Proveedor", "Stock","Cantidad Inicial", "Precio Unitario"};
+            String[]  filas= new String[9];
 
+            model= new DefaultTableModel(null, titulo);
+
+            try{
+                //creando la conección a la BD
+                Connection conectar= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+                //crear la consulta
+                Statement declarar= conectar.createStatement();
+
+                String xsql= "SELECT codProducto , c.nombreCat , p.nombre , m.nombreMar , p.estado , p.rut_proveedor , p.stock , p.cantInicial , p.precioUnit FROM producto p INNER JOIN categoria c on p.codCategoria = c.codCategoria INNER JOIN marca m on p.codMarca = m.codMarca";
+                //Crear la tabla
+                ResultSet ejecutar= declarar.executeQuery(xsql);
+                while(ejecutar.next()){
+                    filas[0]= ejecutar.getString("codProducto");
+                    filas[1]= ejecutar.getString("c.nombreCat");
+                    filas[2]= ejecutar.getString("p.nombre");
+                    filas[3]= ejecutar.getString("m.nombreMar");
+                    filas[4]= ejecutar.getString("p.estado");                
+                    filas[5]= ejecutar.getString("p.rut_proveedor");                
+                    filas[6]= ejecutar.getString("p.stock");
+                    filas[7]= ejecutar.getString("p.cantInicial");          
+                    filas[8]= ejecutar.getString("p.precioUnit");          
+     
+                    model.addRow(filas);
+                }
+                tablaProductos.setModel(model);
+
+            }catch(Exception e){
+                    System.out.println("Error.... No hay conección");
+                    e.printStackTrace();
+            }
+
+        }
     private void btnSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir1ActionPerformed
 
         this.setVisible(false);
     }//GEN-LAST:event_btnSalir1ActionPerformed
 
-    private void TEXTCODActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TEXTCODActionPerformed
+    private void txtCodProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodProdActionPerformed
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_TEXTCODActionPerformed
+    }//GEN-LAST:event_txtCodProdActionPerformed
 
     private void BUTCODActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BUTCODActionPerformed
+        String[]  titulo={"codProducto", "Categoria", "Nombre","Marca", "Estado", "RUT Proveedor", "Stock","Cantidad Inicial", "Precio Unitario"};
+            String[]  filas= new String[9];
 
-//      existe = frmRegistroProducto.LISTA.busca(TEXTCOD.getText());
-//
-//        if (existe == -1) {
-//            JOptionPane.showMessageDialog(null, "NO EXISTE PRODUCTO");
-//            return;
-//        }
-//
-//        Producto PR = frmRegistroProducto.LISTA.get(existe);
-//        TXTAREA.setText("codigo : " + PR.getCodigo());
-//        TXTAREA.append("\nEstado : " + PR.getEstado());
-//        TXTAREA.append("\nCantidad stock : " + PR.getStock());
-//        TXTAREA.append("\nPrecio : " + PR.getPrecio());
-
+            model= new DefaultTableModel(null, titulo);
+        
+        try{
+            indice = txtCodProd.getText();
+            Connection conectar= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            //crear la consulta
+            String xsql=  "SELECT codProducto , c.nombreCat , p.nombre , m.nombreMar , p.estado , p.rut_proveedor , p.stock , p.cantInicial , p.precioUnit FROM producto p INNER JOIN categoria c on p.codCategoria = c.codCategoria INNER JOIN marca m on p.codMarca = m.codMarca WHERE p.codProducto=? ";
+            PreparedStatement declarar= conectar.prepareStatement(xsql);
+            declarar.setString(1,  indice);
+            //Crear la tabla
+            ResultSet ejecutar= declarar.executeQuery();
+            while(ejecutar.next()){
+                filas[0]= ejecutar.getString("codProducto");
+                filas[1]= ejecutar.getString("c.nombreCat");
+                filas[2]= ejecutar.getString("p.nombre");
+                filas[3]= ejecutar.getString("m.nombreMar");
+                filas[4]= ejecutar.getString("p.estado");                
+                filas[5]= ejecutar.getString("p.rut_proveedor");                
+                filas[6]= ejecutar.getString("p.stock");
+                filas[7]= ejecutar.getString("p.cantInicial");          
+                filas[8]= ejecutar.getString("p.precioUnit");            
+                model.addRow(filas);
+            }
+            tablaProductos.setModel(model);
+        
+        }catch(Exception e){
+                System.out.println("Error.... No hay conección");
+                e.printStackTrace();
+        }
     }//GEN-LAST:event_BUTCODActionPerformed
 
     private void RegistrarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarProdActionPerformed
@@ -301,48 +358,33 @@ public class frmConsultaProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_RegistrarProdActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-      if(TEXTCOD.getText().trim().isEmpty()){
-          JOptionPane.showMessageDialog(null,"EL CAMPO ESTA VACIO");
-          TEXTCOD.setText("");
-          TEXTCOD.requestFocus();
-        }else{
-            String codP = TEXTCOD.getText();
-           existe = comprobarCod(codP);
-
-          if(existe== -1){
-              JOptionPane.showMessageDialog(null,"no existe el codigo");
-              TEXTCOD.setText("");
-              TEXTCOD.setText("");
-          }else{
-              frmRegistroProducto.LISTA.remove(existe);
-              JOptionPane.showMessageDialog(null,"REGISTRO ELIMINADO");
-               TEXTCOD.setText("");
-               TEXTCOD.requestFocus();
-               listardatos();
-        }
-      }
+//      if(TEXTCOD.getText().trim().isEmpty()){
+//          JOptionPane.showMessageDialog(null,"EL CAMPO ESTA VACIO");
+//          TEXTCOD.setText("");
+//          TEXTCOD.requestFocus();
+//        }else{
+//            String codP = TEXTCOD.getText();
+//           existe = comprobarCod(codP);
+//
+//          if(existe== -1){
+//              JOptionPane.showMessageDialog(null,"no existe el codigo");
+//              TEXTCOD.setText("");
+//              TEXTCOD.setText("");
+//          }else{
+//              frmRegistroProducto.LISTA.remove(existe);
+//              JOptionPane.showMessageDialog(null,"REGISTRO ELIMINADO");
+//               TEXTCOD.setText("");
+//               TEXTCOD.requestFocus();
+//               listardatos();
+//        }
+//      }
           
     }//GEN-LAST:event_btnEliminarActionPerformed
-      public int comprobarCod(String codP){
-        for(int i = 0; i < frmRegistroProducto.LISTA.size(); i++){
-          PR= frmRegistroProducto.LISTA.get(i);
-          if(codP.equalsIgnoreCase(PR.getCodigo())){
-              return i;
-          }
-        }
-        return -1;
-    }
-    private void listardatos(){
-          model =(DefaultTableModel)tablaProductos.getModel();
-           int filas = model.getRowCount();
-        for(int i=0;i<filas; i++){
-            model.removeRow(0);
-        }
-        for (int i = 0; i < frmRegistroProducto.LISTA.size(); i++) {
-            PR= frmRegistroProducto.LISTA.get(i);
-            model.addRow(new Object[]{PR.getCodigo(),PR.getNombreP(),PR.getMarca(),PR.getEstado(),PR.getStock(),PR.getCantInicial(),PR.getPrecio()});
-        }
-    }
+
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+        cargarTabla("");
+    }//GEN-LAST:event_btnMostrarActionPerformed
+   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -379,9 +421,8 @@ public class frmConsultaProductos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BUTCOD;
     private javax.swing.JButton RegistrarProd;
-    private javax.swing.JTextField TEXTCOD;
-    private javax.swing.JTextArea TXTAREA;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnMostrar;
     private javax.swing.JButton btnSalir1;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
@@ -390,9 +431,9 @@ public class frmConsultaProductos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tablaProductos;
+    private javax.swing.JTextField txtCodProd;
     // End of variables declaration//GEN-END:variables
 
     private int comprobarCodigo(String codP) {

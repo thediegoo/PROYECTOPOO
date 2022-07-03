@@ -77,10 +77,10 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(158, 215, 215));
+        jPanel1.setBackground(new java.awt.Color(75, 85, 163));
         jPanel1.setMinimumSize(new java.awt.Dimension(2, 3));
 
-        txtSueldo.setBackground(new java.awt.Color(140, 195, 195));
+        txtSueldo.setBackground(new java.awt.Color(61, 68, 129));
         txtSueldo.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         txtSueldo.setBorder(null);
         txtSueldo.addActionListener(new java.awt.event.ActionListener() {
@@ -89,23 +89,26 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setBackground(new java.awt.Color(204, 204, 204));
         jLabel5.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 17)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("SUELDO");
 
-        txtUsuario.setBackground(new java.awt.Color(140, 195, 195));
+        txtUsuario.setBackground(new java.awt.Color(61, 68, 129));
         txtUsuario.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         txtUsuario.setBorder(null);
 
+        jLabel6.setBackground(new java.awt.Color(204, 204, 204));
         jLabel6.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 17)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setForeground(new java.awt.Color(204, 204, 204));
         jLabel6.setText("USUARIO");
 
+        jLabel10.setBackground(new java.awt.Color(204, 204, 204));
         jLabel10.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 17)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
         jLabel10.setText("DIRECCION");
 
-        txtNombre.setBackground(new java.awt.Color(140, 195, 195));
+        txtNombre.setBackground(new java.awt.Color(61, 68, 129));
         txtNombre.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         txtNombre.setBorder(null);
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -114,23 +117,26 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setBackground(new java.awt.Color(204, 204, 204));
         jLabel7.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 17)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setForeground(new java.awt.Color(204, 204, 204));
         jLabel7.setText("FECHA DE INGRESO");
 
+        jLabel2.setBackground(new java.awt.Color(204, 204, 204));
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 17)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("NOMBRE");
 
-        txtDireccion.setBackground(new java.awt.Color(140, 195, 195));
+        txtDireccion.setBackground(new java.awt.Color(61, 68, 129));
         txtDireccion.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         txtDireccion.setBorder(null);
 
+        jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 17)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("ID EMPLEADO");
 
-        btnGuardarEmpleado.setBackground(new java.awt.Color(240, 129, 129));
+        btnGuardarEmpleado.setBackground(new java.awt.Color(75, 85, 163));
         btnGuardarEmpleado.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 14)); // NOI18N
         btnGuardarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
@@ -144,15 +150,17 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setBackground(new java.awt.Color(204, 204, 204));
         jLabel9.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 17)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setForeground(new java.awt.Color(204, 204, 204));
         jLabel9.setText("TELEFONO");
 
+        jLabel3.setBackground(new java.awt.Color(204, 204, 204));
         jLabel3.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 17)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("APELLIDOS");
 
-        txtTelefono.setBackground(new java.awt.Color(140, 195, 195));
+        txtTelefono.setBackground(new java.awt.Color(61, 68, 129));
         txtTelefono.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         txtTelefono.setBorder(null);
         txtTelefono.addActionListener(new java.awt.event.ActionListener() {
@@ -161,7 +169,7 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
             }
         });
 
-        txtApellidos.setBackground(new java.awt.Color(140, 195, 195));
+        txtApellidos.setBackground(new java.awt.Color(61, 68, 129));
         txtApellidos.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         txtApellidos.setBorder(null);
         txtApellidos.addActionListener(new java.awt.event.ActionListener() {
@@ -170,7 +178,7 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
             }
         });
 
-        btnSalir2.setBackground(new java.awt.Color(240, 129, 129));
+        btnSalir2.setBackground(new java.awt.Color(75, 85, 163));
         btnSalir2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 14)); // NOI18N
         btnSalir2.setForeground(new java.awt.Color(255, 255, 255));
         btnSalir2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/home-exit.png"))); // NOI18N
@@ -184,13 +192,16 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
             }
         });
 
+        jLabel11.setBackground(new java.awt.Color(204, 204, 204));
         jLabel11.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 24)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setForeground(new java.awt.Color(204, 204, 204));
         jLabel11.setText("DATOS DEL EMPLEADO ");
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fd.png"))); // NOI18N
 
-        txtIdAdmi.setBackground(new java.awt.Color(140, 195, 195));
+        txtFechaIngreso.setBackground(new java.awt.Color(61, 68, 129));
+
+        txtIdAdmi.setBackground(new java.awt.Color(61, 68, 129));
         txtIdAdmi.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         txtIdAdmi.setBorder(null);
         txtIdAdmi.addActionListener(new java.awt.event.ActionListener() {
@@ -199,11 +210,12 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setBackground(new java.awt.Color(204, 204, 204));
         jLabel8.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 17)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
         jLabel8.setText("PASSWORD");
 
-        txtPass.setBackground(new java.awt.Color(140, 195, 195));
+        txtPass.setBackground(new java.awt.Color(61, 68, 129));
         txtPass.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
         txtPass.setBorder(null);
 

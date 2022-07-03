@@ -9,10 +9,10 @@ import javax.swing.table.DefaultTableModel;
 
 public class Arreglo_Producto implements Serializable{
     
-     public static String categoria1 = "Periferico de Entrada";
-     public static String proveedor1 = "PR1";
-     public static String categoria2 = "Periferico de Salida";
-     public static String proveedor2 = "PR2";
+//     public static String categoria1 = "Periferico de Entrada";
+//     public static String proveedor1 = "PR1";
+//     public static String categoria2 = "Periferico de Salida";
+//     public static String proveedor2 = "PR2";
      
     public ArrayList<Producto> LISTA = new ArrayList <Producto>();
     public Producto PR;
