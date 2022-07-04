@@ -42,4 +42,26 @@ public abstract class Persona {
     public String getDireccion() {
         return direccion;
     }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
+    }
+
+    public void setTelf(int telf) {
+        this.telf = telf;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+    
+    
 }

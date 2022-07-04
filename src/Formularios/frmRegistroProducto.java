@@ -512,7 +512,6 @@ public class frmRegistroProducto extends javax.swing.JFrame {
         
        JOptionPane.showMessageDialog(null,"Producto registrado con exito");
 
-       
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void cboCodMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCodMarcaActionPerformed

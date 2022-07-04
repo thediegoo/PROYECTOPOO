@@ -10,59 +10,68 @@ public class Factura {
     private Empleado vendedor;
     private Cliente cliente;
     private double total;
-    private String regalo;
-    private static int cantidadregistros = 0;
+    
+    public Factura() {
+    }
 
-    public Factura(String codigo, String fecha, Empleado vendedor, Cliente cliente, double total, String regalo) {
+    public Factura(String codigo, String fecha, Empleado vendedor, Cliente cliente, double total) {
         this.codigo = codigo;
         this.fecha = fecha;
         this.vendedor = vendedor;
         this.cliente = cliente;
         this.total = total;
-        this.regalo = regalo;
-        cantidadregistros++;
     }
-
-    public String imprimir() {
-        String mensaje = "Codigo :" + codigo + "/nFecha :" + fecha + "/nEmpleado: " + vendedor + "/nCliente :" + cliente + "/nRegalo: " + regalo + "/nTotal :" + total;
-        return mensaje;
+    
+    public double descuento(){
+        double desc=0;
+        if( total>500) desc=total*0.05;
+        return desc;
     }
-
-    public Factura() {
-        cantidadregistros++;
-    }
-
-    public String getRegalo() {
-        return regalo;
+    
+    public double totalFinal(){
+        return total+descuento();
     }
 
     public String getCodigo() {
         return codigo;
     }
 
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
     public String getFecha() {
         return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
     public Empleado getVendedor() {
         return vendedor;
     }
 
+    public void setVendedor(Empleado vendedor) {
+        this.vendedor = vendedor;
+    }
+
     public Cliente getCliente() {
         return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public double getTotal() {
         return total;
     }
 
-    public String generarSerie() {
-        return "FA001";
+    public void setTotal(double total) {
+        this.total = total;
     }
 
-    public String generarCorrelativo() {
-        return String.format("%08d", cantidadregistros);
-
-    }
+    
 
 }
