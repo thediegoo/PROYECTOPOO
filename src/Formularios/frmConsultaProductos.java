@@ -1,21 +1,23 @@
 package Formularios;
 
 import static Formularios.frmRegistroProducto.prod;
+import ModelFactura.EmpleadoDAO;
+import clases.Persona.Empleado;
 import clases.Producto.Producto;
-import controlador.Arreglo_Producto;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class frmConsultaProductos extends javax.swing.JFrame {
 
-    
+    Empleado emp = new Empleado();    
+    EmpleadoDAO empleado=new EmpleadoDAO();
+
     private Producto PR;
     private DefaultTableModel model;
     int con;
@@ -25,6 +27,7 @@ public class frmConsultaProductos extends javax.swing.JFrame {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
         cargarTabla("");
+        
         this.setTitle("Consultar Productos");
         this.setLocationRelativeTo(this);
     }
@@ -270,6 +273,7 @@ public class frmConsultaProductos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
     public void cargarTabla(String valor){
             String[]  titulo={"codProducto", "Categoria", "Nombre","Marca", "Estado", "RUT Proveedor", "Stock","Cantidad Inicial", "Precio Unitario"};
             String[]  filas= new String[9];

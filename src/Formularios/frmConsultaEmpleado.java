@@ -1,66 +1,43 @@
 package Formularios;
 
+import ModelFactura.EmpleadoDAO;
 import clases.Persona.Empleado;
-import controlador.Arreglo_Empleado;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class frmConsultaEmpleado extends javax.swing.JFrame {
     
-    Arreglo_Empleado ar = new Arreglo_Empleado();
-    private Empleado EM;
-    private DefaultTableModel model;
+    Empleado emp = new Empleado();  
+    EmpleadoDAO empleado=new EmpleadoDAO();
+    DefaultTableModel model = new DefaultTableModel();
     int con;
     int indice;
 
     public frmConsultaEmpleado() {
-        initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
-        cargarTabla("");  
+        initComponents(); 
         this.setTitle("Consultar empleados");
         this.setLocationRelativeTo(this);
+        listarEmpleado();
     }
-    public void cargarTabla(String valor){
-        String[]  titulo={"Id  admi", "Nombres", "Apellidos","Telefono", "Direccion", "Fecha Entrada", "Sueldo"};
-        String[]  filas= new String[7];
-        
-        model= new DefaultTableModel(null, titulo);
-        
-        try{
-            //creando la conección a la BD
-            Connection conectar= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
-            //crear la consulta
-            Statement declarar= conectar.createStatement();
-            
-            String xsql= "SELECT * FROM empleado";
-            
-            //Crear la tabla
-            ResultSet ejecutar= declarar.executeQuery(xsql);
-            while(ejecutar.next()){
-                filas[0]= ejecutar.getString("id_admi");
-                filas[1]= ejecutar.getString("nombre");
-                filas[2]= ejecutar.getString("apellido");
-                filas[3]= ejecutar.getString("telf");
-                filas[4]= ejecutar.getString("direccion");                
-                filas[5]= ejecutar.getString("fechaEntrada");                
-                filas[6]= ejecutar.getString("sueldo");          
-                model.addRow(filas);
-            }
-            tablaEmpleado.setModel(model);
-        
-        }catch(Exception e){
-                System.out.println("Error.... No hay conección");
-                e.printStackTrace();
+     public void listarEmpleado(){
+        List<Empleado> lista=empleado.ListarEmpleado();
+        model=(DefaultTableModel) tablaEmpleado.getModel();
+        Object[] obj=new Object[7];
+        for(int i=0;  i<lista.size(); i++){
+            obj[0] = lista.get(i).getDni();
+            obj[1] = lista.get(i).getNombre();
+            obj[2] = lista.get(i).getApellido();
+            obj[3] = lista.get(i).getTelf();
+            obj[4] = lista.get(i).getDireccion();
+            obj[5] = lista.get(i).getFechaIngreso();
+            obj[6] = lista.get(i).getSueldo();
+            model.addRow(obj);
         }
-        
-    }
+        tablaEmpleado.setModel(model);
+     }
+     
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -80,7 +57,6 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
         RegistrarEmpleado = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JButton();
-        btnMostrar = new javax.swing.JButton();
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/guardar.png"))); // NOI18N
         jButton5.setText("Guardar");
@@ -114,13 +90,10 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
         tablaEmpleado.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 16)); // NOI18N
         tablaEmpleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Nombres", "Apellidos", "DNI", "Telefono", "Direccion", "Sueldo", "Fecha Ingreso"
+                "DNI", "Nombre", "Apellido", "Telefono", "Direccion", "Sueldo", "Fecha Ingreso"
             }
         ));
         jScrollPane2.setViewportView(tablaEmpleado);
@@ -188,18 +161,6 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
             }
         });
 
-        btnMostrar.setBackground(new java.awt.Color(75, 85, 163));
-        btnMostrar.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
-        btnMostrar.setForeground(new java.awt.Color(0, 0, 0));
-        btnMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buscar_15px.png"))); // NOI18N
-        btnMostrar.setText("MOSTRAR COMPLETO");
-        btnMostrar.setBorder(null);
-        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMostrarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -217,8 +178,6 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(47, 47, 47)
                                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -243,20 +202,18 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(RegistrarEmpleado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TXTEM, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(btnMostrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(RegistrarEmpleado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(TXTEM, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(52, 52, 52))
         );
 
@@ -298,38 +255,39 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        //buscarEmpleado(indice);
+       // buscarEmpleado(indice);
+       
         
-        String[]  titulo={"Id  admi", "Nombres", "Apellidos","Telefono", "Direccion", "Fecha Entrada", "Sueldo"};
-        String[]  filas= new String[7];
-        
-        model= new DefaultTableModel(null, titulo);
-        
-        try{
-            indice = Integer.parseInt(TXTEM.getText());
-            Connection conectar= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
-            //crear la consulta
-            String xsql= "SELECT * FROM empleado where id_admi=?";
-            PreparedStatement declarar= conectar.prepareStatement(xsql);
-            declarar.setInt(1,  indice);
-            //Crear la tabla
-            ResultSet ejecutar= declarar.executeQuery();
-            while(ejecutar.next()){
-                filas[0]= ejecutar.getString("id_admi");
-                filas[1]= ejecutar.getString("nombre");
-                filas[2]= ejecutar.getString("apellido");
-                filas[3]= ejecutar.getString("telf");
-                filas[4]= ejecutar.getString("direccion");                
-                filas[5]= ejecutar.getString("fechaEntrada");                
-                filas[6]= ejecutar.getString("sueldo");          
-                model.addRow(filas);
-            }
-            tablaEmpleado.setModel(model);
-        
-        }catch(Exception e){
-                System.out.println("Error.... No hay conección");
-                e.printStackTrace();
-        }
+//        String[]  titulo={"Id  admi", "Nombres", "Apellidos","Telefono", "Direccion", "Fecha Entrada", "Sueldo"};
+//        String[]  filas= new String[7];
+//        
+//        model= new DefaultTableModel(null, titulo);
+//        
+//        try{
+//            indice = Integer.parseInt(TXTEM.getText());
+//            Connection conectar= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+//            //crear la consulta
+//            String xsql= "SELECT * FROM empleado where id_admi=?";
+//            PreparedStatement declarar= conectar.prepareStatement(xsql);
+//            declarar.setInt(1,  indice);
+//            //Crear la tabla
+//            ResultSet ejecutar= declarar.executeQuery();
+//            while(ejecutar.next()){
+//                filas[0]= ejecutar.getString("id_admi");
+//                filas[1]= ejecutar.getString("nombre");
+//                filas[2]= ejecutar.getString("apellido");
+//                filas[3]= ejecutar.getString("telf");
+//                filas[4]= ejecutar.getString("direccion");                
+//                filas[5]= ejecutar.getString("fechaEntrada");                
+//                filas[6]= ejecutar.getString("sueldo");          
+//                model.addRow(filas);
+//            }
+//            tablaEmpleado.setModel(model);
+//        
+//        }catch(Exception e){
+//                System.out.println("Error.... No hay conección");
+//                e.printStackTrace();
+//        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void TXTEMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTEMActionPerformed
@@ -343,26 +301,16 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_RegistrarEmpleadoActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        try{
-            indice = Integer.parseInt(TXTEM.getText());
-            Connection conectar= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
-            //crear la consulta
-            String xsql= "DELETE empleado, usuarioadmi from empleado INNER JOIN usuarioadmi ON empleado.id_admi=usuarioadmi.id_admi WHERE empleado.id_admi=?";
-            PreparedStatement declarar = conectar.prepareStatement(xsql);
-            //Crear la tabla
-//            ResultSet ejecutar= declarar.executeQuery();
-            declarar.setInt(1,  indice);
-            declarar.executeUpdate();
-           // new frmConsultaEmpleado().setVisible(true);
-        }catch(SQLException e){
-                System.out.println("Error.... No hay conección");
-                e.printStackTrace();
+        if(!"".equals(TXTEM.getText())){
+            int pregunta = JOptionPane.showConfirmDialog(null,"¿Desea eliminar al empleado?");
+            if(pregunta == 0){
+                int id = Integer.parseInt(TXTEM.getText());
+                empleado.EliminarEmpleado(id);
+                this.setVisible(false);
+          }
         }
+  
     }//GEN-LAST:event_btnEliminarActionPerformed
-
-    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
-        cargarTabla("");
-    }//GEN-LAST:event_btnMostrarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -401,7 +349,6 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
     private javax.swing.JTextField TXTEM;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnMostrar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;

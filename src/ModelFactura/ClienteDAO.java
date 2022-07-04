@@ -20,14 +20,15 @@ public class ClienteDAO {
         
         try {
             Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
-            String sql= "insert into cliente(id_cliente, nombre, apellido, telf, tipoCliente, direccion) values (?,?,?,?,?,?)";
+            String sql= "insert into cliente(id_cliente,tipoDoc, nombre, apellido, telf, tipoCliente, direccion) values (?,?,?,?,?,?,?)";
             ps=conexion.prepareStatement(sql);
-            ps.setInt(1, cl.getDni());
-            ps.setString(2, cl.getNombre());
-            ps.setString(3, cl.getApellido());
-            ps.setInt(4, cl.getTelf());
-            ps.setString(5, cl.getTipoCliente());
-            ps.setString(6, cl.getDireccion());
+            ps.setInt(1, cl.getDni());            
+            ps.setString(2, cl.getTipoDoc());
+            ps.setString(3, cl.getNombre());
+            ps.setString(4, cl.getApellido());
+            ps.setInt(5, cl.getTelf());
+            ps.setString(6, cl.getTipoCliente());
+            ps.setString(7, cl.getDireccion());
             ps.execute();
             return true;
         } catch (Exception e) {
@@ -46,6 +47,7 @@ public class ClienteDAO {
             while(rs.next()){
                 Cliente cl = new Cliente();
                 cl.setDni(rs.getInt("id_cliente"));
+                cl.setTipoDoc(rs.getString("tipoDoc"));
                 cl.setNombre(rs.getString("nombre"));
                 cl.setApellido(rs.getString("apellido"));
                 cl.setTelf(rs.getInt("telf"));
@@ -57,7 +59,7 @@ public class ClienteDAO {
             System.out.println("Error"+e);
         }
         return lista;
-}
+    }
     
     public boolean EliminarCliente(int id){
         try {

@@ -39,6 +39,7 @@ public class frmMenu extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         BtnEmpleado = new javax.swing.JButton();
         BtnProducto = new javax.swing.JButton();
+        BtnCliente = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         panelPrincipal = new javax.swing.JPanel();
         panelConsultas = new javax.swing.JPanel();
@@ -168,6 +169,20 @@ public class frmMenu extends javax.swing.JFrame {
             }
         });
 
+        BtnCliente.setBackground(new java.awt.Color(172, 219, 222));
+        BtnCliente.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
+        BtnCliente.setForeground(new java.awt.Color(0, 0, 0));
+        BtnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addproducto.png"))); // NOI18N
+        BtnCliente.setText("Cliente");
+        BtnCliente.setBorder(null);
+        BtnCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BtnCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        BtnCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnClienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelRegistroLayout = new javax.swing.GroupLayout(panelRegistro);
         panelRegistro.setLayout(panelRegistroLayout);
         panelRegistroLayout.setHorizontalGroup(
@@ -175,10 +190,12 @@ public class frmMenu extends javax.swing.JFrame {
             .addGroup(panelRegistroLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BtnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107)
+                .addGap(92, 92, 92)
                 .addComponent(BtnEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(117, 117, 117)
+                .addGap(57, 57, 57)
                 .addComponent(BtnProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addComponent(BtnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelRegistroLayout.setVerticalGroup(
@@ -191,7 +208,8 @@ public class frmMenu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(BtnProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                    .addComponent(BtnEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(BtnEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BtnCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -574,7 +592,7 @@ public class frmMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -681,6 +699,12 @@ public class frmMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_closeMouseClicked
 
+    private void BtnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnClienteActionPerformed
+        frmRegistroCliente fre = new frmRegistroCliente();
+        this.setVisible(true);
+        fre.setVisible(true);
+    }//GEN-LAST:event_BtnClienteActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -715,6 +739,7 @@ public class frmMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCliente;
     private javax.swing.JPanel BtnConsultas;
     private javax.swing.JButton BtnEmC;
     private javax.swing.JButton BtnEmMan;

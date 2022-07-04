@@ -19,8 +19,7 @@ public class EmpleadoDAO {
 
      ResultSet rs;
     
-    public boolean RegistrarEmpleado(Empleado cl, UsuarioAdmi ua){
-        
+    public boolean RegistrarEmpleado(Empleado cl, UsuarioAdmi ua){ 
         try {
             Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
             String sql= "INSERT INTO empleado(id_admi, nombre, apellido, telf, direccion,fechaEntrada, sueldo)"
@@ -52,4 +51,69 @@ public class EmpleadoDAO {
             return false;
         }
     }
+    
+     public List ListarEmpleado(){
+        List<Empleado> lista = new ArrayList();
+        try {
+            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            String sql= "select * from empleado";
+            pe=conexion.prepareStatement(sql);
+            rs=pe.executeQuery();
+            while(rs.next()){
+                Empleado emp = new Empleado();
+                emp.setDni(rs.getInt("id_admi"));
+                emp.setNombre(rs.getString("nombre"));
+                emp.setApellido(rs.getString("apellido"));
+                emp.setTelf(rs.getInt("telf"));
+                emp.setDireccion(rs.getString("direccion"));
+                emp.setFechaIngreso(rs.getString("fechaEntrada"));
+                emp.setSueldo(rs.getDouble("sueldo"));
+                lista.add(emp);
+            }
+        } catch (Exception e) {
+            System.out.println("Error"+e);
+        }
+        return lista;
+    }
+     
+       public boolean EliminarEmpleado(int id){
+        try {
+            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            String sql= "DELETE empleado, usuarioadmi from empleado INNER JOIN usuarioadmi ON empleado.id_admi=usuarioadmi.id_admi WHERE empleado.id_admi=?";
+            pe=conexion.prepareStatement(sql); 
+            pe.setInt(1, id);
+            pe.execute();
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error"+e);
+            return false;
+        }
+    }
+       public List BuscarEmpleado(int id){
+        List<Empleado> lista = new ArrayList();
+        try {
+            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            String sql= "select * from empleado where id_admi=?";
+            pe=conexion.prepareStatement(sql);
+            pe.setInt(1, id);
+            rs=pe.executeQuery();
+            while(rs.next()){
+                Empleado emp = new Empleado();
+                emp.setDni(rs.getInt("id_admi"));
+                emp.setNombre(rs.getString("nombre"));
+                emp.setApellido(rs.getString("apellido"));
+                emp.setTelf(rs.getInt("telf"));
+                emp.setDireccion(rs.getString("direccion"));
+                emp.setFechaIngreso(rs.getString("fechaEntrada"));
+                emp.setSueldo(rs.getDouble("sueldo"));
+                lista.clear();                
+                lista.add(emp);
+
+            }
+        } catch (Exception e) {
+            System.out.println("Error"+e);
+        }
+        return lista;
+    }
+    
 }
