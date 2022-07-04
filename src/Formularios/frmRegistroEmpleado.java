@@ -1,6 +1,10 @@
 package Formularios;
 
+import ModelFactura.ClienteDAO;
+import ModelFactura.EmpleadoDAO;
 import clases.Persona.Empleado;
+import clases.Persona.UsuarioAdmi;
+
 import controlador.Arreglo_Empleado;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,21 +17,22 @@ import javax.swing.JOptionPane;
 
 
 public class frmRegistroEmpleado extends javax.swing.JFrame {
-    public static ArrayList<Empleado> LISTAE = new ArrayList <Empleado>();
-    private Empleado EM;
-    public static Arreglo_Empleado emp = new Arreglo_Empleado();
+    Empleado emp = new Empleado();    
+    UsuarioAdmi ue = new UsuarioAdmi();
+    EmpleadoDAO empleado=new EmpleadoDAO();
 
     public frmRegistroEmpleado() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
         this.setLocationRelativeTo(this);        
         limpiar();
-
     }
-    public void limpiar(){
-         txtNombre.setText("");
+    public void limpiar(){        
+        txtIdAdmi.setText("");
+        txtNombre.setText("");
         txtApellidos.setText("");
-        txtUsuario.setText("");
+        txtUsuario.setText("");       
+        txtPass.setText("");
         txtTelefono.setText("");
         txtDireccion.setText("");
         txtSueldo.setText("");
@@ -224,7 +229,7 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(124, Short.MAX_VALUE)
+                .addContainerGap(127, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel11)
@@ -258,7 +263,7 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
                         .addComponent(txtFechaIngreso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtIdAdmi)
                         .addComponent(txtPass)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(212, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,54 +379,26 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
         int dia= txtFechaIngreso.getCalendar().get(Calendar.DAY_OF_MONTH);
         String fecha= String.valueOf(anio+"-"+mes+"-"+dia);
            
-        try{
-           Connection conex= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+        if(!"".equals(txtIdAdmi.getText()) || !"".equals(txtNombre.getText()) || !"".equals(txtApellidos.getText()) || !"".equals(txtTelefono.getText())  || !"".equals(txtDireccion.getText())  || !"".equals(fecha)  || !"".equals(txtPass.getText()) || !"".equals(txtUsuario.getText()) || !"".equals(txtSueldo.getText()) ){
+            emp.setDni(Integer.parseInt(txtIdAdmi.getText()));
+            emp.setNombre(txtNombre.getText());
+            emp.setApellido(txtApellidos.getText());
+            emp.setTelf(Integer.parseInt(txtTelefono.getText()));
+            emp.setDireccion(txtDireccion.getText());
+            emp.setFechaIngreso(fecha);
+            emp.setSueldo(Double.parseDouble(txtSueldo.getText()));
             
-            String xsql= "INSERT INTO empleado(id_admi, nombre, apellido, telf, direccion,fechaEntrada, sueldo)"
-                    + "VALUES(?, ?, ?, ?, ?,?,?)";
-            PreparedStatement prep= conex.prepareStatement(xsql);
-            String xsql2= "INSERT INTO usuarioadmi(usuario, password, id_admi)"
-                    + "VALUES(?, ?, ?)";
-            PreparedStatement prep2= conex.prepareStatement(xsql2);
-            prep.setString(1, txtIdAdmi.getText());
-            prep.setString(2, txtNombre.getText());
-            prep.setString(3, txtApellidos.getText());
-            prep.setInt(4, Integer.parseInt(txtTelefono.getText()));
-            prep.setString(5, txtDireccion.getText());           
-            prep.setString(6, fecha);
-            prep.setDouble(7, Double.parseDouble(txtSueldo.getText()));
             
-            prep2.setString(1, txtUsuario.getText());
-            prep2.setString(2, txtPass.getText());
-            prep2.setString(3, txtIdAdmi.getText());
-            
-            prep.executeUpdate();            
-            prep2.executeUpdate();
+            ue.setUsuario(txtUsuario.getText());                        
+            ue.setPassword(txtPass.getText());            
+            ue.setId_admi(Integer.parseInt(txtIdAdmi.getText()));
 
+            empleado.RegistrarEmpleado(emp,ue);
+            JOptionPane.showMessageDialog(null,"Registro Exitoso!");
             limpiar();
-            
-        }catch(SQLException e){
-            System.out.println("Error ......No hay conección");
-            e.printStackTrace();
-        }
-        
-        
-        
-//        
-//        int dni = Integer.parseInt(txtDNI.getText());
-//        String nombre = txtNombre.getText();
-//        String apellido = txtApellidos.getText();
-//        int tel = Integer.parseInt(txtTelefono.getText());
-//        String direccion = txtDireccion.getText();
-//        String fecha = txtFechaIngreso.getText();
-//        Double sueldo = Double.parseDouble(txtSueldo.getText());
-
-//        EM = new Empleado(nombre, apellido, dni, tel, direccion, sueldo, fecha);
-//        LISTAE.add(EM);
-       JOptionPane.showMessageDialog(null,"Empleado registrado con exito");
-
-       
-
+        }else{
+            JOptionPane.showMessageDialog(null,"LOS CAMPOS NO PUEDEN ESTAR VACIOS");
+        } 
     }//GEN-LAST:event_btnGuardarEmpleadoActionPerformed
 
     private void txtIdAdmiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdAdmiActionPerformed

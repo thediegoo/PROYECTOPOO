@@ -19,10 +19,10 @@ public class frmEditarEmpleado extends javax.swing.JFrame {
     }
 
     public void llenarCBxEmpleado() {
-        for (int i = 0; i < frmRegistroEmpleado.LISTAE.size(); i++) {
-            Empleado x = frmRegistroEmpleado.LISTAE.get(i);
-            cboEmpleado.addItem(x.getNombre() + " " + x.getApellido());
-        }
+//        for (int i = 0; i < frmRegistroEmpleado.LISTAE.size(); i++) {
+//            Empleado x = frmRegistroEmpleado.LISTAE.get(i);
+//            cboEmpleado.addItem(x.getNombre() + " " + x.getApellido());
+//        }
     }
 
     /**
@@ -345,18 +345,18 @@ public class frmEditarEmpleado extends javax.swing.JFrame {
 
     private void cboEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboEmpleadoActionPerformed
 
-        for (int i = 0; i < frmRegistroEmpleado.LISTAE.size(); i++) {
-            Empleado x = frmRegistroEmpleado.LISTAE.get(i);
-            if (cboEmpleado.getSelectedIndex() == i) {
-                txtNombre.setText(x.getNombre());
-                txtApellido.setText(x.getApellido());
-                txtDNI.setText(Integer.toString(x.getDni()));
-                txtTelefono.setText(Integer.toString(x.getTelf()));
-                txtDireccion.setText(x.getDireccion());
-                txtSueldo.setText(Double.toString(x.getSueldo()));
-                txtFechaIngreso.setText(x.getFechaIngreso());
-            }
-        }
+//        for (int i = 0; i < frmRegistroEmpleado.LISTAE.size(); i++) {
+//            Empleado x = frmRegistroEmpleado.LISTAE.get(i);
+//            if (cboEmpleado.getSelectedIndex() == i) {
+//                txtNombre.setText(x.getNombre());
+//                txtApellido.setText(x.getApellido());
+//                txtDNI.setText(Integer.toString(x.getDni()));
+//                txtTelefono.setText(Integer.toString(x.getTelf()));
+//                txtDireccion.setText(x.getDireccion());
+//                txtSueldo.setText(Double.toString(x.getSueldo()));
+//                txtFechaIngreso.setText(x.getFechaIngreso());
+//            }
+//        }
 
     }//GEN-LAST:event_cboEmpleadoActionPerformed
 
