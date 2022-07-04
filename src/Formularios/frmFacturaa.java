@@ -1,8 +1,8 @@
 
 package Formularios;
 
-import ModelFactura.ClienteDAO;
-import ModelFactura.ProductoDAO;
+import dao.ClienteDAO;
+import dao.ProductoDAO;
 import clases.Persona.Cliente;
 import javax.swing.ImageIcon;
 import clases.Producto.Producto;

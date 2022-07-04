@@ -1,7 +1,7 @@
 package Formularios;
 
-import ModelFactura.ClienteDAO;
-import ModelFactura.EmpleadoDAO;
+import dao.ClienteDAO;
+import dao.EmpleadoDAO;
 import clases.Persona.Empleado;
 import clases.Persona.UsuarioAdmi;
 

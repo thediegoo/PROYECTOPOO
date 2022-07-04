@@ -8,20 +8,20 @@ public class frmEditarProducto extends javax.swing.JFrame {
 
     Arreglo_Empleado ae = new Arreglo_Empleado();
 
-    public frmEditarProducto() {
-        initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
-        this.setLocationRelativeTo(this);
-        this.setTitle("Editar Producto");
-        llenarCBxProducto();
-    }
+//    public frmEditarProducto() {
+//        initComponents();
+//        setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
+//        this.setLocationRelativeTo(this);
+//        this.setTitle("Editar Producto");
+//        llenarCBxProducto();
+//    }
 
-    public void llenarCBxProducto() {
-        for (int i = 0; i < frmRegistroProducto.LISTA.size(); i++) {
-            Producto x = frmRegistroProducto.LISTA.get(i);
-            cboProducto.addItem(x.getCodigo() + " / " + x.getNombreP());
-        }
-    }
+//    public void llenarCBxProducto() {
+//        for (int i = 0; i < frmRegistroProducto.LISTA.size(); i++) {
+//            Producto x = frmRegistroProducto.LISTA.get(i);
+//            cboProducto.addItem(x.getCodigo() + " / " + x.getNombreP());
+//        }
+//    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -350,19 +350,19 @@ public class frmEditarProducto extends javax.swing.JFrame {
 
     private void cboProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboProductoActionPerformed
 
-        for (int i = 0; i < frmRegistroProducto.LISTA.size(); i++) {
-            Producto x = frmRegistroProducto.LISTA.get(i);
-            if (cboProducto.getSelectedIndex() == i) {
-                txtCodigo.setText (x.getCodigo());
-                txtCategoria.setText(x.getCategoria());
-                txtNombre.setText(x.getNombreP());
-                txtMarca.setText(x.getMarca());
-                txtEstado.setText(x.getEstado());
-                txtStock.setText(Integer.toString(x.getStock()));
-                txtCantidadInicial.setText(Integer.toString(x.getCantInicial()));
-                txtPrecio.setText(Double.toString(x.getStock()));
-            }
-        }
+//        for (int i = 0; i < frmRegistroProducto.LISTA.size(); i++) {
+//            Producto x = frmRegistroProducto.LISTA.get(i);
+//            if (cboProducto.getSelectedIndex() == i) {
+//                txtCodigo.setText (x.getCodigo());
+//                txtCategoria.setText(x.getCategoria());
+//                txtNombre.setText(x.getNombreP());
+//                txtMarca.setText(x.getMarca());
+//                txtEstado.setText(x.getEstado());
+//                txtStock.setText(Integer.toString(x.getStock()));
+//                txtCantidadInicial.setText(Integer.toString(x.getCantInicial()));
+//                txtPrecio.setText(Double.toString(x.getStock()));
+//            }
+//        }
     }//GEN-LAST:event_cboProductoActionPerformed
 
     private void txtCantidadInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadInicialActionPerformed

@@ -3,17 +3,17 @@ package clases.Persona;
 public class Cliente extends Persona {
 
     private String tipoCliente;    
-    private String tipoDoc;
 
-    public Cliente(){
-        
-    }
-    public Cliente(String tipoCliente, String tipoDoc, String nombre, String apellido, int dni, int telf, String direccion) {
+
+    public Cliente(String tipoCliente, String nombre, String apellido, int dni, int telf, String direccion) {
         super(nombre, apellido, dni, telf, direccion);
         this.tipoCliente = tipoCliente;
-        this.tipoDoc = tipoDoc;
     }
 
+    public Cliente() {
+       
+    }
+    
     public String getTipoCliente() {
         return tipoCliente;
     }
@@ -22,13 +22,6 @@ public class Cliente extends Persona {
         this.tipoCliente = tipoCliente;
     }
 
-    public String getTipoDoc() {
-        return tipoDoc;
-    }
-
-    public void setTipoDoc(String tipoDoc) {
-        this.tipoDoc = tipoDoc;
-    }
 
 
 }

@@ -1,7 +1,7 @@
 package Formularios;
 
 import clases.Producto.Producto;
-import controlador.Arreglo_Producto;
+import dao.ProductoDAO;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,9 +15,8 @@ import javax.swing.table.DefaultTableModel;
 
 public class frmRegistroProducto extends javax.swing.JFrame {
       
-    public static ArrayList<Producto> LISTA = new ArrayList <Producto>();
-    private Producto PR;
-    public static Arreglo_Producto prod = new Arreglo_Producto();
+    Producto pro = new Producto();    
+    ProductoDAO empleado=new ProductoDAO();
 
     public frmRegistroProducto() {
         initComponents();
@@ -484,34 +483,26 @@ public class frmRegistroProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_cboCategoriaActionPerformed
 
     private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_txtPrecioActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        try{
-            Connection conex= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
-            
-            String xsql="{call adicionarProducto(?,?,?,?,?,?,?,?)}";
-            CallableStatement prep=conex.prepareCall(xsql);
-            prep.setString(1, (String) cboCategoria.getSelectedItem());
-            prep.setString(2, txtNombreProducto.getText());
-            prep.setString(3, (String) cboCodMarca.getSelectedItem());
-            prep.setString(4, lblEstado.getText());
-            prep.setInt(5, Integer.parseInt(lblRUTProveedor.getText()));            
-            prep.setInt(6, Integer.parseInt(lblStock.getText()));
-            prep.setInt(7, Integer.parseInt(txtCantInicial.getText()));
-            prep.setDouble(8, Double.parseDouble(txtPrecio.getText()));
-            
-            prep.executeUpdate();     
+         if(!"".equals(txtNombreProducto.getText()) || !"".equals(txtPrecio.getText()) || !"".equals(txtCantInicial.getText())){
+            pro.setCategoria((String) cboCategoria.getSelectedItem());
+            pro.setNombreP(txtNombreProducto.getText());
+            pro.setMarca((String) cboCodMarca.getSelectedItem());
+            pro.setEstado(lblEstado.getText());
+            pro.setIdProveedor(Integer.parseInt(lblRUTProveedor.getText()));
+            pro.setStock(Integer.parseInt(lblStock.getText()));
+            pro.setCantInicial(Integer.parseInt(txtCantInicial.getText()));
+            pro.setPrecio(Double.parseDouble(txtPrecio.getText()));            
+         
+            empleado.RegistrarProducto(pro);
+            JOptionPane.showMessageDialog(null,"Registro Exitoso!");
             limpiar();
-            
-        }catch(SQLException e){
-            System.out.println("Error ......No hay conección");
-            e.printStackTrace();
-        }
-        
-       JOptionPane.showMessageDialog(null,"Producto registrado con exito");
-
+        }else{
+            JOptionPane.showMessageDialog(null,"LOS CAMPOS NO PUEDEN ESTAR VACIOS");
+        } 
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void cboCodMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCodMarcaActionPerformed

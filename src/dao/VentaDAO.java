@@ -1,5 +1,5 @@
 
-package ModelFactura;
+package dao;
 
 
 public class VentaDAO {

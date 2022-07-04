@@ -1,6 +1,6 @@
 package Formularios;
 
-import ModelFactura.EmpleadoDAO;
+import dao.EmpleadoDAO;
 import clases.Persona.Empleado;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -17,7 +17,6 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
 
     public frmConsultaEmpleado() {
         initComponents(); 
-        this.setTitle("Consultar empleados");
         this.setLocationRelativeTo(this);
         listarEmpleado();
     }

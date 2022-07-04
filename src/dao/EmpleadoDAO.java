@@ -1,7 +1,6 @@
 
-package ModelFactura;
+package dao;
 
-import clases.Persona.Cliente;
 import clases.Persona.Empleado;
 import clases.Persona.UsuarioAdmi;
 import java.sql.Connection;

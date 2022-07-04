@@ -1,9 +1,6 @@
 package Formularios;
-
-import static Formularios.frmRegistroProducto.prod;
-import ModelFactura.EmpleadoDAO;
-import clases.Persona.Empleado;
 import clases.Producto.Producto;
+import dao.ProductoDAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,12 +8,13 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class frmConsultaProductos extends javax.swing.JFrame {
 
-    Empleado emp = new Empleado();    
-    EmpleadoDAO empleado=new EmpleadoDAO();
+    Producto emp = new Producto();    
+    ProductoDAO empleado=new ProductoDAO();
 
     private Producto PR;
     private DefaultTableModel model;
@@ -26,11 +24,29 @@ public class frmConsultaProductos extends javax.swing.JFrame {
     public frmConsultaProductos() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
-        cargarTabla("");
-        
         this.setTitle("Consultar Productos");
         this.setLocationRelativeTo(this);
+        listarProducto();
     }
+    public void listarProducto(){
+        List<Producto> lista=empleado.ListarProducto();
+        model=(DefaultTableModel) tablaProductos.getModel();
+        Object[] obj=new Object[9];
+        for(int i=0;  i<lista.size(); i++){
+            obj[0] = lista.get(i).getCodigo();
+            obj[1] = lista.get(i).getNomCat();
+            obj[2] = lista.get(i).getNombreP();
+            obj[3] = lista.get(i).getNomMar();
+            obj[4] = lista.get(i).getEstado();
+            obj[5] = lista.get(i).getIdProveedor();
+            obj[6] = lista.get(i).getStock();
+            obj[7] = lista.get(i).getCantInicial();
+            obj[8] = lista.get(i).getPrecio();    
+            
+            model.addRow(obj);
+        }
+        tablaProductos.setModel(model);
+     }
      
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -71,20 +87,25 @@ public class frmConsultaProductos extends javax.swing.JFrame {
         jLabel13.setText("CONSULTAR PRODUCTOS");
 
         tablaProductos.setAutoCreateRowSorter(true);
-        tablaProductos.setBackground(new java.awt.Color(75, 85, 163));
+        tablaProductos.setBackground(new java.awt.Color(228, 233, 250));
         tablaProductos.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
         tablaProductos.setForeground(new java.awt.Color(0, 0, 0));
         tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Codigo", "Categoria", "Nombre", "Marca", "Estado", "Stock", "Cantidad Inicial", "Precio"
+                "Codigo", "Categoria", "Nombre", "Marca", "Estado", "Rut Proveedor", "Stock", "Cant Inicial", "Precio"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(tablaProductos);
 
         BUTCOD.setBackground(new java.awt.Color(75, 85, 163));
@@ -202,9 +223,9 @@ public class frmConsultaProductos extends javax.swing.JFrame {
                 .addComponent(btnSalir1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(93, 93, 93))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 991, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane2)
+                .addGap(35, 35, 35))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,7 +257,7 @@ public class frmConsultaProductos extends javax.swing.JFrame {
                             .addComponent(BUTCOD, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(77, 77, 77))
+                .addGap(149, 149, 149))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -274,42 +295,6 @@ public class frmConsultaProductos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    public void cargarTabla(String valor){
-            String[]  titulo={"codProducto", "Categoria", "Nombre","Marca", "Estado", "RUT Proveedor", "Stock","Cantidad Inicial", "Precio Unitario"};
-            String[]  filas= new String[9];
-
-            model= new DefaultTableModel(null, titulo);
-
-            try{
-                //creando la conección a la BD
-                Connection conectar= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
-                //crear la consulta
-                Statement declarar= conectar.createStatement();
-
-                String xsql= "SELECT codProducto , c.nombreCat , p.nombre , m.nombreMar , p.estado , p.rut_proveedor , p.stock , p.cantInicial , p.precioUnit FROM producto p INNER JOIN categoria c on p.codCategoria = c.codCategoria INNER JOIN marca m on p.codMarca = m.codMarca";
-                //Crear la tabla
-                ResultSet ejecutar= declarar.executeQuery(xsql);
-                while(ejecutar.next()){
-                    filas[0]= ejecutar.getString("codProducto");
-                    filas[1]= ejecutar.getString("c.nombreCat");
-                    filas[2]= ejecutar.getString("p.nombre");
-                    filas[3]= ejecutar.getString("m.nombreMar");
-                    filas[4]= ejecutar.getString("p.estado");                
-                    filas[5]= ejecutar.getString("p.rut_proveedor");                
-                    filas[6]= ejecutar.getString("p.stock");
-                    filas[7]= ejecutar.getString("p.cantInicial");          
-                    filas[8]= ejecutar.getString("p.precioUnit");          
-     
-                    model.addRow(filas);
-                }
-                tablaProductos.setModel(model);
-
-            }catch(Exception e){
-                    System.out.println("Error.... No hay conección");
-                    e.printStackTrace();
-            }
-
-        }
     private void btnSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir1ActionPerformed
 
         this.setVisible(false);
@@ -362,31 +347,12 @@ public class frmConsultaProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_RegistrarProdActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-//      if(TEXTCOD.getText().trim().isEmpty()){
-//          JOptionPane.showMessageDialog(null,"EL CAMPO ESTA VACIO");
-//          TEXTCOD.setText("");
-//          TEXTCOD.requestFocus();
-//        }else{
-//            String codP = TEXTCOD.getText();
-//           existe = comprobarCod(codP);
-//
-//          if(existe== -1){
-//              JOptionPane.showMessageDialog(null,"no existe el codigo");
-//              TEXTCOD.setText("");
-//              TEXTCOD.setText("");
-//          }else{
-//              frmRegistroProducto.LISTA.remove(existe);
-//              JOptionPane.showMessageDialog(null,"REGISTRO ELIMINADO");
-//               TEXTCOD.setText("");
-//               TEXTCOD.requestFocus();
-//               listardatos();
-//        }
-//      }
+
           
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
-        cargarTabla("");
+       // cargarTabla("");
     }//GEN-LAST:event_btnMostrarActionPerformed
    
     public static void main(String args[]) {
