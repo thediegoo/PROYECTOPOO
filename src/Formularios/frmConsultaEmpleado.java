@@ -26,7 +26,7 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
             i=i-1;
         }
     }
-     public void listarEmpleado(){
+    public void listarEmpleado(){
         List<Empleado> lista=empleado.ListarEmpleado();
         model=(DefaultTableModel) tablaEmpleado.getModel();
         Object[] obj=new Object[7];

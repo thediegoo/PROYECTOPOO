@@ -88,6 +88,34 @@ public class EmpleadoDAO {
             return false;
         }
     }
+       
+       public boolean ModificarEmpleado(Empleado emp, UsuarioAdmi ua){
+        try {
+            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            String sql= "update empleado set id_admi=?, nombre=?, apellido=?, telf=?, direccion=?, fechaEntrada=?, sueldo=? where id_cliente=?";
+            String sql2= "update empleado set usuario=?, password=? where id_cliente=?";
+            pe=conexion.prepareStatement(sql); 
+            pe2=conexion.prepareStatement(sql2);
+            pe.setInt(1, emp.getDni());
+            pe.setString(2, emp.getNombre());
+            pe.setString(3, emp.getApellido());
+            pe.setInt(4, emp.getTelf());
+            pe.setString(5, emp.getDireccion());            
+            pe.setString(6, emp.getFechaIngreso());
+            pe.setDouble(7, emp.getSueldo());
+            
+            pe2.setString(1, ua.getUsuario());            
+            pe2.setString(2, ua.getPassword());
+            
+            pe.execute();
+            pe2.execute();
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error"+e);
+            return false;
+        }
+    }
+       
        public List BuscarEmpleado(int id){
         List<Empleado> lista = new ArrayList();
         try {
