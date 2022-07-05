@@ -17,9 +17,7 @@ public class ProductoDAO {
     
     PreparedStatement ps;
     ResultSet rs;
-     
-    
-    
+      
     public boolean RegistrarProducto(Producto pr){ 
         try {
             Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");

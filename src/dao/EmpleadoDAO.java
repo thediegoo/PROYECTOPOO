@@ -104,8 +104,7 @@ public class EmpleadoDAO {
                 emp.setTelf(rs.getInt("telf"));
                 emp.setDireccion(rs.getString("direccion"));
                 emp.setFechaIngreso(rs.getString("fechaEntrada"));
-                emp.setSueldo(rs.getDouble("sueldo"));
-                lista.clear();                
+                emp.setSueldo(rs.getDouble("sueldo"));      
                 lista.add(emp);
 
             }

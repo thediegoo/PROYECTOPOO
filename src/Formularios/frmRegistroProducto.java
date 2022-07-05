@@ -2,16 +2,8 @@ package Formularios;
 
 import clases.Producto.Producto;
 import dao.ProductoDAO;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Calendar;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 public class frmRegistroProducto extends javax.swing.JFrame {
       
@@ -173,7 +165,7 @@ public class frmRegistroProducto extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("COD MARCA :");
 
         jLabel13.setBackground(new java.awt.Color(0, 0, 0));
@@ -191,7 +183,7 @@ public class frmRegistroProducto extends javax.swing.JFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("STOCK :");
 
         txtCantInicial.setBackground(new java.awt.Color(204, 204, 204));
@@ -204,7 +196,7 @@ public class frmRegistroProducto extends javax.swing.JFrame {
         });
 
         jLabel9.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("PRECIO UNITARIO");
 
         cboCategoria.setBackground(new java.awt.Color(204, 204, 204));
@@ -218,7 +210,7 @@ public class frmRegistroProducto extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("ESTADO :");
 
         txtPrecio.setBackground(new java.awt.Color(204, 204, 204));
@@ -246,27 +238,27 @@ public class frmRegistroProducto extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("NOMBRE :");
 
         jLabel5.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("RUT PROVEEDOR :");
 
         jLabel14.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("NOMBRE CATEGORIA");
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("COD CATEGORIA");
 
-        lblCategoria.setBackground(new java.awt.Color(204, 204, 204));
+        lblCategoria.setBackground(new java.awt.Color(0, 0, 0));
         lblCategoria.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
-        lblCategoria.setForeground(new java.awt.Color(225, 225, 241));
+        lblCategoria.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel8.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("CANTIDAD INICIAL :");
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fd.png"))); // NOI18N
@@ -282,24 +274,24 @@ public class frmRegistroProducto extends javax.swing.JFrame {
         });
 
         jLabel16.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("NOMBRE MARCA");
 
-        lblMarca.setBackground(new java.awt.Color(204, 204, 204));
+        lblMarca.setBackground(new java.awt.Color(0, 0, 0));
         lblMarca.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
-        lblMarca.setForeground(new java.awt.Color(225, 225, 241));
+        lblMarca.setForeground(new java.awt.Color(0, 0, 0));
 
         lblRUTProveedor.setBackground(new java.awt.Color(204, 204, 204));
         lblRUTProveedor.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
-        lblRUTProveedor.setForeground(new java.awt.Color(225, 225, 241));
+        lblRUTProveedor.setForeground(new java.awt.Color(0, 0, 0));
 
         lblStock.setBackground(new java.awt.Color(204, 204, 204));
         lblStock.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
-        lblStock.setForeground(new java.awt.Color(225, 225, 241));
+        lblStock.setForeground(new java.awt.Color(0, 0, 0));
 
         lblEstado.setBackground(new java.awt.Color(204, 204, 204));
         lblEstado.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
-        lblEstado.setForeground(new java.awt.Color(225, 225, 241));
+        lblEstado.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

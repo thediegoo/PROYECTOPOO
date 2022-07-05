@@ -27,6 +27,13 @@ public class frmConsultaProductos extends javax.swing.JFrame {
         this.setTitle("Consultar Productos");
         this.setLocationRelativeTo(this);
         listarProducto();
+        
+    }
+        public void limpiarTable(){
+        for(int i=0; i<model.getRowCount(); i++){
+            model.removeRow(i);
+            i=i-1;
+        }
     }
     public void listarProducto(){
         List<Producto> lista=empleado.ListarProducto();
@@ -352,7 +359,7 @@ public class frmConsultaProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
-       // cargarTabla("");
+       listarProducto();
     }//GEN-LAST:event_btnMostrarActionPerformed
    
     public static void main(String args[]) {

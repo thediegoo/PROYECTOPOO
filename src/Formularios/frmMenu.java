@@ -39,7 +39,6 @@ public class frmMenu extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         BtnEmpleado = new javax.swing.JButton();
         BtnProducto = new javax.swing.JButton();
-        BtnCliente = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         panelPrincipal = new javax.swing.JPanel();
         panelConsultas = new javax.swing.JPanel();
@@ -55,8 +54,7 @@ public class frmMenu extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        BtnEmMan = new javax.swing.JButton();
-        BtnProdMan = new javax.swing.JButton();
+        BtnCliente = new javax.swing.JButton();
         panelProcesos = new javax.swing.JPanel();
         btnProcesos = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
@@ -169,20 +167,6 @@ public class frmMenu extends javax.swing.JFrame {
             }
         });
 
-        BtnCliente.setBackground(new java.awt.Color(172, 219, 222));
-        BtnCliente.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
-        BtnCliente.setForeground(new java.awt.Color(0, 0, 0));
-        BtnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addproducto.png"))); // NOI18N
-        BtnCliente.setText("Cliente");
-        BtnCliente.setBorder(null);
-        BtnCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        BtnCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        BtnCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnClienteActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout panelRegistroLayout = new javax.swing.GroupLayout(panelRegistro);
         panelRegistro.setLayout(panelRegistroLayout);
         panelRegistroLayout.setHorizontalGroup(
@@ -190,12 +174,10 @@ public class frmMenu extends javax.swing.JFrame {
             .addGroup(panelRegistroLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BtnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(92, 92, 92)
+                .addGap(118, 118, 118)
                 .addComponent(BtnEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
+                .addGap(109, 109, 109)
                 .addComponent(BtnProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(BtnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelRegistroLayout.setVerticalGroup(
@@ -208,8 +190,7 @@ public class frmMenu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(BtnProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                    .addComponent(BtnEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BtnCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
+                    .addComponent(BtnEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -391,31 +372,17 @@ public class frmMenu extends javax.swing.JFrame {
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
-        BtnEmMan.setBackground(new java.awt.Color(172, 219, 222));
-        BtnEmMan.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
-        BtnEmMan.setForeground(new java.awt.Color(0, 0, 0));
-        BtnEmMan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mantenimiento.png"))); // NOI18N
-        BtnEmMan.setText("Empleado");
-        BtnEmMan.setBorder(null);
-        BtnEmMan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        BtnEmMan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        BtnEmMan.addActionListener(new java.awt.event.ActionListener() {
+        BtnCliente.setBackground(new java.awt.Color(172, 219, 222));
+        BtnCliente.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
+        BtnCliente.setForeground(new java.awt.Color(0, 0, 0));
+        BtnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addproducto.png"))); // NOI18N
+        BtnCliente.setText("Cliente");
+        BtnCliente.setBorder(null);
+        BtnCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BtnCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        BtnCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnEmManActionPerformed(evt);
-            }
-        });
-
-        BtnProdMan.setBackground(new java.awt.Color(172, 219, 222));
-        BtnProdMan.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 16)); // NOI18N
-        BtnProdMan.setForeground(new java.awt.Color(0, 0, 0));
-        BtnProdMan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mantenimiento.png"))); // NOI18N
-        BtnProdMan.setText("Producto");
-        BtnProdMan.setBorder(null);
-        BtnProdMan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        BtnProdMan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        BtnProdMan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnProdManActionPerformed(evt);
+                BtnClienteActionPerformed(evt);
             }
         });
 
@@ -426,11 +393,9 @@ public class frmMenu extends javax.swing.JFrame {
             .addGroup(panelManteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnMantenimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107)
-                .addComponent(BtnEmMan, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(117, 117, 117)
-                .addComponent(BtnProdMan, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addGap(226, 226, 226)
+                .addComponent(BtnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(279, Short.MAX_VALUE))
         );
         panelManteLayout.setVerticalGroup(
             panelManteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -438,12 +403,10 @@ public class frmMenu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnMantenimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(panelManteLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelManteLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelManteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BtnProdMan, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                    .addComponent(BtnEmMan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(BtnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
         );
 
         panelProcesos.setBackground(new java.awt.Color(75, 85, 163));
@@ -514,7 +477,7 @@ public class frmMenu extends javax.swing.JFrame {
             .addGroup(panelProcesosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnProcesos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(210, 210, 210)
+                .addGap(227, 227, 227)
                 .addComponent(BtnFac, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -553,7 +516,7 @@ public class frmMenu extends javax.swing.JFrame {
                     .addComponent(panelRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(1656, 1656, 1656))
+                .addGap(1638, 1638, 1638))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(btnSalir)
@@ -592,7 +555,7 @@ public class frmMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -665,18 +628,6 @@ public class frmMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnMantenimientoMouseClicked
 
-    private void BtnEmManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEmManActionPerformed
-        frmEditarEmpleado re = new frmEditarEmpleado();
-        this.setVisible(true);
-        re.setVisible(true);
-    }//GEN-LAST:event_BtnEmManActionPerformed
-
-    private void BtnProdManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProdManActionPerformed
-        frmEditarProducto fre = new frmEditarProducto();
-        this.setVisible(true);
-        fre.setVisible(true);
-    }//GEN-LAST:event_BtnProdManActionPerformed
-
     private void btnProcesosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProcesosMouseClicked
         if (panelProcesos.getX() == 0) {
             desplace.desplazarIzquierda(panelProcesos, panelProcesos.getX(), -600, 10, 10);
@@ -742,11 +693,9 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JButton BtnCliente;
     private javax.swing.JPanel BtnConsultas;
     private javax.swing.JButton BtnEmC;
-    private javax.swing.JButton BtnEmMan;
     private javax.swing.JButton BtnEmpleado;
     private javax.swing.JButton BtnFac;
     private javax.swing.JButton BtnProC;
-    private javax.swing.JButton BtnProdMan;
     private javax.swing.JButton BtnProducto;
     private javax.swing.JPanel BtnRegistrar;
     private javax.swing.JPanel btnMantenimiento;
