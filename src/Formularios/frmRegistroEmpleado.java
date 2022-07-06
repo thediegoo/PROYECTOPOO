@@ -375,6 +375,12 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         jLabel4.setText("REGISTRO EMPLEADOS");
 
+        jScrollPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jScrollPane1MouseClicked(evt);
+            }
+        });
+
         tablaEmpleado.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 16)); // NOI18N
         tablaEmpleado.setForeground(new java.awt.Color(255, 255, 255));
         tablaEmpleado.setModel(new javax.swing.table.DefaultTableModel(
@@ -525,7 +531,7 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
         txtIdAdmi.setText(tablaEmpleado.getValueAt(fila, 0).toString());
         txtNombre.setText(tablaEmpleado.getValueAt(fila, 1).toString());
         txtApellidos.setText(tablaEmpleado.getValueAt(fila, 2).toString());
-        txtFechaIngreso.setCalendar(tablaEmpleado.getValueAt(fila, 3).toString());
+        //txtFechaIngreso.setCalendar(tablaEmpleado.getValueAt(fila, 3).toString());
         txtDireccion.setText(tablaEmpleado.getValueAt(fila, 4).toString());
         txtTelefono.setText(tablaEmpleado.getValueAt(fila, 5).toString());
         txtSueldo.setText(tablaEmpleado.getValueAt(fila, 6).toString());
@@ -566,6 +572,10 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
             listarEmpleado();
         }
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void jScrollPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jScrollPane1MouseClicked
 
     /**
      * @param args the command line arguments

@@ -85,5 +85,42 @@ public class ProductoDAO {
         }
         return pro;
     } 
-     
+      public boolean EliminarProducto(String cod){
+        try {
+            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            String sql= "DELETE producto from producto where codProducto =?";
+            ps=conexion.prepareStatement(sql); 
+            ps.setString(1, cod);
+            ps.execute();
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error"+e);
+            return false;
+        }
+    }
+       public boolean ModificarProducto(Producto pro){
+        try {
+            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            String sql= "update producto set codProducto=?,codCategoria=?, nombre=?, codMarca=?, estado=?, rut_proveedor=?, stock=?, cantInicial=?,precioUnit=? where codProducto=?";
+            
+            ps=conexion.prepareStatement(sql); 
+            
+            ps.setString(1, pro.getCodigo());
+            ps.setString(2, pro.getCategoria());
+            ps.setString(3, pro.getNombreP());
+            ps.setString(4, pro.getMarca());
+            ps.setString(5, pro.getEstado());
+            ps.setInt(6, pro.getIdProveedor());            
+            ps.setInt(7, pro.getStock());
+            ps.setInt(8, pro.getCantInicial());
+            ps.setDouble(9, pro.getPrecio());
+            ps.setString(10, pro.getCodigo());
+            ps.execute();
+            
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error"+e);
+            return false;
+        }
+    }
 }
