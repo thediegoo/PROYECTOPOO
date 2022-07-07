@@ -15,7 +15,6 @@ public class frmLogin extends javax.swing.JFrame {
          
     public frmLogin() {
         initComponents();
-        validarAcceso();
         setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
         this.setTitle("Login");
         this.setLocationRelativeTo(this);

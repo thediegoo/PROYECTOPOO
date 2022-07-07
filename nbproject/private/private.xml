@@ -3,22 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/PROYECTOPOO/src/dao/EmpleadoDAO.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/PROYECTOPOO/src/dao/ProductoDAO.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/PROYECTOPOO/src/database/peritec.sql</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/PROYECTOPOO/src/clases/Producto/Producto.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/PROYECTOPOO/src/Formularios/frmConsultaEmpleado.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/PROYECTOPOO/src/clases/Producto/Atributo.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/PROYECTOPOO/src/Formularios/frmRegistroEmpleado.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/PROYECTOPOO/src/Formularios/frmRegistroCliente.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/PROYECTOPOO/src/clases/Persona/Persona.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/PROYECTOPOO/src/dao/ClienteDAO.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/PROYECTOPOO/src/controlador/Arreglo_Producto.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/PROYECTOPOO/src/dao/VentaDAO.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/PROYECTOPOO/src/controlador/Arreglo_Empleado.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/PROYECTOPOO/src/Formularios/frmRegistroProducto.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/PROYECTOPOO/src/Formularios/frmConsultaProductos.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/PROYECTOPOO/src/clases/Persona/Empleado.java</file>
+            <file>file:/D:/ing%20software/poo/AVANCE%203/AVANCE%203/PROYECTOPOO/src/Formularios/frmMenu.java</file>
+            <file>file:/D:/ing%20software/poo/AVANCE%203/AVANCE%203/PROYECTOPOO/src/Formularios/frmConsultaEmpleado.java</file>
+            <file>file:/D:/ing%20software/poo/AVANCE%203/AVANCE%203/PROYECTOPOO/src/Formularios/frmRegistroEmpleado.java</file>
+            <file>file:/D:/ing%20software/poo/AVANCE%203/AVANCE%203/PROYECTOPOO/src/Formularios/frmRegistroCliente.java</file>
+            <file>file:/D:/ing%20software/poo/AVANCE%203/AVANCE%203/PROYECTOPOO/src/Formularios/frmLogin.java</file>
         </group>
     </open-files>
 </project-private>

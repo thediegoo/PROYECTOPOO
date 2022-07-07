@@ -89,26 +89,21 @@ public class EmpleadoDAO {
         }
     }
        
-       public boolean ModificarEmpleado(Empleado emp, UsuarioAdmi ua){
+       public boolean ModificarEmpleado(Empleado emp){
         try {
             Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
-            String sql= "update empleado set id_admi=?, nombre=?, apellido=?, telf=?, direccion=?, fechaEntrada=?, sueldo=? where id_cliente=?";
-            String sql2= "update empleado set usuario=?, password=? where id_cliente=?";
-            pe=conexion.prepareStatement(sql); 
-            pe2=conexion.prepareStatement(sql2);
-            pe.setInt(1, emp.getDni());
-            pe.setString(2, emp.getNombre());
-            pe.setString(3, emp.getApellido());
-            pe.setInt(4, emp.getTelf());
-            pe.setString(5, emp.getDireccion());            
-            pe.setString(6, emp.getFechaIngreso());
-            pe.setDouble(7, emp.getSueldo());
+            String sql= "update empleado set nombre=?, apellido=?, telf=?, direccion=?,fechaEntrada=?,sueldo=? where id_admi=?";
             
-            pe2.setString(1, ua.getUsuario());            
-            pe2.setString(2, ua.getPassword());
+            pe=conexion.prepareStatement(sql); 
+            pe.setString(1, emp.getNombre());
+            pe.setString(2, emp.getApellido());
+            pe.setInt(3, emp.getTelf());
+            pe.setString(4, emp.getDireccion());  
+            pe.setString(5, emp.getFechaIngreso()); 
+            pe.setDouble(6, emp.getSueldo());
+             pe.setInt(7,emp.getDni());
             
             pe.execute();
-            pe2.execute();
             return true;
         } catch (Exception e) {
             System.out.println("Error"+e);

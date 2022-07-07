@@ -303,7 +303,7 @@ public class frmConsultaEmpleado extends javax.swing.JFrame {
 
     private void RegistrarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarEmpleadoActionPerformed
         this.setVisible(false);
-        frmRegistroEmpleado fre = new frmRegistroEmpleado();
+        frmMantenimientoEmpleado fre = new frmMantenimientoEmpleado();
         fre.setVisible(true);
         limpiarTabla();
         listarEmpleado();
