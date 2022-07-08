@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +16,6 @@ public class ClienteDAO {
      ResultSet rs;
     
     public boolean RegistrarCliente(Cliente cl){
-        
         try {
             Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
             String sql= "insert into cliente(id_cliente, nombre, apellido, telf, tipoCliente, direccion) values (?,?,?,?,?,?)";
@@ -107,7 +105,6 @@ public class ClienteDAO {
                 cl.setTelf(rs.getInt("telf"));
                 cl.setTipoCliente(rs.getString("tipoCliente"));
                 cl.setDireccion(rs.getString("direccion"));
-                
             }
         } catch (Exception e) {
             System.out.println("Error"+e);

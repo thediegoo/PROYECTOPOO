@@ -1,19 +1,19 @@
 
 package Formularios;
 
+import clases.Factura.Detalle;
+import clases.Factura.Factura;
 import dao.ClienteDAO;
 import dao.ProductoDAO;
 import clases.Persona.Cliente;
 import javax.swing.ImageIcon;
 import clases.Producto.Producto;
+import dao.VentaDAO;
 import java.awt.event.KeyEvent;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
-import javax.swing.JComboBox;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,6 +25,9 @@ public class frmFacturaa extends javax.swing.JFrame {
      Cliente cl = new Cliente();
      ProductoDAO proDao = new ProductoDAO();
      ClienteDAO client=new ClienteDAO();
+     Factura fac = new Factura();
+     VentaDAO vdao = new VentaDAO();
+     Detalle deta = new Detalle();
      int item;
      DefaultTableModel modelo = new DefaultTableModel();
      double totalPagar=0.00;
@@ -76,17 +79,45 @@ public class frmFacturaa extends javax.swing.JFrame {
         txtStock.setText("");
     }
     
+    private void LimpiarFactura(){
+        limpiarTable();
+        txtIdVendedor.setText("");
+        txtDNI.setText("");
+        txtNombre.setText("");
+        labelSubtotal.setText("");
+        labelDescuento.setText("");
+        labelTotal.setText("");
+    }
+    
+    private void limpiarTable(){
+        for(int i=0; i<modelo.getRowCount(); i++){
+            modelo.removeRow(i);
+            i=i-1;
+        }
+    }
+    
+    private void ActualizarStock(){
+        for(int i=0; i<tablaVenta.getRowCount(); i++){
+            String cod = tablaVenta.getValueAt(i, 0).toString();
+            int cant = Integer.parseInt(tablaVenta.getValueAt(i, 2).toString());
+            pro = proDao.buscarProducto(cod);
+            int stockActual = pro.getStock() - cant;
+            vdao.ActualizarStock(stockActual, cod);
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtNComprobante = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtFechaIngreso = new com.toedter.calendar.JDateChooser();
+        txtFechaFactura = new com.toedter.calendar.JDateChooser();
         jLabel12 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -114,11 +145,15 @@ public class frmFacturaa extends javax.swing.JFrame {
         labelSubtotal = new javax.swing.JLabel();
         labelDescuento = new javax.swing.JLabel();
         btnAgregarCompra = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        txtIdVendedor = new javax.swing.JTextField();
+        btnRegistrarFactura = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
+
+        jPanel1.setBackground(new java.awt.Color(75, 85, 163));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -127,51 +162,51 @@ public class frmFacturaa extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("DATOS DE LA FACTURA");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 170, 24));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 220, 24));
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("N° COMPROBANTE : ");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 41, 160, -1));
-        getContentPane().add(txtNComprobante, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 37, 107, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 190, -1));
+        getContentPane().add(txtNComprobante, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 107, -1));
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Fecha :");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(531, 41, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, -1, -1));
 
-        txtFechaIngreso.setBackground(new java.awt.Color(61, 68, 129));
-        getContentPane().add(txtFechaIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(589, 37, 156, -1));
+        txtFechaFactura.setBackground(new java.awt.Color(61, 68, 129));
+        getContentPane().add(txtFechaFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 80, 156, -1));
 
         jLabel12.setBackground(new java.awt.Color(255, 255, 255));
         jLabel12.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("DATOS DEL PRODUCTO :");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
 
         jLabel14.setBackground(new java.awt.Color(255, 255, 255));
         jLabel14.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Codigo Producto :");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
         jLabel15.setBackground(new java.awt.Color(255, 255, 255));
         jLabel15.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Precio Unitario :");
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, -1, -1));
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 180, -1, -1));
 
         jLabel16.setBackground(new java.awt.Color(255, 255, 255));
         jLabel16.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Cantidad :");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, -1, -1));
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, -1, -1));
 
         txPrecioUnitario.setEditable(false);
         txPrecioUnitario.setBackground(java.awt.Color.lightGray);
-        getContentPane().add(txPrecioUnitario, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 180, 90, -1));
+        getContentPane().add(txPrecioUnitario, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 210, 100, -1));
 
         txtCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,7 +218,7 @@ public class frmFacturaa extends javax.swing.JFrame {
                 txtCantidadKeyPressed(evt);
             }
         });
-        getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, 70, -1));
+        getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 70, -1));
 
         tablaVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -203,14 +238,14 @@ public class frmFacturaa extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tablaVenta);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 740, 132));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 760, 132));
 
         txtCodigoProducto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCodigoProductoKeyPressed(evt);
             }
         });
-        getContentPane().add(txtCodigoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 100, -1));
+        getContentPane().add(txtCodigoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 100, -1));
 
         btnBuscarProducto.setText("Buscar");
         btnBuscarProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -218,23 +253,23 @@ public class frmFacturaa extends javax.swing.JFrame {
                 btnBuscarProductoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBuscarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 80, 30));
+        getContentPane().add(btnBuscarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 80, 30));
 
         jLabel20.setBackground(new java.awt.Color(255, 255, 255));
         jLabel20.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Nombre Producto :");
-        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, -1, -1));
+        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, -1, -1));
 
         txtNombreProducto.setEditable(false);
         txtNombreProducto.setBackground(java.awt.Color.lightGray);
-        getContentPane().add(txtNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 140, -1));
+        getContentPane().add(txtNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 140, -1));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Stock :");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 180, -1, -1));
 
         txtStock.setEditable(false);
         txtStock.setBackground(java.awt.Color.lightGray);
@@ -243,40 +278,40 @@ public class frmFacturaa extends javax.swing.JFrame {
                 txtStockActionPerformed(evt);
             }
         });
-        getContentPane().add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 180, 60, -1));
+        getContentPane().add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 210, 60, -1));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("DNI ");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, -1, -1));
 
         txtDNI.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtDNIKeyPressed(evt);
             }
         });
-        getContentPane().add(txtDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 120, -1));
+        getContentPane().add(txtDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, 120, -1));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nombre ");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 400, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, -1, -1));
 
         txtNombre.setEditable(false);
         txtNombre.setBackground(java.awt.Color.lightGray);
-        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, 180, -1));
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, 180, -1));
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 440, -1, -1));
 
         labelTotal.setText("-----------------");
-        getContentPane().add(labelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 480, 70, 30));
+        getContentPane().add(labelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 510, 70, 30));
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Total a pagar :");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 490, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 520, -1, -1));
 
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -284,25 +319,25 @@ public class frmFacturaa extends javax.swing.JFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 180, -1, -1));
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 210, -1, -1));
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Descuento :");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 450, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 480, -1, -1));
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Subtotal :");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, -1, -1));
 
         labelSubtotal.setText("-----------------");
-        getContentPane().add(labelSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 410, 70, -1));
+        getContentPane().add(labelSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 440, 70, -1));
 
         labelDescuento.setText("-----------------");
-        getContentPane().add(labelDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 450, 70, -1));
+        getContentPane().add(labelDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 480, 70, -1));
 
         btnAgregarCompra.setText("Agregar");
         btnAgregarCompra.addActionListener(new java.awt.event.ActionListener() {
@@ -310,10 +345,19 @@ public class frmFacturaa extends javax.swing.JFrame {
                 btnAgregarCompraActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAgregarCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 140, -1, -1));
+        getContentPane().add(btnAgregarCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 170, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(75, 85, 163));
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 600));
+        jLabel9.setText("EMPLEADO : ");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, -1, 20));
+        getContentPane().add(txtIdVendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 120, -1));
+
+        btnRegistrarFactura.setText("REGISTRAR VENTA");
+        btnRegistrarFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarFacturaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegistrarFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 560, 150, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -507,6 +551,44 @@ public class frmFacturaa extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnAgregarCompraActionPerformed
 
+    private void btnRegistrarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarFacturaActionPerformed
+        
+        int anio= txtFechaFactura.getCalendar().get(Calendar.YEAR);
+        int mes= txtFechaFactura.getCalendar().get(Calendar.MONTH);
+        int dia= txtFechaFactura.getCalendar().get(Calendar.DAY_OF_MONTH);
+        String fecha= String.valueOf(anio+"-"+mes+"-"+dia);
+        
+        if(!"".equals(txtIdVendedor.getText())){
+            
+            fac.setIdCliente(Integer.parseInt(txtDNI.getText()));
+            fac.setIdVendedor(Integer.parseInt(txtIdVendedor.getText()));
+            fac.setFecha(fecha);
+            fac.setDescuento(totalDescuento);
+            fac.setSubtotal(totalSubtotal);
+            fac.setPrecioTotal(totalPagar);
+            vdao.RegistrarVenta(fac);
+            
+            String id = vdao.IdVenta();
+            for(int i=0; i<tablaVenta.getRowCount(); i++){
+                    String cod = tablaVenta.getValueAt(i, 0).toString();
+                    int cantidad = Integer.parseInt(tablaVenta.getValueAt(i, 2).toString());
+                    double precioU = Double.parseDouble(tablaVenta.getValueAt(i, 3).toString());
+                    deta.setIdProducto(cod);
+                    deta.setIdFactura(id);
+                    deta.setSubtotal(precioU);
+                    deta.setCantidad(cantidad);
+                    vdao.RegistrarDetalle(deta);
+            }
+            
+            ActualizarStock();
+            LimpiarFactura();
+            
+           JOptionPane.showMessageDialog(null,"FACTURA CREADA!");
+        }else{
+             JOptionPane.showMessageDialog(null,"DEBE REGISTRAR UN VENDEDOR");
+        }
+    }//GEN-LAST:event_btnRegistrarFacturaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -546,6 +628,7 @@ public class frmFacturaa extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregarCompra;
     public javax.swing.JButton btnBuscarProducto;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnRegistrarFactura;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -561,6 +644,7 @@ public class frmFacturaa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -573,7 +657,8 @@ public class frmFacturaa extends javax.swing.JFrame {
     public javax.swing.JTextField txtCantidad;
     public javax.swing.JTextField txtCodigoProducto;
     private javax.swing.JTextField txtDNI;
-    private com.toedter.calendar.JDateChooser txtFechaIngreso;
+    private com.toedter.calendar.JDateChooser txtFechaFactura;
+    private javax.swing.JTextField txtIdVendedor;
     private javax.swing.JTextField txtNComprobante;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombreProducto;

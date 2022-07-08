@@ -1,16 +1,8 @@
 package Formularios;
 
-import dao.ClienteDAO;
 import dao.EmpleadoDAO;
 import clases.Persona.Empleado;
 import clases.Persona.UsuarioAdmi;
-
-import controlador.Arreglo_Empleado;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;

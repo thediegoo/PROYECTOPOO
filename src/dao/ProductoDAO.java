@@ -1,8 +1,6 @@
 
 package dao;
 
-import clases.Persona.Proveedor;
-import clases.Persona.UsuarioAdmi;
 import clases.Producto.Producto;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -66,6 +64,7 @@ public class ProductoDAO {
         }
         return lista;
     }   
+     
     public Producto buscarProducto(String cod){
         
         Producto pro = new Producto();
@@ -85,6 +84,7 @@ public class ProductoDAO {
         }
         return pro;
     } 
+    
       public boolean EliminarProducto(String cod){
         try {
             Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
@@ -98,6 +98,7 @@ public class ProductoDAO {
             return false;
         }
     }
+      
        public boolean ModificarProducto(Producto pro){
         try {
             Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
@@ -123,4 +124,5 @@ public class ProductoDAO {
             return false;
         }
     }
+       
 }

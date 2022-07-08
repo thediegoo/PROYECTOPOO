@@ -1,35 +1,34 @@
 package clases.Factura;
 
-import clases.Persona.Cliente;
-import clases.Persona.Empleado;
-
 public class Factura {
 
     private String codigo;
+    private int idCliente;
+    private int idVendedor;
     private String fecha;
-    private Empleado vendedor;
-    private Cliente cliente;
-    private double total;
+    private double descuento;
+    private double subtotal;
+    private double precioTotal;
     
     public Factura() {
     }
 
-    public Factura(String codigo, String fecha, Empleado vendedor, Cliente cliente, double total) {
+    public Factura(String codigo, int idCliente, int idVendedor, String fecha, double descuento, double subtotal, double precioTotal) {
         this.codigo = codigo;
+        this.idCliente = idCliente;
+        this.idVendedor = idVendedor;
         this.fecha = fecha;
-        this.vendedor = vendedor;
-        this.cliente = cliente;
-        this.total = total;
+        this.descuento = descuento;
+        this.subtotal = subtotal;
+        this.precioTotal = precioTotal;
     }
-    
-    public double descuento(){
-        double desc=0;
-        if( total>500) desc=total*0.05;
-        return desc;
+
+    public double getPrecioTotal() {
+        return precioTotal;
     }
-    
-    public double totalFinal(){
-        return total+descuento();
+
+    public void setPrecioTotal(double precioTotal) {
+        this.precioTotal = precioTotal;
     }
 
     public String getCodigo() {
@@ -40,6 +39,22 @@ public class Factura {
         this.codigo = codigo;
     }
 
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public int getIdVendedor() {
+        return idVendedor;
+    }
+
+    public void setIdVendedor(int idVendedor) {
+        this.idVendedor = idVendedor;
+    }
+
     public String getFecha() {
         return fecha;
     }
@@ -48,30 +63,19 @@ public class Factura {
         this.fecha = fecha;
     }
 
-    public Empleado getVendedor() {
-        return vendedor;
+    public double getDescuento() {
+        return descuento;
     }
 
-    public void setVendedor(Empleado vendedor) {
-        this.vendedor = vendedor;
+    public void setDescuento(double descuento) {
+        this.descuento = descuento;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public double getSubtotal() {
+        return subtotal;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setSubtotal(double subtotal) {
+        this.subtotal = subtotal;
     }
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
-    
-
 }
