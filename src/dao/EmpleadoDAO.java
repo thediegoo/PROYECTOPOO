@@ -3,24 +3,24 @@ package dao;
 
 import clases.Persona.Empleado;
 import clases.Persona.UsuarioAdmi;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import interfaceDAO.IDAOEmpleado;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class EmpleadoDAO {
+public class EmpleadoDAO extends Conexion implements IDAOEmpleado{
     
      PreparedStatement pe;     
      PreparedStatement pe2;
 
      ResultSet rs;
     
+     @Override
     public boolean RegistrarEmpleado(Empleado cl, UsuarioAdmi ua){ 
         try {
-            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            this.iniciarConexion();
             String sql= "INSERT INTO empleado(id_admi, nombre, apellido, telf, direccion,fechaEntrada, sueldo)"
                     + "VALUES(?, ?, ?, ?, ?,?,?)";
             String sql2= "INSERT INTO usuarioadmi(usuario, password, id_admi)"
@@ -51,10 +51,11 @@ public class EmpleadoDAO {
         }
     }
     
+     @Override
      public List ListarEmpleado(){
         List<Empleado> lista = new ArrayList();
         try {
-            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            this.iniciarConexion();
             String sql= "select * from empleado";
             pe=conexion.prepareStatement(sql);
             rs=pe.executeQuery();
@@ -75,9 +76,10 @@ public class EmpleadoDAO {
         return lista;
     }
      
+     @Override
        public boolean EliminarEmpleado(int id){
         try {
-            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            this.iniciarConexion();
             String sql= "DELETE empleado, usuarioadmi from empleado INNER JOIN usuarioadmi ON empleado.id_admi=usuarioadmi.id_admi WHERE empleado.id_admi=?";
             pe=conexion.prepareStatement(sql); 
             pe.setInt(1, id);
@@ -89,9 +91,10 @@ public class EmpleadoDAO {
         }
     }
        
+     @Override
        public boolean ModificarEmpleado(Empleado emp){
         try {
-            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            this.iniciarConexion();
             String sql= "update empleado set nombre=?, apellido=?, telf=?, direccion=?,fechaEntrada=?,sueldo=? where id_admi=?";
             
             pe=conexion.prepareStatement(sql); 
@@ -111,10 +114,11 @@ public class EmpleadoDAO {
         }
     }
        
+     @Override
        public List BuscarEmpleado(int id){
         List<Empleado> lista = new ArrayList();
         try {
-            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            this.iniciarConexion();
             String sql= "select * from empleado where id_admi=?";
             pe=conexion.prepareStatement(sql);
             pe.setInt(1, id);

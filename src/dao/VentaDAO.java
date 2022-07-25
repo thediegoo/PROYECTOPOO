@@ -3,20 +3,22 @@ package dao;
 
 import clases.Factura.Detalle;
 import clases.Factura.Factura;
+import interfaceDAO.IDAOVenta;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class VentaDAO {
+public class VentaDAO extends Conexion implements IDAOVenta{
     
     PreparedStatement ps;
-     ResultSet rs;
+    ResultSet rs;
     
+    @Override
     public boolean RegistrarVenta(Factura fac){
         try {
-            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            this.iniciarConexion();
             String sql="{call crearComprobante(?,?,?,?,?,?)}";
             CallableStatement ps=conexion.prepareCall(sql); 
             ps.setInt(1, fac.getIdCliente());
@@ -33,9 +35,10 @@ public class VentaDAO {
         }
     }
      
+    @Override
     public boolean RegistrarDetalle(Detalle det){
         try {
-            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            this.iniciarConexion();
             String sql="insert into comprobantxdetalles(codProducto, id_comprobante, precioUnit, cant) values (?,?,?,?)";
             ps=conexion.prepareStatement(sql);
             ps.setString(1, det.getIdProducto());
@@ -50,10 +53,11 @@ public class VentaDAO {
         }
     }
     
+    @Override
     public String IdVenta(){
         String id = "";
         try {
-            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            this.iniciarConexion();
             String sql="select max(id_comprobante) from comprobante";
             ps=conexion.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -66,9 +70,10 @@ public class VentaDAO {
         return id;
     }
     
+    @Override
     public boolean ActualizarStock(int cant, String cod){
         try {
-            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            this.iniciarConexion();
             String sql="UPDATE producto SET stock=? WHERE  codProducto=?";
             ps=conexion.prepareStatement(sql);
             ps.setInt(1, cant);

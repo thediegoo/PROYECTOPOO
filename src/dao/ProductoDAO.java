@@ -2,6 +2,7 @@
 package dao;
 
 import clases.Producto.Producto;
+import interfaceDAO.IDAOProducto;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,14 +12,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ProductoDAO {
+public class ProductoDAO extends Conexion implements IDAOProducto {
     
     PreparedStatement ps;
     ResultSet rs;
       
+    @Override
     public boolean RegistrarProducto(Producto pr){ 
         try {
-            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            this.iniciarConexion();
             String sql="{call adicionarProducto(?,?,?,?,?,?,?,?)}";
             CallableStatement ps=conexion.prepareCall(sql);   
             ps.setString(1, pr.getCategoria());
@@ -39,10 +41,11 @@ public class ProductoDAO {
         }
     }
     
+    @Override
      public List ListarProducto(){
         List<Producto> lista = new ArrayList();
         try {
-            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            this.iniciarConexion();
             String sql= "SELECT codProducto , c.nombreCat , p.nombre , m.nombreMar , p.estado , p.rut_proveedor , p.stock , p.cantInicial , p.precioUnit FROM producto p INNER JOIN categoria c on p.codCategoria = c.codCategoria INNER JOIN marca m on p.codMarca = m.codMarca";
             ps=conexion.prepareStatement(sql);
             rs=ps.executeQuery();
@@ -65,11 +68,12 @@ public class ProductoDAO {
         return lista;
     }   
      
+    @Override
     public Producto buscarProducto(String cod){
         
         Producto pro = new Producto();
         try {
-            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            this.iniciarConexion();
             String sql= "select * from producto where codProducto=?";
             ps=conexion.prepareStatement(sql);
             ps.setString(1, cod);
@@ -85,9 +89,10 @@ public class ProductoDAO {
         return pro;
     } 
     
+    @Override
       public boolean EliminarProducto(String cod){
         try {
-            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            this.iniciarConexion();
             String sql= "DELETE producto from producto where codProducto =?";
             ps=conexion.prepareStatement(sql); 
             ps.setString(1, cod);
@@ -99,9 +104,10 @@ public class ProductoDAO {
         }
     }
       
+    @Override
        public boolean ModificarProducto(Producto pro){
         try {
-            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            this.iniciarConexion();
             String sql= "update producto set codProducto=?,codCategoria=?, nombre=?, codMarca=?, estado=?, rut_proveedor=?, stock=?, cantInicial=?,precioUnit=? where codProducto=?";
             
             ps=conexion.prepareStatement(sql); 
