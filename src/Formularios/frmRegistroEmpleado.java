@@ -58,11 +58,11 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
         txtFechaIngreso = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        txtPass = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        txtPass = new javax.swing.JPasswordField();
         btnConsultar = new javax.swing.JButton();
 
         txtSueldo1.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +130,7 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
         jLabel2.setText("NOMBRE");
 
         txtIdAdmi.setBackground(new java.awt.Color(43, 58, 81));
-        txtIdAdmi.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        txtIdAdmi.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
         txtIdAdmi.setForeground(new java.awt.Color(172, 241, 225));
         txtIdAdmi.setBorder(null);
         txtIdAdmi.addActionListener(new java.awt.event.ActionListener() {
@@ -150,7 +150,7 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
         jLabel9.setText("TELEFONO");
 
         txtTelefono.setBackground(new java.awt.Color(43, 58, 81));
-        txtTelefono.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        txtTelefono.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
         txtTelefono.setForeground(new java.awt.Color(172, 241, 225));
         txtTelefono.setBorder(null);
         txtTelefono.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +160,7 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
         });
 
         txtNombre.setBackground(new java.awt.Color(43, 58, 81));
-        txtNombre.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        txtNombre.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(172, 241, 225));
         txtNombre.setBorder(null);
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -170,12 +170,12 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
         });
 
         txtDireccion.setBackground(new java.awt.Color(43, 58, 81));
-        txtDireccion.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        txtDireccion.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
         txtDireccion.setForeground(new java.awt.Color(172, 241, 225));
         txtDireccion.setBorder(null);
 
         txtSueldo.setBackground(new java.awt.Color(43, 58, 81));
-        txtSueldo.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        txtSueldo.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
         txtSueldo.setForeground(new java.awt.Color(172, 241, 225));
         txtSueldo.setBorder(null);
         txtSueldo.addActionListener(new java.awt.event.ActionListener() {
@@ -195,7 +195,7 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
         jLabel1.setText("ID EMPLEADO");
 
         txtApellidos.setBackground(new java.awt.Color(43, 58, 81));
-        txtApellidos.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        txtApellidos.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
         txtApellidos.setForeground(new java.awt.Color(172, 241, 225));
         txtApellidos.setBorder(null);
         txtApellidos.addActionListener(new java.awt.event.ActionListener() {
@@ -283,11 +283,6 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(25, 40, 62));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(100, 255, 218)));
 
-        txtPass.setBackground(new java.awt.Color(43, 58, 81));
-        txtPass.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
-        txtPass.setForeground(new java.awt.Color(172, 241, 225));
-        txtPass.setBorder(null);
-
         jLabel6.setBackground(new java.awt.Color(204, 204, 204));
         jLabel6.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 17)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 204, 204));
@@ -308,6 +303,12 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(100, 255, 218));
         jLabel12.setText("CUENTA EMPLEADO");
 
+        txtPass.setBackground(new java.awt.Color(43, 58, 81));
+        txtPass.setFont(new java.awt.Font("Segoe UI Semibold", 1, 16)); // NOI18N
+        txtPass.setForeground(new java.awt.Color(172, 241, 225));
+        txtPass.setText("jPasswordField1");
+        txtPass.setBorder(null);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -318,14 +319,14 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
                 .addGap(91, 91, 91))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtUsuario)
+                    .addComponent(txtPass)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(168, 168, 168))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel8)
-                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel8))
+                        .addGap(154, 154, 154)))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -339,9 +340,9 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
                 .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(298, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(286, Short.MAX_VALUE))
         );
 
         btnConsultar.setBackground(new java.awt.Color(115, 182, 164));
@@ -561,7 +562,7 @@ public class frmRegistroEmpleado extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser txtFechaIngreso;
     private javax.swing.JTextField txtIdAdmi;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtPass;
+    private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtSueldo;
     private javax.swing.JTextField txtSueldo1;
     private javax.swing.JTextField txtTelefono;

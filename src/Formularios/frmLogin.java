@@ -112,7 +112,7 @@ public class frmLogin extends javax.swing.JFrame {
 
         txtUsuario.setBackground(new java.awt.Color(25, 40, 62));
         txtUsuario.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
-        txtUsuario.setForeground(new java.awt.Color(0, 0, 0));
+        txtUsuario.setForeground(new java.awt.Color(228, 228, 247));
         txtUsuario.setBorder(null);
 
         btnIniciar.setBackground(new java.awt.Color(25, 40, 62));
@@ -134,7 +134,7 @@ public class frmLogin extends javax.swing.JFrame {
 
         Password.setBackground(new java.awt.Color(25, 40, 62));
         Password.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
-        Password.setForeground(new java.awt.Color(0, 0, 0));
+        Password.setForeground(new java.awt.Color(228, 228, 247));
         Password.setBorder(null);
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));

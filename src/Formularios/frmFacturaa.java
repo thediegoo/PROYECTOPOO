@@ -310,6 +310,7 @@ public class frmFacturaa extends javax.swing.JFrame {
         getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 180, 30));
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 440, -1, -1));
 
+        labelTotal.setForeground(new java.awt.Color(255, 255, 255));
         labelTotal.setText("-----------------");
         getContentPane().add(labelTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 520, 70, 30));
 
@@ -341,6 +342,7 @@ public class frmFacturaa extends javax.swing.JFrame {
         jLabel8.setText("Subtotal :");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 450, -1, -1));
 
+        labelSubtotal.setForeground(new java.awt.Color(255, 255, 255));
         labelSubtotal.setText("-----------------");
         getContentPane().add(labelSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 450, 70, -1));
 
@@ -354,6 +356,7 @@ public class frmFacturaa extends javax.swing.JFrame {
         });
         getContentPane().add(btnAgregarCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 260, -1, -1));
 
+        labelDescuento.setForeground(new java.awt.Color(255, 255, 255));
         labelDescuento.setText("-----------------");
         getContentPane().add(labelDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 490, 70, -1));
 

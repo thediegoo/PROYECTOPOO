@@ -138,7 +138,7 @@ public class frmMantenimientoEmpleado extends javax.swing.JFrame {
         jLabel2.setText("Nombre:");
 
         txtNombre.setBackground(new java.awt.Color(17, 30, 48));
-        txtNombre.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        txtNombre.setFont(new java.awt.Font("Segoe UI Semibold", 1, 16)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(172, 241, 225));
         txtNombre.setBorder(null);
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -153,7 +153,7 @@ public class frmMantenimientoEmpleado extends javax.swing.JFrame {
         jLabel3.setText("Apellidos:");
 
         txtApellidos.setBackground(new java.awt.Color(17, 30, 48));
-        txtApellidos.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        txtApellidos.setFont(new java.awt.Font("Segoe UI Semibold", 1, 16)); // NOI18N
         txtApellidos.setForeground(new java.awt.Color(172, 241, 225));
         txtApellidos.setBorder(null);
         txtApellidos.addActionListener(new java.awt.event.ActionListener() {
@@ -173,7 +173,7 @@ public class frmMantenimientoEmpleado extends javax.swing.JFrame {
         jLabel10.setText("Dirección:");
 
         txtDireccion.setBackground(new java.awt.Color(17, 30, 48));
-        txtDireccion.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        txtDireccion.setFont(new java.awt.Font("Segoe UI Semibold", 1, 16)); // NOI18N
         txtDireccion.setForeground(new java.awt.Color(172, 241, 225));
         txtDireccion.setBorder(null);
 
@@ -183,7 +183,7 @@ public class frmMantenimientoEmpleado extends javax.swing.JFrame {
         jLabel9.setText("Teléfono:");
 
         txtTelefono.setBackground(new java.awt.Color(17, 30, 48));
-        txtTelefono.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        txtTelefono.setFont(new java.awt.Font("Segoe UI Semibold", 1, 16)); // NOI18N
         txtTelefono.setForeground(new java.awt.Color(172, 241, 225));
         txtTelefono.setBorder(null);
         txtTelefono.addActionListener(new java.awt.event.ActionListener() {
@@ -198,7 +198,7 @@ public class frmMantenimientoEmpleado extends javax.swing.JFrame {
         jLabel5.setText("Sueldo:");
 
         txtSueldo.setBackground(new java.awt.Color(17, 30, 48));
-        txtSueldo.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        txtSueldo.setFont(new java.awt.Font("Segoe UI Semibold", 1, 16)); // NOI18N
         txtSueldo.setForeground(new java.awt.Color(172, 241, 225));
         txtSueldo.setBorder(null);
         txtSueldo.addActionListener(new java.awt.event.ActionListener() {
@@ -226,7 +226,7 @@ public class frmMantenimientoEmpleado extends javax.swing.JFrame {
         });
 
         txtFechaIngreso.setBackground(new java.awt.Color(17, 30, 48));
-        txtFechaIngreso.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        txtFechaIngreso.setFont(new java.awt.Font("Segoe UI Semibold", 1, 16)); // NOI18N
         txtFechaIngreso.setForeground(new java.awt.Color(172, 241, 225));
         txtFechaIngreso.setBorder(null);
         txtFechaIngreso.addActionListener(new java.awt.event.ActionListener() {
