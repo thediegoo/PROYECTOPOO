@@ -2,6 +2,7 @@
 package dao;
 
 import clases.Persona.Cliente;
+import interfaceDAO.IDAOCliente;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,16 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ClienteDAO {
+public class ClienteDAO extends Conexion implements IDAOCliente{
     
      PreparedStatement ps;
      ResultSet rs;
-    
-    public boolean RegistrarCliente(Cliente cl){
+   
+    @Override
+    public boolean RegistrarCliente(Cliente cl) {
         try {
-            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            this.iniciarConexion();
             String sql= "insert into cliente(id_cliente, nombre, apellido, telf, tipoCliente, direccion) values (?,?,?,?,?,?)";
-            ps=conexion.prepareStatement(sql);
+            ps=this.conexion.prepareStatement(sql);
             ps.setInt(1, cl.getDni());       
             ps.setString(2, cl.getNombre());
             ps.setString(3, cl.getApellido());
@@ -33,13 +35,14 @@ public class ClienteDAO {
             return false;
         }
     }
-    
-    public List ListarCliente(){
+
+    @Override
+    public List ListarCliente() {
         List<Cliente> lista = new ArrayList();
         try {
-            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            this.iniciarConexion();
             String sql= "select * from cliente";
-            ps=conexion.prepareStatement(sql);
+            ps=this.conexion.prepareStatement(sql);
             rs=ps.executeQuery();
             while(rs.next()){
                 Cliente cl = new Cliente();
@@ -56,12 +59,13 @@ public class ClienteDAO {
         }
         return lista;
     }
-    
-    public boolean EliminarCliente(int id){
-        try {
-            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+
+    @Override
+    public boolean EliminarCliente(int id) {
+       try {
+            this.iniciarConexion();
             String sql= "delete from cliente where id_cliente=?";
-            ps=conexion.prepareStatement(sql); 
+            ps=this.conexion.prepareStatement(sql); 
             ps.setInt(1, id);
             ps.execute();
             return true;
@@ -70,12 +74,13 @@ public class ClienteDAO {
             return false;
         }
     }
-    
-    public boolean ModificarCliente(Cliente cl){
-        try {
-            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+
+    @Override
+    public boolean ModificarCliente(Cliente cl) {
+       try {
+           this.iniciarConexion();
             String sql= "update cliente set id_cliente=?, nombre=?, apellido=?, telf=?, tipoCliente=?, direccion=? where id_cliente=?";
-            ps=conexion.prepareStatement(sql); 
+            ps=this.conexion.prepareStatement(sql); 
             ps.setInt(1, cl.getDni());
             ps.setString(2, cl.getNombre());
             ps.setString(3, cl.getApellido());
@@ -90,13 +95,14 @@ public class ClienteDAO {
             return false;
         }
     }
-    
-    public Cliente BuscarCliente(int dni){
+
+    @Override
+    public Cliente BuscarCliente(int dni) {
         Cliente cl=new Cliente();
         try {
-            Connection conexion= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
+            this.iniciarConexion();
             String sql= "select * from cliente where id_cliente=?";
-            ps=conexion.prepareStatement(sql); 
+            ps=this.conexion.prepareStatement(sql); 
             ps.setInt(1, dni);
             rs=ps.executeQuery();
             if(rs.next()){
