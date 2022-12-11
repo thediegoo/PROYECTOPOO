@@ -34,7 +34,6 @@ public class frmEmpleados extends javax.swing.JFrame {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
         this.setLocationRelativeTo(this);
-        limpiarTable();
         listarEmpleado();
         customizeTable();
     }
@@ -63,14 +62,6 @@ public class frmEmpleados extends javax.swing.JFrame {
         tableHeader.setForeground(Color.black);
         tableHeader.setBackground(Color.white);
     }
-        
-    public void limpiarTable(){
-        for(int i=0; i<modelo.getRowCount(); i++){
-            modelo.removeRow(i);
-            i=i-1;
-        }
-    }
-    
     public void listarCategoriaCliente(JComboBox cb){
         try {
             Connection conectar= DriverManager.getConnection("jdbc:mysql://localhost/peritec", "root", "");
@@ -162,8 +153,8 @@ public class frmEmpleados extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        btnRegistrar.setBackground(new java.awt.Color(31, 31, 31));
-        btnRegistrar.setForeground(new java.awt.Color(30, 30, 30));
+        btnRegistrar.setBackground(new java.awt.Color(112, 0, 255));
+        btnRegistrar.setForeground(new java.awt.Color(112, 0, 255));
         btnRegistrar.setToolTipText("");
         btnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -194,8 +185,8 @@ public class frmEmpleados extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        btnEditar.setBackground(new java.awt.Color(31, 31, 31));
-        btnEditar.setForeground(new java.awt.Color(30, 30, 30));
+        btnEditar.setBackground(new java.awt.Color(112, 0, 255));
+        btnEditar.setForeground(new java.awt.Color(112, 0, 255));
         btnEditar.setToolTipText("");
         btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEditar.addMouseListener(new java.awt.event.MouseAdapter() {

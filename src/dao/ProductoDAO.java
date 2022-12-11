@@ -1,11 +1,10 @@
 
 package dao;
 
-import clases.Producto.Producto;
+import clases.Persona.Proveedor;
+import clases.Producto.*;
 import interfaceDAO.IDAOProducto;
 import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ public class ProductoDAO extends Conexion implements IDAOProducto {
     public boolean RegistrarProducto(Producto pr){ 
         try {
             this.iniciarConexion();
-            String sql="{call adicionarProducto(?,?,?,?,?,?,?,?)}";
+            String sql="{call addProducto(?,?,?,?,?,?,?,?)}";
             CallableStatement ps=conexion.prepareCall(sql);   
             ps.setString(1, pr.getCategoria());
             ps.setString(2, pr.getNombreP());
@@ -42,7 +41,7 @@ public class ProductoDAO extends Conexion implements IDAOProducto {
     }
     
     @Override
-     public List ListarProducto(){
+    public List<Producto> ListarProducto(){
         List<Producto> lista = new ArrayList();
         try {
             this.iniciarConexion();
@@ -130,5 +129,60 @@ public class ProductoDAO extends Conexion implements IDAOProducto {
             return false;
         }
     }
-       
+    public List<Proveedor> ListarProveedor() {
+        List<Proveedor> lista = new ArrayList();
+        try {
+            this.iniciarConexion();
+            String sql= "select p.rut_proveedor, p.codMarca, m.nombreMar FROM proveedor p INNER JOIN marca m on p.codMarca = m.codMarca";
+            ps=this.conexion.prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                Proveedor c = new Proveedor();
+                c.setRUT(rs.getString(1));
+                c.setCodMarca(rs.getString(2));
+                c.setDescripcionMarca(rs.getString(3));
+                lista.add(c);
+            }
+        } catch (Exception e) {
+            System.out.println("Error"+e);
+        }
+        return lista;
+    }
+    public List<Categoria> ListarCategoria() {
+        List<Categoria> lista = new ArrayList();
+        try {
+            this.iniciarConexion();
+            String sql= "select codCategoria, nombreCat  FROM categoria";
+            ps=this.conexion.prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                Categoria c = new Categoria();
+                c.setCodCategoria(rs.getString(1));
+                c.setNombreCat(rs.getString(2));
+                lista.add(c);
+            }
+        } catch (Exception e) {
+            System.out.println("Error"+e);
+        }
+        return lista;
+    }
+    
+    public Producto ListarProductoSeleccionada(String codProducto) {
+        Producto producto = new Producto();
+        try {
+            this.iniciarConexion();
+            String sql= "SELECT estado, cantInicial, stock FROM producto where codProducto=?";
+            ps=conexion.prepareStatement(sql);   
+            ps.setString(1,codProducto);
+            rs=ps.executeQuery(); 
+            if(rs.next()){
+                 producto.setEstado(rs.getString("estado"));
+                 producto.setCantInicial(rs.getInt("cantInicial"));
+                 producto.setStock(rs.getInt("stock"));                 
+            }
+        } catch (Exception e) {
+            System.out.println("Error"+e);
+        }
+        return producto;
+    }
 }

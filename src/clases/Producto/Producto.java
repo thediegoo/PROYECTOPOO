@@ -1,6 +1,5 @@
 package clases.Producto;
 
-import clases.Persona.Proveedor;
 
 public class Producto {
 
@@ -65,13 +64,7 @@ public class Producto {
         this.codigo = codigo;
     }
 
-    public String getEstado() {
-
-        if (this.estado.isEmpty()) {
-            this.estado = "Descripcion on disponible";
-        }
-        return estado;
-    }
+ 
 
     public void setEstado(String descripcion) {
         this.estado = descripcion;
@@ -148,5 +141,9 @@ public class Producto {
 
     public void setNomMar(String nomMar) {
         this.nomMar = nomMar;
+    }
+
+    public String getEstado() {
+        return estado;
     }
 }

@@ -2,6 +2,7 @@ package Formularios;
 
 import Formularios.Clientes.frmClientes;
 import Formularios.Empleados.frmEmpleados;
+import Formularios.Productos.frmProductos;
 import desplazable.Desface;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -453,7 +454,7 @@ public class frmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEmpleadosMouseClicked
 
     private void btnProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductosMouseClicked
-        frmRegistroProducto formProducto = new frmRegistroProducto();
+        frmProductos formProducto = new frmProductos();
         this.setVisible(false);
         formProducto.setVisible(true);
     }//GEN-LAST:event_btnProductosMouseClicked
