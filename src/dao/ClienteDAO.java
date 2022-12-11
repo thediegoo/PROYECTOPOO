@@ -3,8 +3,6 @@ package dao;
 
 import clases.Persona.Cliente;
 import interfaceDAO.IDAOCliente;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -79,15 +77,14 @@ public class ClienteDAO extends Conexion implements IDAOCliente{
     public boolean ModificarCliente(Cliente cl) {
        try {
            this.iniciarConexion();
-            String sql= "update cliente set id_cliente=?, nombre=?, apellido=?, telf=?, tipoCliente=?, direccion=? where id_cliente=?";
+            String sql= "update cliente set nombre=?, apellido=?, telf=?, tipoCliente=?, direccion=? where id_cliente=?";
             ps=this.conexion.prepareStatement(sql); 
-            ps.setInt(1, cl.getDni());
-            ps.setString(2, cl.getNombre());
-            ps.setString(3, cl.getApellido());
-            ps.setInt(4, cl.getTelf());
-            ps.setString(5, cl.getTipoCliente());
-            ps.setString(6, cl.getDireccion());
-            ps.setInt(7, cl.getDni());
+            ps.setString(1, cl.getNombre());
+            ps.setString(2, cl.getApellido());
+            ps.setInt(3, cl.getTelf());
+            ps.setString(4, cl.getTipoCliente());
+            ps.setString(5, cl.getDireccion());
+            ps.setInt(6, cl.getDni());
             ps.execute();
             return true;
         } catch (Exception e) {

@@ -22,6 +22,4 @@ public class Cliente extends Persona {
         this.tipoCliente = tipoCliente;
     }
 
-
-
 }

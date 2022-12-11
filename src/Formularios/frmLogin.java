@@ -270,22 +270,6 @@ public class frmLogin extends javax.swing.JFrame {
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         
         validarAcceso();
-//        
-//        String usu = "admi";
-//        String pwd = "123456";
-//
-//        String Pass = new String(Password.getPassword());
-//        if (txtUsuario.getText().equals("") && Pass.equals("")) {
-//            JOptionPane.showMessageDialog(this, "Ingrese sus datos para poder tener acceso");
-//        } else {
-//            if (txtUsuario.getText().equals(usu) && Pass.equals(pwd)) {
-//                frmMenu m = new frmMenu();
-//                this.setVisible(false);
-//                m.setVisible((true));
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Usuario o Password Incorrecto", "Dialog", JOptionPane.ERROR_MESSAGE);
-//            }
-//        }
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void btnIniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciarMouseClicked
