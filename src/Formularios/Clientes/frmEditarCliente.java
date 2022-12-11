@@ -61,11 +61,11 @@ public class frmEditarCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel35 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        btnVolver = new javax.swing.JPanel();
-        jLabel38 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        btnVolver2 = new javax.swing.JPanel();
+        jLabel44 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         cbTipoCliente = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
@@ -96,54 +96,54 @@ public class frmEditarCliente extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setPreferredSize(new java.awt.Dimension(1313, 642));
 
-        jPanel1.setBackground(java.awt.Color.white);
-        jPanel1.setEnabled(false);
+        jPanel10.setBackground(java.awt.Color.white);
+        jPanel10.setEnabled(false);
 
-        jLabel35.setBackground(java.awt.Color.black);
-        jLabel35.setFont(new java.awt.Font("Poppins", 1, 30)); // NOI18N
-        jLabel35.setForeground(new java.awt.Color(30, 30, 30));
-        jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/home-exit.png"))); // NOI18N
-        jLabel35.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel35.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel42.setBackground(java.awt.Color.black);
+        jLabel42.setFont(new java.awt.Font("Poppins", 1, 30)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(30, 30, 30));
+        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/home-exit.png"))); // NOI18N
+        jLabel42.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel42.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel35MouseClicked(evt);
             }
         });
 
-        jLabel34.setBackground(new java.awt.Color(136, 146, 176));
-        jLabel34.setFont(new java.awt.Font("Poppins", 1, 36)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(30, 30, 30));
-        jLabel34.setText("PeriTec | Editar Clientes");
+        jLabel43.setBackground(new java.awt.Color(136, 146, 176));
+        jLabel43.setFont(new java.awt.Font("Poppins", 1, 36)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(30, 30, 30));
+        jLabel43.setText("PeriTec | Editar Clientes");
 
-        btnVolver.setBackground(new java.awt.Color(31, 31, 31));
-        btnVolver.setForeground(new java.awt.Color(30, 30, 30));
-        btnVolver.setToolTipText("");
-        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnVolver2.setBackground(new java.awt.Color(31, 31, 31));
+        btnVolver2.setForeground(new java.awt.Color(30, 30, 30));
+        btnVolver2.setToolTipText("");
+        btnVolver2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVolver2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnVolverMouseClicked(evt);
             }
         });
 
-        jLabel38.setBackground(java.awt.Color.black);
-        jLabel38.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        jLabel38.setForeground(java.awt.Color.white);
-        jLabel38.setText("VOLVER");
+        jLabel44.setBackground(java.awt.Color.black);
+        jLabel44.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        jLabel44.setForeground(java.awt.Color.white);
+        jLabel44.setText("VOLVER");
 
-        javax.swing.GroupLayout btnVolverLayout = new javax.swing.GroupLayout(btnVolver);
-        btnVolver.setLayout(btnVolverLayout);
-        btnVolverLayout.setHorizontalGroup(
-            btnVolverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnVolverLayout.createSequentialGroup()
+        javax.swing.GroupLayout btnVolver2Layout = new javax.swing.GroupLayout(btnVolver2);
+        btnVolver2.setLayout(btnVolver2Layout);
+        btnVolver2Layout.setHorizontalGroup(
+            btnVolver2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnVolver2Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(jLabel38)
+                .addComponent(jLabel44)
                 .addContainerGap(35, Short.MAX_VALUE))
         );
-        btnVolverLayout.setVerticalGroup(
-            btnVolverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnVolverLayout.createSequentialGroup()
+        btnVolver2Layout.setVerticalGroup(
+            btnVolver2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnVolver2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addComponent(jLabel44, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -431,34 +431,34 @@ public class frmEditarCliente extends javax.swing.JFrame {
                 .addGap(24, 24, 24))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel34)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(jLabel43)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 582, Short.MAX_VALUE)
-                        .addComponent(jLabel35)
+                        .addComponent(jLabel42)
                         .addGap(32, 32, 32))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(btnVolver2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(140, 140, 140)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel34)
-                    .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel43)
+                    .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnVolver2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
@@ -467,11 +467,11 @@ public class frmEditarCliente extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -488,17 +488,17 @@ public class frmEditarCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel35MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel35MouseClicked
-        frmMenu formMenu = new frmMenu();
-        this.setVisible(false);
-        formMenu.setVisible(true);
-    }//GEN-LAST:event_jLabel35MouseClicked
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
 
-    private void btnVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseClicked
-        frmClientes formClientes = new frmClientes();
-        this.setVisible(false);
-        formClientes.setVisible(true);
-    }//GEN-LAST:event_btnVolverMouseClicked
+        int pregunta = JOptionPane.showConfirmDialog(null,"¿Desea eliminar al cliente?");
+        if(pregunta == 0){
+            int id = Integer.parseInt(lblDNI.getText());
+            client.EliminarCliente(id);
+            frmClientes clientes = new frmClientes();
+            clientes.setVisible(true);
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
         if(!"".equals(txtNombre.getText()) || !"".equals(txtApellido.getText()) || !"".equals(txtTelefono.getText())  || !"".equals(txtDireccion.getText())  ){
@@ -518,17 +518,17 @@ public class frmEditarCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnGuardarMouseClicked
 
-    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
-              
-            int pregunta = JOptionPane.showConfirmDialog(null,"¿Desea eliminar al cliente?");
-            if(pregunta == 0){
-                int id = Integer.parseInt(lblDNI.getText());
-                client.EliminarCliente(id);
-                frmClientes clientes = new frmClientes();
-                clientes.setVisible(true);
-                this.setVisible(false);
-            }
-    }//GEN-LAST:event_btnEliminarMouseClicked
+    private void btnVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseClicked
+        frmClientes formClientes = new frmClientes();
+        this.setVisible(false);
+        formClientes.setVisible(true);
+    }//GEN-LAST:event_btnVolverMouseClicked
+
+    private void jLabel35MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel35MouseClicked
+        frmMenu formMenu = new frmMenu();
+        this.setVisible(false);
+        formMenu.setVisible(true);
+    }//GEN-LAST:event_jLabel35MouseClicked
     
 
     /**
@@ -577,19 +577,28 @@ public class frmEditarCliente extends javax.swing.JFrame {
     private javax.swing.JPanel btnEliminar;
     private javax.swing.JPanel btnGuardar;
     private javax.swing.JPanel btnVolver;
+    private javax.swing.JPanel btnVolver1;
+    private javax.swing.JPanel btnVolver2;
     private javax.swing.JComboBox<String> cbTipoCliente;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -597,6 +606,7 @@ public class frmEditarCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel lblDNI;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtDireccion;

@@ -8,7 +8,7 @@ import dao.ProductoDAO;
 import clases.Persona.Cliente;
 import javax.swing.ImageIcon;
 import clases.Producto.Producto;
-import dao.VentaDAO;
+import dao.DatoCompraDAO;
 import java.awt.event.KeyEvent;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,7 +26,7 @@ public class frmFacturaa extends javax.swing.JFrame {
      ProductoDAO proDao = new ProductoDAO();
      ClienteDAO client=new ClienteDAO();
      Factura fac = new Factura();
-     VentaDAO vdao = new VentaDAO();
+     DatoCompraDAO vdao = new DatoCompraDAO();
      Detalle deta = new Detalle();
      int item;
      DefaultTableModel modelo = new DefaultTableModel();

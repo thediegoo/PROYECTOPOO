@@ -1,6 +1,7 @@
 package Formularios;
 
 import Formularios.Clientes.frmClientes;
+import Formularios.Empleados.frmEmpleados;
 import desplazable.Desface;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -141,6 +142,7 @@ public class frmMenu extends javax.swing.JFrame {
         btnEmpleados.setBackground(new java.awt.Color(31, 31, 31));
         btnEmpleados.setForeground(new java.awt.Color(30, 30, 30));
         btnEmpleados.setToolTipText("");
+        btnEmpleados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEmpleadosMouseClicked(evt);
@@ -200,6 +202,7 @@ public class frmMenu extends javax.swing.JFrame {
         btnClientes.setBackground(new java.awt.Color(31, 31, 31));
         btnClientes.setForeground(new java.awt.Color(30, 30, 30));
         btnClientes.setToolTipText("");
+        btnClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnClientesMouseClicked(evt);
@@ -265,6 +268,7 @@ public class frmMenu extends javax.swing.JFrame {
         btnProductos.setBackground(new java.awt.Color(31, 31, 31));
         btnProductos.setForeground(new java.awt.Color(30, 30, 30));
         btnProductos.setToolTipText("");
+        btnProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProductos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnProductosMouseClicked(evt);
@@ -443,7 +447,7 @@ public class frmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClientesMouseClicked
 
     private void btnEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpleadosMouseClicked
-        frmRegistroEmpleado formEmpleado = new frmRegistroEmpleado();
+        frmEmpleados formEmpleado = new frmEmpleados();
         this.setVisible(false);
         formEmpleado.setVisible(true);
     }//GEN-LAST:event_btnEmpleadosMouseClicked
@@ -500,8 +504,6 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
@@ -517,12 +519,9 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuBar jMenuBar4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     // End of variables declaration//GEN-END:variables

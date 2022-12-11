@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class VentaDAO extends Conexion implements IDAOVenta{
+public class DatoCompraDAO extends Conexion implements IDAOVenta{
     
     PreparedStatement ps;
     ResultSet rs;
