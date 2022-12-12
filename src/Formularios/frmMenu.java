@@ -324,6 +324,11 @@ public class frmMenu extends javax.swing.JFrame {
         btnProcedimientos.setBackground(java.awt.Color.white);
         btnProcedimientos.setForeground(java.awt.Color.white);
         btnProcedimientos.setToolTipText("");
+        btnProcedimientos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnProcedimientosMouseClicked(evt);
+            }
+        });
 
         jLabel43.setBackground(java.awt.Color.black);
         jLabel43.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
@@ -458,6 +463,12 @@ public class frmMenu extends javax.swing.JFrame {
         this.setVisible(false);
         formProducto.setVisible(true);
     }//GEN-LAST:event_btnProductosMouseClicked
+
+    private void btnProcedimientosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProcedimientosMouseClicked
+        frmFactura frmFactura = new frmFactura();
+        this.setVisible(false);
+        frmFactura.setVisible(true);
+    }//GEN-LAST:event_btnProcedimientosMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

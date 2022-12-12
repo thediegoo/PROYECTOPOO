@@ -185,4 +185,23 @@ public class ProductoDAO extends Conexion implements IDAOProducto {
         }
         return producto;
     }
+    public boolean RegistrarSolicitud(Solicitud pr){ 
+        try {
+            this.iniciarConexion();
+            String sql="{call addSolicitud(?,?,?,?,?,?)}";
+            CallableStatement ps=conexion.prepareCall(sql);   
+            ps.setInt(1, pr.getId_admi());
+            ps.setString(2, pr.getCodProducto());
+            ps.setInt(3, pr.getRut_proveedor());
+            ps.setString(4, pr.getCodCategoria());
+            ps.setInt(5, pr.getCantidad());    
+            ps.setString(6, pr.getComentarios());
+            ps.executeUpdate();   
+
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error"+e);
+            return false;
+        }
+    }
 }

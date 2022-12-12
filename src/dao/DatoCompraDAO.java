@@ -19,7 +19,7 @@ public class DatoCompraDAO extends Conexion implements IDAOVenta{
     public boolean RegistrarVenta(Factura fac){
         try {
             this.iniciarConexion();
-            String sql="{call crearComprobante(?,?,?,?,?,?)}";
+            String sql="{call crearComprob(?,?,?,?,?,?)}";
             CallableStatement ps=conexion.prepareCall(sql); 
             ps.setInt(1, fac.getIdCliente());
             ps.setInt(2, fac.getIdVendedor());

@@ -519,9 +519,9 @@ public class frmEditarProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarMouseClicked
 
     private void btnVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseClicked
-        frmClientes formClientes = new frmClientes();
+        frmProductos formProductos = new frmProductos();
         this.setVisible(false);
-        formClientes.setVisible(true);
+        formProductos.setVisible(true);
     }//GEN-LAST:event_btnVolverMouseClicked
 
     private void jLabel35MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel35MouseClicked

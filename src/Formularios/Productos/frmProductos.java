@@ -233,8 +233,9 @@ public class frmProductos extends javax.swing.JFrame {
         btnEditar1Layout.setHorizontalGroup(
             btnEditar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnEditar1Layout.createSequentialGroup()
-                .addGap(0, 29, Short.MAX_VALUE)
-                .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         btnEditar1Layout.setVerticalGroup(
             btnEditar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

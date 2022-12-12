@@ -9,13 +9,7 @@ import clases.Persona.Cliente;
 import clases.Producto.Producto;
 import dao.ProductoDAO;
 import java.awt.Color;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -30,9 +24,9 @@ public class frmEstadoProducto extends javax.swing.JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/img/fd.png")).getImage());
         this.setLocationRelativeTo(this);
         this.setTitle("Factura");
-        llenarMarca();
+        llenarProductos();
     }
-    void llenarMarca(){
+    void llenarProductos(){
         cbCodProd.removeAllItems();
         cbCodProd.addItem("Elegir");
         for (Producto x : ProductoDAO.ListarProducto()) {
@@ -420,9 +414,9 @@ public class frmEstadoProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConsultarMouseClicked
 
     private void btnVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseClicked
-        frmClientes formClientes = new frmClientes();
+        frmProductos formProductos = new frmProductos();
         this.setVisible(false);
-        formClientes.setVisible(true);
+        formProductos.setVisible(true);
     }//GEN-LAST:event_btnVolverMouseClicked
 
     private void jLabel35MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel35MouseClicked
